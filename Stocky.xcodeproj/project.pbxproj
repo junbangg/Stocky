@@ -3,27 +3,31 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		36110D0125AF170F004B9AAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36110D0025AF170F004B9AAD /* AppDelegate.swift */; };
 		36110D0325AF170F004B9AAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36110D0225AF170F004B9AAD /* SceneDelegate.swift */; };
-		36110D0525AF170F004B9AAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36110D0425AF170F004B9AAD /* ViewController.swift */; };
+		36110D0525AF170F004B9AAD /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36110D0425AF170F004B9AAD /* SearchTableViewController.swift */; };
 		36110D0825AF170F004B9AAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36110D0625AF170F004B9AAD /* Main.storyboard */; };
 		36110D0A25AF1711004B9AAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36110D0925AF1711004B9AAD /* Assets.xcassets */; };
 		36110D0D25AF1711004B9AAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36110D0B25AF1711004B9AAD /* LaunchScreen.storyboard */; };
+		C1EFFFA6F897F7A455968397 /* Pods_Stocky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45EB70C165F2AAC122965CC5 /* Pods_Stocky.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		36110CFD25AF170F004B9AAD /* Stocky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stocky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36110D0025AF170F004B9AAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36110D0225AF170F004B9AAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		36110D0425AF170F004B9AAD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		36110D0425AF170F004B9AAD /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		36110D0725AF170F004B9AAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		36110D0925AF1711004B9AAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36110D0C25AF1711004B9AAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36110D0E25AF1711004B9AAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45EB70C165F2AAC122965CC5 /* Pods_Stocky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stocky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		82021B82336E6378DEF7E0B9 /* Pods-Stocky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stocky.release.xcconfig"; path = "Target Support Files/Pods-Stocky/Pods-Stocky.release.xcconfig"; sourceTree = "<group>"; };
+		E67080792EF2DC1C1069B8C1 /* Pods-Stocky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stocky.debug.xcconfig"; path = "Target Support Files/Pods-Stocky/Pods-Stocky.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1EFFFA6F897F7A455968397 /* Pods_Stocky.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				36110CFF25AF170F004B9AAD /* Stocky */,
 				36110CFE25AF170F004B9AAD /* Products */,
+				4E57AEA41A199FC42AE95617 /* Pods */,
+				7AFF12F0A7C11A3A5AD10D36 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +65,30 @@
 			children = (
 				36110D0025AF170F004B9AAD /* AppDelegate.swift */,
 				36110D0225AF170F004B9AAD /* SceneDelegate.swift */,
-				36110D0425AF170F004B9AAD /* ViewController.swift */,
+				36110D0425AF170F004B9AAD /* SearchTableViewController.swift */,
 				36110D0625AF170F004B9AAD /* Main.storyboard */,
 				36110D0925AF1711004B9AAD /* Assets.xcassets */,
 				36110D0B25AF1711004B9AAD /* LaunchScreen.storyboard */,
 				36110D0E25AF1711004B9AAD /* Info.plist */,
 			);
 			path = Stocky;
+			sourceTree = "<group>";
+		};
+		4E57AEA41A199FC42AE95617 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E67080792EF2DC1C1069B8C1 /* Pods-Stocky.debug.xcconfig */,
+				82021B82336E6378DEF7E0B9 /* Pods-Stocky.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7AFF12F0A7C11A3A5AD10D36 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				45EB70C165F2AAC122965CC5 /* Pods_Stocky.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 36110D1125AF1711004B9AAD /* Build configuration list for PBXNativeTarget "Stocky" */;
 			buildPhases = (
+				F49EAC084E9DD273688383B1 /* [CP] Check Pods Manifest.lock */,
 				36110CF925AF170F004B9AAD /* Sources */,
 				36110CFA25AF170F004B9AAD /* Frameworks */,
 				36110CFB25AF170F004B9AAD /* Resources */,
+				716E62208824D479EC7B22B6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,12 +158,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		716E62208824D479EC7B22B6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Stocky/Pods-Stocky-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Stocky/Pods-Stocky-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Stocky/Pods-Stocky-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F49EAC084E9DD273688383B1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Stocky-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		36110CF925AF170F004B9AAD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36110D0525AF170F004B9AAD /* ViewController.swift in Sources */,
+				36110D0525AF170F004B9AAD /* SearchTableViewController.swift in Sources */,
 				36110D0125AF170F004B9AAD /* AppDelegate.swift in Sources */,
 				36110D0325AF170F004B9AAD /* SceneDelegate.swift in Sources */,
 			);
@@ -283,6 +351,7 @@
 		};
 		36110D1225AF1711004B9AAD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E67080792EF2DC1C1069B8C1 /* Pods-Stocky.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -301,6 +370,7 @@
 		};
 		36110D1325AF1711004B9AAD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 82021B82336E6378DEF7E0B9 /* Pods-Stocky.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
