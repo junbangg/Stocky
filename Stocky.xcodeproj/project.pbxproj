@@ -13,6 +13,7 @@
 		36110D0825AF170F004B9AAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36110D0625AF170F004B9AAD /* Main.storyboard */; };
 		36110D0A25AF1711004B9AAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36110D0925AF1711004B9AAD /* Assets.xcassets */; };
 		36110D0D25AF1711004B9AAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36110D0B25AF1711004B9AAD /* LaunchScreen.storyboard */; };
+		36F10B9725B06B4E00AA4E06 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F10B9625B06B4E00AA4E06 /* SearchTableViewCell.swift */; };
 		C1EFFFA6F897F7A455968397 /* Pods_Stocky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45EB70C165F2AAC122965CC5 /* Pods_Stocky.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		36110D0925AF1711004B9AAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36110D0C25AF1711004B9AAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36110D0E25AF1711004B9AAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36F10B9625B06B4E00AA4E06 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		45EB70C165F2AAC122965CC5 /* Pods_Stocky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stocky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82021B82336E6378DEF7E0B9 /* Pods-Stocky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stocky.release.xcconfig"; path = "Target Support Files/Pods-Stocky/Pods-Stocky.release.xcconfig"; sourceTree = "<group>"; };
 		E67080792EF2DC1C1069B8C1 /* Pods-Stocky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stocky.debug.xcconfig"; path = "Target Support Files/Pods-Stocky/Pods-Stocky.debug.xcconfig"; sourceTree = "<group>"; };
@@ -63,15 +65,32 @@
 		36110CFF25AF170F004B9AAD /* Stocky */ = {
 			isa = PBXGroup;
 			children = (
+				36F10B9525B06B2E00AA4E06 /* Controller */,
+				36F10B9425B06B2800AA4E06 /* View */,
 				36110D0025AF170F004B9AAD /* AppDelegate.swift */,
 				36110D0225AF170F004B9AAD /* SceneDelegate.swift */,
-				36110D0425AF170F004B9AAD /* SearchTableViewController.swift */,
 				36110D0625AF170F004B9AAD /* Main.storyboard */,
 				36110D0925AF1711004B9AAD /* Assets.xcassets */,
 				36110D0B25AF1711004B9AAD /* LaunchScreen.storyboard */,
 				36110D0E25AF1711004B9AAD /* Info.plist */,
 			);
 			path = Stocky;
+			sourceTree = "<group>";
+		};
+		36F10B9425B06B2800AA4E06 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				36F10B9625B06B4E00AA4E06 /* SearchTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		36F10B9525B06B2E00AA4E06 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				36110D0425AF170F004B9AAD /* SearchTableViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		4E57AEA41A199FC42AE95617 /* Pods */ = {
@@ -206,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36110D0525AF170F004B9AAD /* SearchTableViewController.swift in Sources */,
+				36F10B9725B06B4E00AA4E06 /* SearchTableViewCell.swift in Sources */,
 				36110D0125AF170F004B9AAD /* AppDelegate.swift in Sources */,
 				36110D0325AF170F004B9AAD /* SceneDelegate.swift in Sources */,
 			);
