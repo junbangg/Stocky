@@ -24,11 +24,13 @@ class SearchTableViewController: UITableViewController {
     
     private let apiService = APIService()
     private var subscribers = Set<AnyCancellable>()
+    @Published var searchQuery = String()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-        performSearch()
+        obvserveForm()
         // Do any additional setup after loading the view.
     }
     
@@ -36,18 +38,37 @@ class SearchTableViewController: UITableViewController {
         navigationItem.searchController = searchController
     }
     
-    private func performSearch() {
-        apiService.fetchSymbolsPublisher(key: "S&P500").sink { (completion) in
-            switch completion {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .finished: break
-            }
-        } receiveValue: { (searchResults) in
-            print(searchResults)
-        }.store(in: &subscribers)
+    private func obvserveForm() {
+        $searchQuery
+            .debounce(for: .milliseconds(750), scheduler: RunLoop.main)
+            .sink { [unowned self] (searchQuery) in
+                self.apiService.fetchSymbolsPublisher(key: searchQuery).sink { (completion) in
+                    switch completion {
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    case .finished:
+                        break
+                    }
+                } receiveValue: { (searchResults) in
+                    print(searchResults)
+                }.store(in: &self.subscribers)
 
+            }.store(in: &subscribers)
+        
     }
+    
+//    private func performSearch() {
+//        apiService.fetchSymbolsPublisher(key: "S&P500").sink { (completion) in
+//            switch completion {
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            case .finished: break
+//            }
+//        } receiveValue: { (searchResults) in
+//            print(searchResults)
+//        }.store(in: &subscribers)
+//
+//    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
@@ -62,6 +83,10 @@ class SearchTableViewController: UITableViewController {
 
 extension SearchTableViewController : UISearchResultsUpdating, UISearchControllerDelegate {
     func updateSearchResults(for searchController: UISearchController) {
+        guard let searchQuery = searchController.searchBar.text, !searchQuery.isEmpty else { return }
+        
+        self.searchQuery = searchQuery
+        
         
     }
 }
