@@ -103,10 +103,7 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
 extension SearchTableViewController : UISearchResultsUpdating, UISearchControllerDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchQuery = searchController.searchBar.text, !searchQuery.isEmpty else { return }
-        
         self.searchQuery = searchQuery
-        
-        
     }
     
     func willPresentSearchController(_ searchController: UISearchController) {
