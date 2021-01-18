@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class SearchTableViewController: UITableViewController {
+class SearchTableViewController: UITableViewController, UIAnimatable {
 
     
     private enum Mode {
@@ -57,7 +57,9 @@ class SearchTableViewController: UITableViewController {
         $searchQuery
             .debounce(for: .milliseconds(750), scheduler: RunLoop.main)
             .sink { [unowned self] (searchQuery) in
+                showLoadingAnimation()
                 self.apiService.fetchSymbolsPublisher(key: searchQuery).sink { (completion) in
+                    hideLoadingAnimation()
                     switch completion {
                     case .failure(let error):
                         print(error.localizedDescription)

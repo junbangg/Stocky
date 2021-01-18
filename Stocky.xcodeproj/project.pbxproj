@@ -15,6 +15,7 @@
 		36110D0D25AF1711004B9AAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36110D0B25AF1711004B9AAD /* LaunchScreen.storyboard */; };
 		361A995225B07BAD00FCED62 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361A995125B07BAD00FCED62 /* APIService.swift */; };
 		361A995625B07E5E00FCED62 /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361A995525B07E5E00FCED62 /* SearchResults.swift */; };
+		36BDC34225B5D1EA006C42F4 /* UIAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDC34125B5D1EA006C42F4 /* UIAnimatable.swift */; };
 		36DB571325B42782002C3A4E /* SearchPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DB571225B42782002C3A4E /* SearchPlaceholderView.swift */; };
 		36F10B9725B06B4E00AA4E06 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F10B9625B06B4E00AA4E06 /* SearchTableViewCell.swift */; };
 		C1EFFFA6F897F7A455968397 /* Pods_Stocky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45EB70C165F2AAC122965CC5 /* Pods_Stocky.framework */; };
@@ -31,6 +32,7 @@
 		36110D0E25AF1711004B9AAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		361A995125B07BAD00FCED62 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		361A995525B07E5E00FCED62 /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
+		36BDC34125B5D1EA006C42F4 /* UIAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAnimatable.swift; sourceTree = "<group>"; };
 		36DB571225B42782002C3A4E /* SearchPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceholderView.swift; sourceTree = "<group>"; };
 		36F10B9625B06B4E00AA4E06 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		45EB70C165F2AAC122965CC5 /* Pods_Stocky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stocky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +73,7 @@
 		36110CFF25AF170F004B9AAD /* Stocky */ = {
 			isa = PBXGroup;
 			children = (
+				36BDC34025B5D00F006C42F4 /* Protocol */,
 				361A995425B07E5200FCED62 /* Model */,
 				361A995025B07BA300FCED62 /* Service */,
 				36F10B9525B06B2E00AA4E06 /* Controller */,
@@ -99,6 +102,14 @@
 				361A995525B07E5E00FCED62 /* SearchResults.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		36BDC34025B5D00F006C42F4 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				36BDC34125B5D1EA006C42F4 /* UIAnimatable.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		36F10B9425B06B2800AA4E06 /* View */ = {
@@ -250,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36110D0525AF170F004B9AAD /* SearchTableViewController.swift in Sources */,
+				36BDC34225B5D1EA006C42F4 /* UIAnimatable.swift in Sources */,
 				361A995225B07BAD00FCED62 /* APIService.swift in Sources */,
 				36F10B9725B06B4E00AA4E06 /* SearchTableViewCell.swift in Sources */,
 				36110D0125AF170F004B9AAD /* AppDelegate.swift in Sources */,
