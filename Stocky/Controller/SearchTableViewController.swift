@@ -57,6 +57,7 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
         $searchQuery
             .debounce(for: .milliseconds(750), scheduler: RunLoop.main)
             .sink { [unowned self] (searchQuery) in
+                guard !searchQuery.isEmpty else {return}
                 showLoadingAnimation()
                 self.apiService.fetchSymbolsPublisher(key: searchQuery).sink { (completion) in
                     hideLoadingAnimation()
