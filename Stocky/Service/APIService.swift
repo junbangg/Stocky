@@ -14,6 +14,7 @@ struct APIService {
     
     enum APIServiceError: Error {
         case encoding
+        case badRequest
     }
     
     var API_KEY : String {
@@ -30,7 +31,9 @@ struct APIService {
         
         let urlString = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=\(key)&apikey=\(API_KEY)"
         
-        let url = URL(string: urlString)!
+        guard let url = URL(string: urlString) else {
+            return Fail(error: APIServiceError.badRequest).eraseToAnyPublisher()
+        }
         
         return URLSession.shared.dataTaskPublisher(for: url)
             .map({$0.data})
