@@ -21,7 +21,7 @@ struct APIService {
         return keys.randomElement() ?? ""
     }
     
-    let keys = ["VWG848WN4TOAHX1P", "R4QEF20WS1UNXOP2", "3YVKJCWZ41BU608T"]
+    let keys = ["VWG848WN4TOAHX1P", "R4QEF20WS1UNXOP2", "3YVKJCWZ41BU608T", "Y9PIZ80TZ0XV3HVA"]
     
     func fetchSymbolsPublisher(key : String) -> AnyPublisher<SearchResults, Error> {
         
@@ -61,7 +61,7 @@ struct APIService {
             return Fail(error: error).eraseToAnyPublisher()
         }
         
-        let urlString = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=\(symbol)&\(API_KEY)"
+        let urlString = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=\(symbol)&apikey=\(API_KEY)"
         
         let urlResult = parseURL(urlString: urlString)
         switch urlResult {

@@ -100,7 +100,26 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showCalculator", sender: nil)
+        if let searchResults = self.searchResults {
+            let symbol = searchResults.items[indexPath.item].symbol
+            handleSelection(for: symbol)
+        }
+    }
+    
+    private func handleSelection(for symbol: String) {
+//        performSegue(withIdentifier: "showCalculator", sender: nil)
+        apiService.fetchTimeSeries(key: symbol).sink { (completion) in
+            switch completion{
+            case .failure(let error):
+                print(error)
+            case .finished:
+                break
+            }
+        } receiveValue: { (timeSeries) in
+            print("Success: \(timeSeries)")
+        }.store(in: &subscribers)
+
+        
     }
 
 }

@@ -25,12 +25,15 @@ import Foundation
 //            "7. dividend amount": "0.0000"
 //        },
 
-// - MARK: TODO CREATE MODEL RESPONSE
 
 struct TimeSeries : Decodable {
     
     let meta : Meta
     let timeSeries : [String: TSData]
+    enum CodingKeys: String, CodingKey {
+        case meta = "Meta Data"
+        case timeSeries = "Monthly Adjusted Time Series"
+    }
 }
 
 struct Meta : Decodable {
