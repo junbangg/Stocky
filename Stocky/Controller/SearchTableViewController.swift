@@ -101,13 +101,14 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let searchResults = self.searchResults {
-            let symbol = searchResults.items[indexPath.item].symbol
-            handleSelection(for: symbol)
+            let searchResult = searchResults.items[indexPath.item]
+            let symbol = searchResult.symbol
+            handleSelection(for: symbol, searchResult: searchResult)
         }
     }
     
-    private func handleSelection(for symbol: String) {
-//        performSegue(withIdentifier: "showCalculator", sender: nil)
+    private func handleSelection(for symbol: String, searchResult: SearchResult) {
+
         apiService.fetchTimeSeries(key: symbol).sink { (completion) in
             switch completion{
             case .failure(let error):
@@ -115,11 +116,21 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
             case .finished:
                 break
             }
-        } receiveValue: { (timeSeries) in
+        } receiveValue: { [weak self] (timeSeries) in
+            let asset = Asset(searchResult: searchResult , timeSeries: timeSeries)
+            self?.performSegue(withIdentifier: "showCalculator", sender: asset)
             print("Success: \(timeSeries.getMonthData())")
         }.store(in: &subscribers)
 
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showCalculator",
+           let destination = segue.destination as? CalculatorTableViewController,
+           let asset = sender as? Asset {
+            destination.asset = asset
+        }
     }
 
 }

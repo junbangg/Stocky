@@ -15,6 +15,8 @@
 		36110D0D25AF1711004B9AAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36110D0B25AF1711004B9AAD /* LaunchScreen.storyboard */; };
 		361A995225B07BAD00FCED62 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361A995125B07BAD00FCED62 /* APIService.swift */; };
 		361A995625B07E5E00FCED62 /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361A995525B07E5E00FCED62 /* SearchResults.swift */; };
+		364CD4DC25CA84EC00BE426C /* CalculatorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364CD4DB25CA84EC00BE426C /* CalculatorTableViewController.swift */; };
+		364CD4DF25CA867700BE426C /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364CD4DE25CA867700BE426C /* Asset.swift */; };
 		369B82AF25C1A19D00FB8C1A /* TimeSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B82AE25C1A19D00FB8C1A /* TimeSeries.swift */; };
 		36BDC34225B5D1EA006C42F4 /* UIAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDC34125B5D1EA006C42F4 /* UIAnimatable.swift */; };
 		36DB571325B42782002C3A4E /* SearchPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DB571225B42782002C3A4E /* SearchPlaceholderView.swift */; };
@@ -33,6 +35,8 @@
 		36110D0E25AF1711004B9AAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		361A995125B07BAD00FCED62 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		361A995525B07E5E00FCED62 /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
+		364CD4DB25CA84EC00BE426C /* CalculatorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTableViewController.swift; sourceTree = "<group>"; };
+		364CD4DE25CA867700BE426C /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		369B82AE25C1A19D00FB8C1A /* TimeSeries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeries.swift; sourceTree = "<group>"; };
 		36BDC34125B5D1EA006C42F4 /* UIAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAnimatable.swift; sourceTree = "<group>"; };
 		36DB571225B42782002C3A4E /* SearchPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceholderView.swift; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 			children = (
 				361A995525B07E5E00FCED62 /* SearchResults.swift */,
 				369B82AE25C1A19D00FB8C1A /* TimeSeries.swift */,
+				364CD4DE25CA867700BE426C /* Asset.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -128,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				36110D0425AF170F004B9AAD /* SearchTableViewController.swift */,
+				364CD4DB25CA84EC00BE426C /* CalculatorTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -266,6 +272,8 @@
 				36110D0525AF170F004B9AAD /* SearchTableViewController.swift in Sources */,
 				36BDC34225B5D1EA006C42F4 /* UIAnimatable.swift in Sources */,
 				361A995225B07BAD00FCED62 /* APIService.swift in Sources */,
+				364CD4DF25CA867700BE426C /* Asset.swift in Sources */,
+				364CD4DC25CA84EC00BE426C /* CalculatorTableViewController.swift in Sources */,
 				36F10B9725B06B4E00AA4E06 /* SearchTableViewCell.swift in Sources */,
 				36110D0125AF170F004B9AAD /* AppDelegate.swift in Sources */,
 				369B82AF25C1A19D00FB8C1A /* TimeSeries.swift in Sources */,
