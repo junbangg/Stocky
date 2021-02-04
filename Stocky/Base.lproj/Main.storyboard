@@ -276,7 +276,7 @@
                                                                         <constraint firstAttribute="height" constant="36" id="9Ji-Nu-95U"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
-                                                                    <textInputTraits key="textInputTraits"/>
+                                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                 </textField>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="uZD-XH-w3X">
                                                                     <rect key="frame" x="0.0" y="32" width="382" height="14"/>
@@ -309,7 +309,7 @@
                                                                         <constraint firstAttribute="height" constant="36" id="TnO-YP-cck"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
-                                                                    <textInputTraits key="textInputTraits"/>
+                                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                 </textField>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="dQS-N1-5fm">
                                                                     <rect key="frame" x="0.0" y="32" width="382" height="14"/>
@@ -385,7 +385,10 @@
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="B0g-9K-M2f"/>
                     <connections>
                         <outlet property="assetLabel" destination="Dv3-1Y-BZg" id="nta-7R-iWN"/>
+                        <outlet property="initialDateOfInvestment" destination="vRh-9b-BTU" id="vg1-Cy-2US"/>
+                        <outlet property="initialInvestmentAmountTextField" destination="iVA-jz-R26" id="Mhq-SB-Mh1"/>
                         <outlet property="investmentAmountCurrencyLabel" destination="4V4-8w-Sng" id="2CO-mD-qDW"/>
+                        <outlet property="monthlyDollarCostAveragingTextField" destination="2av-Wz-DOG" id="JAl-Eh-ZXi"/>
                         <outlet property="symbolLabel" destination="LGh-Qb-fnL" id="vr3-ah-31t"/>
                         <outletCollection property="currencyLabels" destination="q00-ov-oQU" collectionClass="NSMutableArray" id="DBw-JU-Llw"/>
                         <outletCollection property="currencyLabels" destination="WbE-ip-9J4" collectionClass="NSMutableArray" id="zSF-bg-iIx"/>
