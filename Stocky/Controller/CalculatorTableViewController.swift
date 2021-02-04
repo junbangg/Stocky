@@ -5,6 +5,7 @@
 //  Created by Jun suk Bang on 2021/02/03.
 //
 
+// * Note prepareforsegue and performs segue
 import UIKit
 
 class CalculatorTableViewController: UITableViewController {
@@ -40,6 +41,14 @@ class CalculatorTableViewController: UITableViewController {
         initialInvestmentAmountTextField.addDoneButton()
         monthlyDollarCostAveragingTextField.addDoneButton()
         initialDateOfInvestmentTextField.delegate = self
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDateSelection",
+           let dateSelectionTableViewController = segue.destination as? DateSelectionTableViewController,
+           let timeSeries = sender as? TimeSeries {
+            dateSelectionTableViewController.timeSeries = timeSeries
+        }
     }
 }
 
