@@ -40,7 +40,8 @@ extension DateSelectionTableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as! DateSelectionTableViewCell
         let monthData = monthDatas[indexPath.item]
-        cell.configure(with: monthData)
+        let index = indexPath.item
+        cell.configure(with: monthData, with: index)
         return cell
     }
     
@@ -55,8 +56,16 @@ class DateSelectionTableViewCell : UITableViewCell {
     @IBOutlet weak var monthLabel : UILabel!
     @IBOutlet weak var monthsAgoLabel : UILabel!
     
-    func configure(with monthData: MonthData) {
+    func configure(with monthData: MonthData, with index: Int) {
         
         monthLabel.text = monthData.date.MMYYFormat
+        
+        if index == 1 {
+            monthsAgoLabel.text = "1 month ago"
+        } else if index > 1{
+            monthsAgoLabel.text = "\(index) months ago"
+        } else {
+            monthsAgoLabel.text = "Just invested"
+        }
     }
 }
