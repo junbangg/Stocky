@@ -52,11 +52,11 @@ extension DateSelectionTableViewController {
 
 class DateSelectionTableViewCell : UITableViewCell {
     
-    @IBOutlet weak var dateLabel : UILabel!
+    @IBOutlet weak var monthLabel : UILabel!
     @IBOutlet weak var monthsAgoLabel : UILabel!
     
     func configure(with monthData: MonthData) {
         
-        backgroundColor = .red
+        monthLabel.text = monthData.date.MMYYFormat
     }
 }
