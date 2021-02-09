@@ -15,15 +15,15 @@ Dollar cost averaging calculator to project potential returns for financial asse
 
 # 사용 예
 ## 홈 화면
-![alt text](https://github.com/junbangg/Stocky/blob/master/img/1.png?raw=true)
+![alt text](https://github.com/junbangg/Stocky/blob/main/img/1.png?raw=true)
 
 
 ## 검색 화면
-![alt text](https://github.com/junbangg/Stocky/blob/master/img/2.png?raw=true)
+![alt text](https://github.com/junbangg/Stocky/blob/main/img/2.png?raw=true)
 
 ## 검색 결과
-![alt text](https://github.com/junbangg/Stocky/blob/master/img/3.png?raw=true)
+![alt text](https://github.com/junbangg/Stocky/blob/main/img/3.png?raw=true)
 
 
 ## 날짜
-![alt text](https://github.com/junbangg/Stocky/blob/master/img/4.png?raw=true)
+![alt text](https://github.com/junbangg/Stocky/blob/main/img/4.png?raw=true)
