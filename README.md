@@ -15,16 +15,15 @@ Dollar cost averaging calculator to project potential returns for financial asse
 
 # 사용 예
 ## 홈 화면
-![alt text](https://github.com/junbangg/SneakPeek/blob/master/img/home.png?raw=true)
+![alt text](https://github.com/junbangg/Stocky/blob/master/img/1.png?raw=true)
 
 
 ## 검색 화면
-![alt text](https://github.com/junbangg/SneakPeek/blob/master/img/search.png?raw=true)
-### 반응성 프로그래밍을 적용했기 때문에 사용자가 입력할때 함께 실시간으로 뷰가 업데이트 된다
+![alt text](https://github.com/junbangg/Stocky/blob/master/img/2.png?raw=true)
 
-## 로딩 애니메이션
-![alt text](https://github.com/junbangg/SneakPeek/blob/master/img/load.png?raw=true)
+## 검색 결과
+![alt text](https://github.com/junbangg/Stocky/blob/master/img/3.png?raw=true)
 
 
-## 결과 정보
-![alt text](https://github.com/junbangg/SneakPeek/blob/master/img/result.png?raw=true)
+## 날짜
+![alt text](https://github.com/junbangg/Stocky/blob/master/img/4.png?raw=true)
