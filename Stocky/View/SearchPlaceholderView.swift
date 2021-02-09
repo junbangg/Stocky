@@ -17,7 +17,7 @@ class SearchPlaceholderView : UIView {
         return imageView
         
     }()
-    
+    // "Search for companies to calculate potential returns via dollar cost averaging "
     private let label : UILabel = {
         let label = UILabel()
         label.text = "Search for companies to calculate potential returns via dollar cost averaging "

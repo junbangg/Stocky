@@ -46,7 +46,7 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
     
     private func setupNavigationBar() {
         navigationItem.searchController = searchController
-        navigationItem.title = "검색"
+        navigationItem.title = "Search"
     }
     
     private func setupTableView() {
