@@ -2,7 +2,7 @@
 Dollar cost averaging calculator to project potential returns for financial assets
 
 # 사용한 기술
-#### UIKit
+#### UIKit / Storyboard
 
 #### Swift5
 
