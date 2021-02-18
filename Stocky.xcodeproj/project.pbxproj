@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36018D1925DEA37E00E6B80C /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36018D1825DEA37E00E6B80C /* Int+Extensions.swift */; };
 		36110D0125AF170F004B9AAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36110D0025AF170F004B9AAD /* AppDelegate.swift */; };
 		36110D0325AF170F004B9AAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36110D0225AF170F004B9AAD /* SceneDelegate.swift */; };
 		36110D0525AF170F004B9AAD /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36110D0425AF170F004B9AAD /* SearchTableViewController.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		36018D1825DEA37E00E6B80C /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		36110CFD25AF170F004B9AAD /* Stocky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stocky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36110D0025AF170F004B9AAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36110D0225AF170F004B9AAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				364CD4E225CAA6C700BE426C /* String+Extensions.swift */,
 				36197F1E25CBC7DB00ECE2CA /* UITextField+Extensions.swift */,
 				36F2BBCA25CD61C4001C9ECE /* Date+Extensions.swift */,
+				36018D1825DEA37E00E6B80C /* Int+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				36110D0525AF170F004B9AAD /* SearchTableViewController.swift in Sources */,
 				36BDC34225B5D1EA006C42F4 /* UIAnimatable.swift in Sources */,
 				361A995225B07BAD00FCED62 /* APIService.swift in Sources */,
+				36018D1925DEA37E00E6B80C /* Int+Extensions.swift in Sources */,
 				364CD4DF25CA867700BE426C /* Asset.swift in Sources */,
 				364CD4E325CAA6C700BE426C /* String+Extensions.swift in Sources */,
 				364CD4DC25CA84EC00BE426C /* CalculatorTableViewController.swift in Sources */,
