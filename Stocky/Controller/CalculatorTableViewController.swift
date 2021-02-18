@@ -23,6 +23,8 @@ class CalculatorTableViewController: UITableViewController {
     var asset : Asset?
     
     @Published var initialDateOfInvestmentIndex : Int?
+    @Published var initialInvestmentAmount : Int?
+    @Published var monthlyDollarCostAveragingAmount : Int?
     
     private var subscribers = Set<AnyCancellable>()
     
@@ -66,6 +68,34 @@ class CalculatorTableViewController: UITableViewController {
                 self?.initialDateOfInvestmentTextField.text = dateString
             }
         }.store(in: &subscribers)
+        NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification, object: initialInvestmentAmountTextField).compactMap({
+            ($0.object as? UITextField)?.text
+        }).sink { [weak self] (text) in
+            self?.initialInvestmentAmount = Int(text) ?? 0
+        }.store(in: &subscribers)
+        
+//        NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification, object: initialInvestmentAmountTextField).compactMap { (notification) -> String? in
+//            var text : String?
+//            if let textField = notification.object as? UITextField {
+//                text = textField.text
+//            }
+//            return text
+//        }.sink { (text) in
+//            print("initialInvestmentAmountTextField: \(text)")
+//        }.store(in: &subscribers)
+        
+        NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification, object: monthlyDollarCostAveragingTextField).compactMap({
+            ($0.object as? UITextField)?.text
+        }).sink { [weak self] (text) in
+            self?.monthlyDollarCostAveragingAmount = Int(text) ?? 0
+
+        }.store(in: &subscribers)
+        
+        Publishers.CombineLatest3($initialInvestmentAmount, $monthlyDollarCostAveragingAmount, $initialDateOfInvestmentIndex)
+            .sink { (initialInvestmentAmount, monthlyDollarCostAveragingAmount, initialDateOfInvestmentIndex) in
+                print("\(initialInvestmentAmount), \(monthlyDollarCostAveragingAmount), \(initialDateOfInvestmentIndex)")
+            }
+            .store(in: &subscribers)
     }
     
     
