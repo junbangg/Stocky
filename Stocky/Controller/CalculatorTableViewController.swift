@@ -105,9 +105,10 @@ class CalculatorTableViewController: UITableViewController {
                 
                 guard let initialInvestmentAmount = initialInvestmentAmount,
                       let monthlyDollarCostAveragingAmount = monthlyDollarCostAveragingAmount,
-                      let initialDateOfInvestmentIndex = initialDateOfInvestmentIndex else { return }
+                      let initialDateOfInvestmentIndex = initialDateOfInvestmentIndex,
+                      let asset = self?.asset else { return }
                 
-                let result = self?.dcaService.calculate(initialInvestmentAmount: initialInvestmentAmount.doubleValue, monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount.doubleValue, initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
+                let result = self?.dcaService.calculate(asset: asset, initialInvestmentAmount: initialInvestmentAmount.doubleValue, monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount.doubleValue, initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
                 
                 self?.currentValueLabel.text = result?.currentValue.stringValue
                 self?.investmentAmountLabel.text = result?.investmentAmount.stringValue

@@ -8,13 +8,20 @@
 import Foundation
 
 struct DCAService {
-    func calculate(initialInvestmentAmount: Double,
+    func calculate(asset: Asset,
+                   initialInvestmentAmount: Double,
                    monthlyDollarCostAveragingAmount: Double,
                    initialDateOfInvestmentIndex: Int) -> DCAResult{
         
         let investmentAmount = getInvestmentAmount(initialInvestmentAmount: initialInvestmentAmount,              monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount,
                                                    initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
-        return .init(currentValue: 0,
+        
+        let latestSharePrice = getLatestSharedPrice(asset: asset)
+        
+        let currentValue = getCurrentValue(numberOfShares: 100, latestSharePrice: latestSharePrice)
+        
+        
+        return .init(currentValue: currentValue,
                      investmentAmount: investmentAmount,
                      gain: 0,
                      yield: 0,
@@ -28,6 +35,30 @@ struct DCAService {
         let dollarCostAveragingAmount = initialDateOfInvestmentIndex.doubleValue * monthlyDollarCostAveragingAmount
         totalAmount += dollarCostAveragingAmount
         return totalAmount
+    }
+    
+    private func getCurrentValue(numberOfShares : Double, latestSharePrice : Double) -> Double {
+        return numberOfShares * latestSharePrice
+    }
+    
+    private func getLatestSharedPrice(asset : Asset) -> Double {
+        return asset.timeSeries.getMonthData().first?.adjustedClose ?? 0
+    }
+    
+    private func getNumberOfShares(asset: Asset,
+                                   initialInvestmentAmount: Double,
+                                   monthlyDollarCostAveragingAmount: Double,
+                                   initialDateOfInvestmentIndex: Int) -> Double {
+        
+        var totalShares = Double()
+        let initialInvestmentOpenPrice = asset.timeSeries.getMonthData()[initialDateOfInvestmentIndex].adjustedOpen
+        let initialInvestmentShares = initialInvestmentAmount / initialInvestmentOpenPrice
+        totalShares += initialInvestmentShares
+        asset.timeSeries.getMonthData().prefix(initialDateOfInvestmentIndex).forEach { (monthInfo) in
+            let dcaInvestmentShares = monthlyDollarCostAveragingAmount / monthInfo.adjustedOpen
+            totalShares += dcaInvestmentShares
+        }
+        return totalShares
     }
 }
 
