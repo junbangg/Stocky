@@ -18,9 +18,10 @@ struct DCAService {
         
         let latestSharePrice = getLatestSharedPrice(asset: asset)
         
-        let currentValue = getCurrentValue(numberOfShares: 100, latestSharePrice: latestSharePrice)
+        let numberOfShares = getNumberOfShares(asset: asset, initialInvestmentAmount: initialInvestmentAmount, monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount, initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
         
-        
+        let currentValue = getCurrentValue(numberOfShares: numberOfShares, latestSharePrice: latestSharePrice)
+                
         return .init(currentValue: currentValue,
                      investmentAmount: investmentAmount,
                      gain: 0,
