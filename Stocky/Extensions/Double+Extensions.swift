@@ -16,4 +16,11 @@ extension Double {
     var twoDecimalFormatString : String {
         return String(format: "%.2f", self)
     }
+    
+    var currencyFormatter : String {
+        let formatter = NumberFormatter()
+        formatter.locale = .current
+        formatter.numberStyle = .currency
+        return formatter.string(from: self as NSNumber) ?? twoDecimalFormatString
+    }
 }
