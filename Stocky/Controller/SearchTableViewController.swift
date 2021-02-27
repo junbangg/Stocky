@@ -5,7 +5,7 @@
 //  Created by Jun suk Bang on 2021/01/13.
 //
 
-//MARK: - Testing Git Commit
+//MARK: - Test for new mac
 
 import UIKit
 import Combine
