@@ -50,7 +50,7 @@ class SearchPlaceholderView : UIView {
             stackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
             stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
             stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: 88)
+            imageView.heightAnchor.constraint(equalToConstant: 160)
         
         ])
     }

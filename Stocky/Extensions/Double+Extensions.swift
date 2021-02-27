@@ -30,11 +30,14 @@ extension Double {
         formatter.maximumFractionDigits = 2
         return formatter.string(from: self as NSNumber) ?? twoDecimalFormatString
     }
-    func toCurrencyFormat(hasDollarSymbol : Bool, hasDecimalPlaces : Bool = true) -> String {
+    func toCurrencyFormat(hasDollarSymbol : Bool = true, hasDecimalPlaces : Bool = true) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         if hasDollarSymbol == false {
             formatter.currencySymbol = ""
+        }
+        if hasDollarSymbol == true {
+            formatter.currencySymbol = "$"
         }
         if hasDecimalPlaces == false {
             formatter.maximumFractionDigits = 0
