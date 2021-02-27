@@ -20,7 +20,7 @@ class SearchPlaceholderView : UIView {
     // "Search for companies to calculate potential returns via dollar cost averaging "
     private let label : UILabel = {
         let label = UILabel()
-        label.text = "Search for companies to calculate potential returns via dollar cost averaging "
+        label.text = "Search for companies to calculate potential returns via dollar cost averaging"
         label.font = UIFont(name: "AvenirNext-Medium", size: 14)!
         label.numberOfLines = 0
         label.textAlignment = .center
