@@ -43,7 +43,12 @@ class CalculatorTableViewController: UITableViewController {
         setupTextFields()
         observeForm()
         setupDateSlider()
-        
+        resetViews()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        initialInvestmentAmountTextField.becomeFirstResponder()
     }
     
     private func setupViews() {
@@ -143,6 +148,7 @@ class CalculatorTableViewController: UITableViewController {
         
     }
     
+    
     private func handleDateSelection(index : Int) {
         guard navigationController?.visibleViewController is DateSelectionTableViewController else { return }
         navigationController?.popViewController(animated: true)
@@ -152,6 +158,14 @@ class CalculatorTableViewController: UITableViewController {
             let dateString = monthData.date.MMYYFormat
             initialDateOfInvestmentTextField.text = dateString
         }
+    }
+    
+    private func resetViews() {
+        currentValueLabel.text = "0.00"
+        investmentAmountLabel.text = "0.00"
+        gainLabel.text = "-"
+        yieldLabel.text = "-"
+        annualReturnLabel.text = "-"
     }
     
     @IBAction func dateSliderDidChange(_ sender: UISlider) {
