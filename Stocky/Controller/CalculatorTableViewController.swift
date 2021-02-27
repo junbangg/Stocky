@@ -111,10 +111,13 @@ class CalculatorTableViewController: UITableViewController {
                 
                 let result = self?.dcaService.calculate(asset: asset, initialInvestmentAmount: initialInvestmentAmount.doubleValue, monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount.doubleValue, initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
                 
+                let isProfitable = (result?.isProtiable == true)
+                let gainSymbol = isProfitable ? "+" : ""
+                
                 self?.currentValueLabel.backgroundColor = (result?.isProtiable == true) ? .themeGreenShade : .themeRedShade
                 self?.currentValueLabel.text = result?.currentValue.currencyFormatter
                 self?.investmentAmountLabel.text = result?.investmentAmount.currencyFormatter
-                self?.gainLabel.text = result?.gain.stringValue
+                self?.gainLabel.text = result?.gain.toCurrencyFormat(hasDollarSymbol: false, hasDecimalPlaces: false).prefix(withText: gainSymbol)
                 self?.yieldLabel.text = result?.yield.stringValue
                 self?.annualReturnLabel.text = result?.annualReturn.stringValue
                 
