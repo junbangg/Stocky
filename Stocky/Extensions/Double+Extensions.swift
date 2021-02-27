@@ -19,8 +19,8 @@ extension Double {
     
     var currencyFormatter : String {
         let formatter = NumberFormatter()
-        formatter.locale = .current
         formatter.numberStyle = .currency
+        formatter.currencySymbol = "$"
         return formatter.string(from: self as NSNumber) ?? twoDecimalFormatString
     }
 }

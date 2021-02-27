@@ -77,6 +77,7 @@ class CalculatorTableViewController: UITableViewController {
                 self?.initialDateOfInvestmentTextField.text = dateString
             }
         }.store(in: &subscribers)
+        
         NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification, object: initialInvestmentAmountTextField).compactMap({
             ($0.object as? UITextField)?.text
         }).sink { [weak self] (text) in
