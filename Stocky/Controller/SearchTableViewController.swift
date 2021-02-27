@@ -122,7 +122,7 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
             self?.hideLoadingAnimation()
             let asset = Asset(searchResult: searchResult , timeSeries: timeSeries)
             self?.performSegue(withIdentifier: "showCalculator", sender: asset)
-            print("Success: \(timeSeries.getMonthData())")
+            self?.searchController.searchBar.text = nil
         }.store(in: &subscribers)
 
         
