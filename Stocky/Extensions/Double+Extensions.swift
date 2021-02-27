@@ -23,6 +23,13 @@ extension Double {
         formatter.currencySymbol = "$"
         return formatter.string(from: self as NSNumber) ?? twoDecimalFormatString
     }
+    
+    var percentageFormat : String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        formatter.maximumFractionDigits = 2
+        return formatter.string(from: self as NSNumber) ?? twoDecimalFormatString
+    }
     func toCurrencyFormat(hasDollarSymbol : Bool, hasDecimalPlaces : Bool = true) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
