@@ -58,6 +58,19 @@ class StockyTests: XCTestCase {
         // total : $5000 + $7500 = $125000
         //
         XCTAssertEqual(result.investmentAmount, 12500)
+        XCTAssertTrue(result.isProtiable)
+        // Jan: $5000 / 100 = 50 shares
+        // Feb: $1500 / 110 = 13.6363 shares
+        // Mar: $1500 / 120 = 12.5 shares
+        // April: $1500 / 130 = 11.5384 shares
+        // May: $1500 / 140 = 10.7142 shares
+        // June: $1500 / 150 = 10 shares
+        // Total Shares = 108.3889 shares
+        // Total current value = 108.3889 * 160 (latest month closing price) = $17,342.224
+        
+        XCTAssertEqual(result.currentValue, 17342.224, accuracy: 0.1)
+        XCTAssertEqual(result.gain, 4842.224, accuracy: 0.1)
+        XCTAssertEqual(result.yield, 0.3873, accuracy: 0.0001)
         
         
     }
@@ -74,12 +87,13 @@ class StockyTests: XCTestCase {
     private func buildWinningAsset() -> Asset {
         let searchResult = buildSearchResult()
         let meta = buildMeta()
-        let timeSeries : [String : TSData] = ["2008-02-29": TSData(open: "100", close: "0", adjustedClose: "110"),
-                                            "2008-03-29": TSData(open: "110", close: "0", adjustedClose: "120"),
-                                            "2008-04-29": TSData(open: "120", close: "0", adjustedClose: "130"),
-                                            "2008-05-29": TSData(open: "130", close: "0", adjustedClose: "140"),
-                                            "2008-06-29": TSData(open: "140", close: "0", adjustedClose: "150"),
-                                            "2008-07-29": TSData(open: "150", close: "0", adjustedClose: "160")]
+        let timeSeries : [String : TSData] = ["2008-02-29": TSData(open: "100", close: "110", adjustedClose: "110"),
+                                            "2008-03-29": TSData(open: "110", close: "120", adjustedClose: "120"),
+                                            "2008-04-29": TSData(open: "120", close: "130", adjustedClose: "130"),
+                                            "2008-05-29": TSData(open: "130", close: "140", adjustedClose: "140"),
+                                            "2008-06-29": TSData(open: "140", close: "150", adjustedClose: "150"),
+                                            "2008-07-29": TSData(open: "150", close: "160", adjustedClose: "160")]
+       
         let timeSeriesMonthlyAdjusted  = TimeSeries(meta: meta, timeSeries: timeSeries)
         
         return Asset(searchResult: searchResult, timeSeries: timeSeriesMonthlyAdjusted)
