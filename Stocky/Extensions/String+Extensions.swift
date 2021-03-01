@@ -17,5 +17,9 @@ extension String {
         return text + self
     }
     
+    func convertToDouble() -> Double? {
+        return Double(self)
+    }
+    
     
 }

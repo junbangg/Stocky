@@ -27,20 +27,39 @@ struct TimeSeries : Decodable {
         var monthDatas : [MonthData] = []
         let sortedTimeSeries = timeSeries.sorted(by: {$0.key > $1.key})
         
-        sortedTimeSeries.forEach { (dateString, data) in
+        
+        ///Handeled optionals
+        //        sortedTimeSeries.forEach { (dateString, data) in
+        //            let dateFormatter = DateFormatter()
+        //            dateFormatter.dateFormat = "yyyy-MM-dd"
+        //            let date = dateFormatter.date(from: dateString)! //have to handle optional
+        //            let adjustedOpen = getAdjustedOpen(tsdata: data)
+        //            let monthData = MonthData(date: date, adjustedOpen: adjustedOpen, adjustedClose: Double(data.adjustedClose)!)
+        //
+        //            monthDatas.append(monthData)
+        //        }
+        for (dateString, data) in sortedTimeSeries {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
-            let date = dateFormatter.date(from: dateString)! //have to handle optional
-            let adjustedOpen = getAdjustedOpen(tsdata: data)
-            let monthData = MonthData(date: date, adjustedOpen: adjustedOpen, adjustedClose: Double(data.adjustedClose)!)
+            guard let date = dateFormatter.date(from: dateString),
+                  let adjustedOpen = getAdjustedOpen(tsdata: data),
+                  let adjustedClose = data.adjustedClose.convertToDouble() else { return [] }
+            let monthData = MonthData(date: date, adjustedOpen: adjustedOpen, adjustedClose: adjustedClose)
             
             monthDatas.append(monthData)
         }
+        
         return monthDatas
     }
     
-    private func getAdjustedOpen(tsdata : TSData) -> Double {
-        return Double(tsdata.open)! * Double(tsdata.adjustedClose)! / Double(tsdata.close)!
+    private func getAdjustedOpen(tsdata : TSData) -> Double? {
+        
+        /// Handeled Optionals
+        guard let open = tsdata.open.convertToDouble(),
+              let adjustedClose = tsdata.adjustedClose.convertToDouble(),
+              let close = tsdata.close.convertToDouble() else { return nil }
+        
+        return open * adjustedClose / close
     }
 }
 
