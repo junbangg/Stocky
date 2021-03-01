@@ -75,6 +75,40 @@ class StockyTests: XCTestCase {
         
     }
     func testResult_givenWinningAssetAndDCAIsNotUsed_expectPositiveGains() {
+        //given
+        let initialInvestmentAmount : Double = 5000
+        let monthlyDollarCostAveragingAmount : Double = 0
+        let initialDateOfInvestmentIndex : Int = 3
+        let asset = buildWinningAsset()
+        //when
+        let result = sut.calculate(asset: asset,
+                                 initialInvestmentAmount: initialInvestmentAmount,
+                                 monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount,
+                                 initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
+        //then
+        // Initial Investment : $5000
+        // DCA : $0 x 3 = $0
+        // total : $5000 + $0 = $5000
+        //
+        XCTAssertEqual(result.investmentAmount, 5000)
+        XCTAssertTrue(result.isProtiable)
+        
+        /// Current Value Formula
+        // Mar: $5000 / 120 = 41.6666 shares
+        // April: $0 / 130 = 0 shares
+        // May: $1500 / 140 = 0 shares
+        // June: $1500 / 150 = 0 shares
+        // Total Shares = 41.6666 shares
+        // Total current value = 41.6666 * 160 (latest month closing price) = $6666.666
+        
+        /// Gain Formula
+        //Gain = Current Value - Initial Investment = 6666.666 - 5000
+        
+        /// Yield Formula
+        // Yield = Gain / Investment Amount = 1666.666 / 5000
+        XCTAssertEqual(result.currentValue, 6666.666, accuracy: 0.1)
+        XCTAssertEqual(result.gain, 1666.666, accuracy: 0.1)
+        XCTAssertEqual(result.yield, 0.3333, accuracy: 0.0001)
         
     }
     func testResult_givenLosingAssetAndDCAIsUsed_expectNegativeGains() {
@@ -98,6 +132,10 @@ class StockyTests: XCTestCase {
         
         return Asset(searchResult: searchResult, timeSeries: timeSeriesMonthlyAdjusted)
     }
+    
+//    private func buildLosingAsset() -> Asset {
+//
+//    }
     
     private func buildSearchResult() -> SearchResult {
         return SearchResult(symbol: "XYZ", name: "XYZCompany", type: "ETF", currency: "USD")
