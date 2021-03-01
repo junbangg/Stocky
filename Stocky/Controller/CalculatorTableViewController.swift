@@ -34,8 +34,8 @@ class CalculatorTableViewController: UITableViewController {
     @Published var monthlyDollarCostAveragingAmount : Int?
     
     private var dcaService = DCAService()
-    
     private var subscribers = Set<AnyCancellable>()
+    private let calculatorPresenter = CalculatorPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,19 +115,21 @@ class CalculatorTableViewController: UITableViewController {
                       let initialDateOfInvestmentIndex = initialDateOfInvestmentIndex,
                       let asset = self?.asset else { return }
                 
-                let result = self?.dcaService.calculate(asset: asset, initialInvestmentAmount: initialInvestmentAmount.doubleValue, monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount.doubleValue, initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
+                //***** since there is a weak self
+                guard let this = self else { return }
                 
-                let isProfitable = (result?.isProtiable == true)
-                let gainSymbol = isProfitable ? "+" : ""
+                let result = this.dcaService.calculate(asset: asset, initialInvestmentAmount: initialInvestmentAmount.doubleValue, monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount.doubleValue, initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
                 
-                self?.currentValueLabel.backgroundColor = (result?.isProtiable == true) ? .themeGreenShade : .themeRedShade
-                self?.currentValueLabel.text = result?.currentValue.currencyFormatter
-                self?.investmentAmountLabel.text = result?.investmentAmount.toCurrencyFormat(hasDecimalPlaces: false)
-                self?.gainLabel.text = result?.gain.toCurrencyFormat(hasDollarSymbol: true, hasDecimalPlaces: false).prefix(withText: gainSymbol)
-                self?.yieldLabel.text = result?.yield.percentageFormat.prefix(withText: gainSymbol).addBrackets()
-                self?.yieldLabel.textColor = isProfitable ? .systemGreen : .systemRed
-                self?.annualReturnLabel.text = result?.annualReturn.percentageFormat
-                self?.annualReturnLabel.textColor = isProfitable ? .systemGreen : .systemRed
+                let presentation = this.calculatorPresenter.getPresentation(result: result)
+                
+                this.currentValueLabel.backgroundColor = presentation.currentValueLabelBackgroundColor
+                this.currentValueLabel.text = presentation.currentValue
+                this.investmentAmountLabel.text = presentation.investmentAmount
+                this.gainLabel.text = presentation.gain
+                this.yieldLabel.text = presentation.yield
+                this.yieldLabel.textColor = presentation.yieldLabelTextColor
+                this.annualReturnLabel.text = presentation.annualReturn
+                this.annualReturnLabel.textColor = presentation.annualReturnLabelTextColor
                 
                 
             }
