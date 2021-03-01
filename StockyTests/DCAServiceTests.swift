@@ -8,7 +8,7 @@
 import XCTest
 @testable import Stocky
 
-class StockyTests: XCTestCase {
+class DCAServiceTests: XCTestCase {
     
     var sut: DCAService!
     

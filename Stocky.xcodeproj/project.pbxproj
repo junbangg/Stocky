@@ -31,7 +31,8 @@
 		36F2BBCB25CD61C4001C9ECE /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F2BBCA25CD61C4001C9ECE /* Date+Extensions.swift */; };
 		C1EFFFA6F897F7A455968397 /* Pods_Stocky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45EB70C165F2AAC122965CC5 /* Pods_Stocky.framework */; };
 		ED90A04525ED30F300C2BE4E /* CalculatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED90A04425ED30F300C2BE4E /* CalculatorPresenter.swift */; };
-		EDF8805625EBD16500B2947F /* StockyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF8805525EBD16500B2947F /* StockyTests.swift */; };
+		ED90A04F25ED361600C2BE4E /* CalculatorPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED90A04E25ED361600C2BE4E /* CalculatorPresenterTests.swift */; };
+		EDF8805625EBD16500B2947F /* DCAServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF8805525EBD16500B2947F /* DCAServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,8 +74,9 @@
 		82021B82336E6378DEF7E0B9 /* Pods-Stocky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stocky.release.xcconfig"; path = "Target Support Files/Pods-Stocky/Pods-Stocky.release.xcconfig"; sourceTree = "<group>"; };
 		E67080792EF2DC1C1069B8C1 /* Pods-Stocky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stocky.debug.xcconfig"; path = "Target Support Files/Pods-Stocky/Pods-Stocky.debug.xcconfig"; sourceTree = "<group>"; };
 		ED90A04425ED30F300C2BE4E /* CalculatorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorPresenter.swift; sourceTree = "<group>"; };
+		ED90A04E25ED361600C2BE4E /* CalculatorPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorPresenterTests.swift; sourceTree = "<group>"; };
 		EDF8805325EBD16500B2947F /* StockyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EDF8805525EBD16500B2947F /* StockyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockyTests.swift; sourceTree = "<group>"; };
+		EDF8805525EBD16500B2947F /* DCAServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCAServiceTests.swift; sourceTree = "<group>"; };
 		EDF8805725EBD16500B2947F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,8 +218,9 @@
 		EDF8805425EBD16500B2947F /* StockyTests */ = {
 			isa = PBXGroup;
 			children = (
-				EDF8805525EBD16500B2947F /* StockyTests.swift */,
+				EDF8805525EBD16500B2947F /* DCAServiceTests.swift */,
 				EDF8805725EBD16500B2947F /* Info.plist */,
+				ED90A04E25ED361600C2BE4E /* CalculatorPresenterTests.swift */,
 			);
 			path = StockyTests;
 			sourceTree = "<group>";
@@ -393,7 +396,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDF8805625EBD16500B2947F /* StockyTests.swift in Sources */,
+				ED90A04F25ED361600C2BE4E /* CalculatorPresenterTests.swift in Sources */,
+				EDF8805625EBD16500B2947F /* DCAServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
