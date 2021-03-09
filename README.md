@@ -1,6 +1,8 @@
 # Stocky
 Dollar cost averaging calculator to project potential returns for financial assets
 
+-TODO : - pod install not working
+
 # 사용한 기술
 #### UIKit / Storyboard
 
