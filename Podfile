@@ -8,5 +8,6 @@ target 'Stocky' do
   # Pods for Stocky
 	pod 'MBProgressHUD'
 	pod 'Loaf'
+	pod 'Charts'
 
 end

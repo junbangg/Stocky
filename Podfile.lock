@@ -1,20 +1,26 @@
 PODS:
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
   - Loaf (0.7.0)
   - MBProgressHUD (1.2.0)
 
 DEPENDENCIES:
+  - Charts
   - Loaf
   - MBProgressHUD
 
 SPEC REPOS:
   trunk:
+    - Charts
     - Loaf
     - MBProgressHUD
 
 SPEC CHECKSUMS:
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   Loaf: d69937cd00649f3fa260beb8b7aef0a1feb861ef
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: 689f787afe3e2b86afbb4cb508a2e6f19b7ab447
+PODFILE CHECKSUM: a81ad5de7d04cd10eda68c61ce8e4c23678b2774
 
-COCOAPODS: 1.10.0.beta.1
+COCOAPODS: 1.10.1
