@@ -7,10 +7,16 @@
 
 import Foundation
 
+/// Int extensions for code readibility
+
 extension Int {
+    
+    /// => converts an Int value to Float
     var floatValue : Float {
         return Float(self)
     }
+    
+    /// => converts an Int value to Double
     var doubleValue : Double {
         return Double(self)
     }
