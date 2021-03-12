@@ -9,5 +9,6 @@ target 'Stocky' do
 	pod 'MBProgressHUD'
 	pod 'Loaf'
 	pod 'Charts'
+	pod 'TinyConstraints'
 
 end

@@ -15,7 +15,6 @@ class SearchPlaceholderView : UIView {
         imageView.image = image
         imageView.contentMode = .scaleAspectFit
         return imageView
-        
     }()
     // "Search for companies to calculate potential returns via dollar cost averaging "
     private let label : UILabel = {
