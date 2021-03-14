@@ -15,7 +15,7 @@ final class DataChartView : UIViewController, ChartViewDelegate {
     
     lazy var lineChartView : LineChartView = {
         let chartView = LineChartView()
-        chartView.backgroundColor = .systemBlue
+        chartView.backgroundColor = .themeGreenShade
         chartView.rightAxis.enabled = false
         let yAxis = chartView.leftAxis
         yAxis.labelFont = .boldSystemFont(ofSize: 12)
