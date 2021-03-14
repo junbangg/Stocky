@@ -8,8 +8,14 @@
 // * Note prepareforsegue and performs segue
 import UIKit
 import Combine
+import Charts
 
 class CalculatorTableViewController: UITableViewController {
+    
+    enum Segue {
+        static let showDataSelection = "showDateSelection"
+        static let sendChartData = "sendChartData"
+    }
     
     //Labels
     @IBOutlet weak var currentValueLabel : UILabel!
@@ -32,7 +38,7 @@ class CalculatorTableViewController: UITableViewController {
     @Published var initialDateOfInvestmentIndex : Int?
     @Published var initialInvestmentAmount : Int?
     @Published var monthlyDollarCostAveragingAmount : Int?
-    
+    //    @Published var closingPrices :
     private var dcaService = DCAService()
     private var subscribers = Set<AnyCancellable>()
     private let calculatorPresenter = CalculatorPresenter()
@@ -44,6 +50,7 @@ class CalculatorTableViewController: UITableViewController {
         observeForm()
         setupDateSlider()
         resetViews()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -90,16 +97,6 @@ class CalculatorTableViewController: UITableViewController {
             self?.initialInvestmentAmount = Int(text) ?? 0
         }.store(in: &subscribers)
         
-        //        NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification, object: initialInvestmentAmountTextField).compactMap { (notification) -> String? in
-        //            var text : String?
-        //            if let textField = notification.object as? UITextField {
-        //                text = textField.text
-        //            }
-        //            return text
-        //        }.sink { (text) in
-        //            print("initialInvestmentAmountTextField: \(text)")
-        //        }.store(in: &subscribers)
-        
         NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification, object: monthlyDollarCostAveragingTextField).compactMap({
             ($0.object as? UITextField)?.text
         }).sink { [weak self] (text) in
@@ -137,9 +134,8 @@ class CalculatorTableViewController: UITableViewController {
         
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDateSelection",
+        if segue.identifier == Segue.showDataSelection,
            let dateSelectionTableViewController = segue.destination as? DateSelectionTableViewController,
            let timeSeries = sender as? TimeSeries {
             dateSelectionTableViewController.timeSeries = timeSeries
@@ -148,9 +144,12 @@ class CalculatorTableViewController: UITableViewController {
                 self?.handleDateSelection(index: index)
             }
         }
+        if segue.identifier == Segue.sendChartData,
+           let dataChartViewController = segue.destination as? DataChartViewController {
+            dataChartViewController.timeSeries = asset?.timeSeries
+        }
         
     }
-    
     
     private func handleDateSelection(index : Int) {
         guard navigationController?.visibleViewController is DateSelectionTableViewController else { return }
@@ -180,7 +179,8 @@ class CalculatorTableViewController: UITableViewController {
 extension CalculatorTableViewController : UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == initialDateOfInvestmentTextField {
-            performSegue(withIdentifier: "showDateSelection", sender: asset?.timeSeries)
+            performSegue(withIdentifier: Segue.showDataSelection, sender: asset?.timeSeries)
+//            performSegue(withIdentifier: Segue.sendChartData, sender: asset?.timeSeries)
             return false
         }
         return true

@@ -9,9 +9,13 @@ import Foundation
 import UIKit
 import TinyConstraints
 import Charts
+import Combine
 
 class DataChartViewController : UIViewController, ChartViewDelegate {
     
+    var timeSeries : TimeSeries?
+    
+    private var monthData : [MonthData] = []
     
     lazy var lineChartView : LineChartView = {
         let chartView = LineChartView()
@@ -40,7 +44,10 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
         lineChartView.width(to: view)
         lineChartView.heightToWidth(of: view)
         setData()
+        getData()
     }
+    
+    
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         print(entry)
@@ -51,6 +58,12 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
         
         let data = LineChartData(dataSet: set1)
         lineChartView.data = data
+    }
+    
+    private func getData() {
+        monthData = timeSeries?.getMonthData() ?? []
+        print("month data")
+        print(monthData)
     }
     
     let yValues: [ChartDataEntry] = [

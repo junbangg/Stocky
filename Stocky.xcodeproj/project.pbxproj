@@ -186,7 +186,6 @@
 			children = (
 				36F10B9625B06B4E00AA4E06 /* SearchTableViewCell.swift */,
 				36DB571225B42782002C3A4E /* SearchPlaceholderView.swift */,
-				EDB4175825FB5EBC0009A850 /* DataChartViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -197,6 +196,7 @@
 				36110D0425AF170F004B9AAD /* SearchTableViewController.swift */,
 				364CD4DB25CA84EC00BE426C /* CalculatorTableViewController.swift */,
 				365CDCE625CC216B0099CF24 /* DateSelectionTableViewController.swift */,
+				EDB4175825FB5EBC0009A850 /* DataChartViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
