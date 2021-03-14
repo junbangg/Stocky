@@ -18,13 +18,13 @@ final class DataChartView : UIViewController, ChartViewDelegate {
         chartView.backgroundColor = .themeGreenShade
         chartView.rightAxis.enabled = false
         let yAxis = chartView.leftAxis
-        yAxis.labelFont = .boldSystemFont(ofSize: 12)
+        yAxis.labelFont = .boldSystemFont(ofSize: 13)
         yAxis.setLabelCount(6, force: false)
         yAxis.labelTextColor = .white
         yAxis.labelPosition = .outsideChart
         yAxis.axisLineColor = .white
         
-        chartView.xAxis.labelFont = .boldSystemFont(ofSize: 12)
+        chartView.xAxis.labelFont = .boldSystemFont(ofSize: 13)
         chartView.xAxis.setLabelCount(6, force: false)
         chartView.xAxis.labelTextColor = .white
         chartView.xAxis.labelPosition = .bottom
@@ -36,7 +36,8 @@ final class DataChartView : UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(lineChartView)
-        lineChartView.centerInSuperview()
+        lineChartView.topToSuperview()
+//        lineChartView.centerInSuperview()
         lineChartView.width(to: view)
         lineChartView.heightToWidth(of: view)
         setData()
