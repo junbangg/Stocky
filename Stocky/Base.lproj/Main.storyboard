@@ -535,10 +535,10 @@
             </objects>
             <point key="canvasLocation" x="39" y="817"/>
         </scene>
-        <!--Data Chart View-->
+        <!--Data Chart View Controller-->
         <scene sceneID="UqA-DJ-II9">
             <objects>
-                <viewController id="xQp-os-Vlp" customClass="DataChartView" customModule="Stocky" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xQp-os-Vlp" customClass="DataChartViewController" customModule="Stocky" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IOo-3q-jj3">
                         <rect key="frame" x="0.0" y="0.0" width="374" height="531"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

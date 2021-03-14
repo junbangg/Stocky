@@ -10,7 +10,7 @@ import UIKit
 import TinyConstraints
 import Charts
 
-final class DataChartView : UIViewController, ChartViewDelegate {
+class DataChartViewController : UIViewController, ChartViewDelegate {
     
     
     lazy var lineChartView : LineChartView = {
@@ -37,7 +37,6 @@ final class DataChartView : UIViewController, ChartViewDelegate {
         super.viewDidLoad()
         view.addSubview(lineChartView)
         lineChartView.topToSuperview()
-//        lineChartView.centerInSuperview()
         lineChartView.width(to: view)
         lineChartView.heightToWidth(of: view)
         setData()
