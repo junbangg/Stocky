@@ -15,7 +15,6 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
     
     var timeSeries : TimeSeries?
     
-    private var monthData : [MonthData] = []
     
     lazy var lineChartView : LineChartView = {
         let chartView = LineChartView()
@@ -44,9 +43,7 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
         lineChartView.width(to: view)
         lineChartView.heightToWidth(of: view)
         setData()
-        getData()
     }
-    
     
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
@@ -54,16 +51,26 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
     }
     
     func setData() {
-        let set1 = LineChartDataSet(entries: yValues, label: "Subscribers")
+        let set1 = LineChartDataSet(entries: getData(), label: "Subscribers")
         
         let data = LineChartData(dataSet: set1)
         lineChartView.data = data
     }
     
-    private func getData() {
-        monthData = timeSeries?.getMonthData() ?? []
-        print("month data")
-        print(monthData)
+    private func getData() -> [ChartDataEntry]{
+        let monthData : [MonthData] = timeSeries?.getMonthData() ?? []
+        var chartValues : [ChartDataEntry] = []
+        var x = 0
+        for data in monthData {
+//            let xData = data.dat
+            // x data should be just index 0-1000
+            let yData = data.adjustedClose
+            let data = data.date
+            let chartData = ChartDataEntry(x: x.doubleValue, y: yData, data: data)
+            chartValues.append(chartData)
+            x += 1
+        }
+        return chartValues
     }
     
     let yValues: [ChartDataEntry] = [
