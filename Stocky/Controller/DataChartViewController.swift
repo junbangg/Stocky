@@ -58,12 +58,10 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
     }
     
     private func getData() -> [ChartDataEntry]{
-        let monthData : [MonthData] = timeSeries?.getMonthData() ?? []
+        let monthData : [MonthData] = timeSeries?.getMonthData(dateReverseSort: false) ?? []
         var chartValues : [ChartDataEntry] = []
         var x = 0
         for data in monthData {
-//            let xData = data.dat
-            // x data should be just index 0-1000
             let yData = data.adjustedClose
             let data = data.date
             let chartData = ChartDataEntry(x: x.doubleValue, y: yData, data: data)

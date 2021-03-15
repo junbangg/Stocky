@@ -58,7 +58,7 @@ struct DCAService {
     }
     
     private func getLatestSharedPrice(asset : Asset) -> Double {
-        return asset.timeSeries.getMonthData().first?.adjustedClose ?? 0
+        return asset.timeSeries.getMonthData(dateReverseSort: true).first?.adjustedClose ?? 0
     }
     
     private func getNumberOfShares(asset: Asset,
@@ -67,10 +67,10 @@ struct DCAService {
                                    initialDateOfInvestmentIndex: Int) -> Double {
         
         var totalShares = Double()
-        let initialInvestmentOpenPrice = asset.timeSeries.getMonthData()[initialDateOfInvestmentIndex].adjustedOpen
+        let initialInvestmentOpenPrice = asset.timeSeries.getMonthData(dateReverseSort: true)[initialDateOfInvestmentIndex].adjustedOpen
         let initialInvestmentShares = initialInvestmentAmount / initialInvestmentOpenPrice
         totalShares += initialInvestmentShares
-        asset.timeSeries.getMonthData().prefix(initialDateOfInvestmentIndex).forEach { (monthInfo) in
+        asset.timeSeries.getMonthData(dateReverseSort: true).prefix(initialDateOfInvestmentIndex).forEach { (monthInfo) in
             let dcaInvestmentShares = monthlyDollarCostAveragingAmount / monthInfo.adjustedOpen
             totalShares += dcaInvestmentShares
         }

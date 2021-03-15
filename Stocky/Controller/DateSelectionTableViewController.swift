@@ -27,7 +27,7 @@ class DateSelectionTableViewController : UITableViewController {
     }
     
     private func setupTableViews() {
-        monthDatas = timeSeries?.getMonthData() ?? []
+        monthDatas = timeSeries?.getMonthData(dateReverseSort: true) ?? []
     }
 }
 

@@ -76,7 +76,7 @@ class CalculatorTableViewController: UITableViewController {
     }
     
     private func setupDateSlider() {
-        if let count = asset?.timeSeries.getMonthData().count {
+        if let count = asset?.timeSeries.getMonthData(dateReverseSort: true).count {
             let dateSliderCount = count - 1
             dateSlider.maximumValue = dateSliderCount.floatValue
         }
@@ -86,7 +86,7 @@ class CalculatorTableViewController: UITableViewController {
         $initialDateOfInvestmentIndex.sink { [weak self] (index) in
             guard let index = index else { return }
             self?.dateSlider.value = index.floatValue
-            if let dateString = self?.asset?.timeSeries.getMonthData()[index].date.MMYYFormat {
+            if let dateString = self?.asset?.timeSeries.getMonthData(dateReverseSort: true)[index].date.MMYYFormat {
                 self?.initialDateOfInvestmentTextField.text = dateString
             }
         }.store(in: &subscribers)
@@ -154,7 +154,7 @@ class CalculatorTableViewController: UITableViewController {
     private func handleDateSelection(index : Int) {
         guard navigationController?.visibleViewController is DateSelectionTableViewController else { return }
         navigationController?.popViewController(animated: true)
-        if let monthDatas = asset?.timeSeries.getMonthData() {
+        if let monthDatas = asset?.timeSeries.getMonthData(dateReverseSort: true) {
             initialDateOfInvestmentIndex = index
             let monthData = monthDatas[index]
             let dateString = monthData.date.MMYYFormat
