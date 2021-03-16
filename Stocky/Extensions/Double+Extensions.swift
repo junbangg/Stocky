@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// Double Extensions
+
 extension Double {
     
     var stringValue : String {

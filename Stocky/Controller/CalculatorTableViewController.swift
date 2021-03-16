@@ -5,7 +5,7 @@
 //  Created by Jun suk Bang on 2021/02/03.
 //
 
-// * Note prepareforsegue and performs segue
+
 import UIKit
 import Combine
 import Charts

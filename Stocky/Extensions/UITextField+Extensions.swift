@@ -7,9 +7,12 @@
 
 import UIKit
 
+/// UITextField extensions to add simple functionality to UIView
+
 extension UITextField {
+    
+    /// => adds a "Done" button to keypad
     func addDoneButton() {
-        
         let screenWidth = UIScreen.main.bounds.width
         let doneToolBar : UIToolbar = UIToolbar(frame: .init(x: 0, y: 0, width: screenWidth, height: 50))
         doneToolBar.barStyle = .default
@@ -21,6 +24,7 @@ extension UITextField {
         inputAccessoryView = doneToolBar
     }
     
+    /// => private function to improve readibility
     @objc private func dismissKeyboard() {
         resignFirstResponder()
     }

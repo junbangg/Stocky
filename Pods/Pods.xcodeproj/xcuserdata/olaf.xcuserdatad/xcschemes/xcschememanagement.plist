@@ -5,18 +5,49 @@
 	<key>SchemeUserState</key>
 	<dict>
 		<key>Charts.xcscheme</key>
+<<<<<<< HEAD
+=======
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>Loaf.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>Loaf.xcscheme_^#shared#^_</key>
+>>>>>>> main
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
+<<<<<<< HEAD
 			<integer>0</integer>
+=======
+			<integer>1</integer>
+		</dict>
+		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+>>>>>>> main
 		</dict>
 		<key>Loaf.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
+<<<<<<< HEAD
 			<integer>1</integer>
+=======
+			<integer>3</integer>
+		</dict>
+		<key>Pods-Stocky.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+>>>>>>> main
 		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
@@ -25,6 +56,7 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+<<<<<<< HEAD
 		<key>Pods-Stocky.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -36,6 +68,10 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+=======
+		<key>TinyConstraints.xcscheme</key>
+		<dict>
+>>>>>>> main
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
