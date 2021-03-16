@@ -12,7 +12,11 @@ Dollar cost averaging calculator to project potential returns for financial asse
 
 #### Rest API 통신
 
-#### UI Testing
+#### Unit Testing
+
+#### Charts Library
+
+#### TinyConstraints Library
 
 
 # 사용 예
