@@ -23,9 +23,11 @@ struct TimeSeries : Decodable {
         case timeSeries = "Monthly Adjusted Time Series"
     }
     
-    func getMonthData() -> [MonthData] {
+    func getMonthData(dateReverseSort: Bool) -> [MonthData] {
         var monthDatas : [MonthData] = []
-        let sortedTimeSeries = timeSeries.sorted(by: {$0.key > $1.key})
+        
+        
+        let sortedTimeSeries = dateReverseSort ? timeSeries.sorted(by: {$0.key > $1.key}) : timeSeries.sorted(by: {$0.key < $1.key})
         
         
         ///Handeled optionals

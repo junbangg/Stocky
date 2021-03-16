@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -389,6 +390,28 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="500" id="3r8-Lt-OSK">
+                                        <rect key="frame" x="0.0" y="388" width="414" height="500"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3r8-Lt-OSK" id="IbR-9h-ePo">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dOn-SR-MQo">
+                                                    <rect key="frame" x="20" y="11" width="374" height="531"/>
+                                                    <connections>
+                                                        <segue destination="xQp-os-Vlp" kind="embed" identifier="sendChartData" id="WFA-4Y-WAH"/>
+                                                    </connections>
+                                                </containerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="dOn-SR-MQo" firstAttribute="top" secondItem="IbR-9h-ePo" secondAttribute="top" constant="11" id="P28-v6-p7d"/>
+                                                <constraint firstAttribute="trailing" secondItem="dOn-SR-MQo" secondAttribute="trailing" constant="20" symbolic="YES" id="cco-Ku-6hO"/>
+                                                <constraint firstAttribute="bottom" secondItem="dOn-SR-MQo" secondAttribute="bottom" constant="-42" id="g5U-LO-bTd"/>
+                                                <constraint firstItem="dOn-SR-MQo" firstAttribute="leading" secondItem="IbR-9h-ePo" secondAttribute="leading" constant="20" symbolic="YES" id="sn7-0j-K4u"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -496,6 +519,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rna-ru-OP1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="72" y="121"/>
+        </scene>
+        <!--Data Chart View-->
+        <scene sceneID="RD5-2x-5Bn">
+            <objects>
+                <viewController id="v54-Mt-2T0" customClass="DataChartView" customModule="Stocky" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Kw-U8-pOu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="66z-tp-gFY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vGS-ae-Ffm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="39" y="817"/>
+        </scene>
+        <!--Data Chart View Controller-->
+        <scene sceneID="UqA-DJ-II9">
+            <objects>
+                <viewController id="xQp-os-Vlp" customClass="DataChartViewController" customModule="Stocky" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IOo-3q-jj3">
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="531"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="3y9-bY-EBQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HRe-Bs-GPC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1512" y="712"/>
         </scene>
     </scenes>
     <resources>
