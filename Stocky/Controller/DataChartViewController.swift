@@ -33,6 +33,8 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
         chartView.xAxis.labelPosition = .bottom
         chartView.xAxis.axisLineColor = .white
         
+        chartView.animate(xAxisDuration: 2.5)
+        
         return chartView
     }()
     
@@ -51,9 +53,21 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
     }
     
     func setData() {
-        let set1 = LineChartDataSet(entries: getData(), label: "Subscribers")
+        let priceData = LineChartDataSet(entries: getData(), label: "Closed Prices")
         
-        let data = LineChartData(dataSet: set1)
+        priceData.mode = .cubicBezier
+//        priceData.drawCirclesEnabled = false
+        priceData.circleRadius = 3
+        priceData.lineWidth = 3
+        priceData.setColor(.white)
+        priceData.fill = Fill(color: .white)
+        priceData.fillAlpha = 0.8
+        priceData.drawFilledEnabled = true
+        
+        //figure out how to change the position of highlightIndicator according to the dateSlider index
+        
+        
+        let data = LineChartData(dataSet: priceData)
         lineChartView.data = data
     }
     
@@ -71,32 +85,6 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
         return chartValues
     }
     
-    let yValues: [ChartDataEntry] = [
-        ChartDataEntry(x: 0.0, y: 10.0),
-        ChartDataEntry(x: 1.0, y: 5.0),
-        ChartDataEntry(x: 2.0, y: 7.0),
-        ChartDataEntry(x: 3.0, y: 5.0),
-        ChartDataEntry(x: 4.0, y: 19.0),
-        ChartDataEntry(x: 5.0, y: 10.0),
-        ChartDataEntry(x: 6.0, y: 17.0),
-        ChartDataEntry(x: 7.0, y: 12.0),
-        ChartDataEntry(x: 8.0, y: 2.0),
-        ChartDataEntry(x: 9.0, y: 17.0),
-        ChartDataEntry(x: 10.0, y: 12.0),
-        ChartDataEntry(x: 11.0, y: 32.0),
-        ChartDataEntry(x: 12.0, y: 6.0),
-        ChartDataEntry(x: 13.0, y: 42.0),
-        ChartDataEntry(x: 14.0, y: 34.0),
-        ChartDataEntry(x: 15.0, y: 72.0),
-        ChartDataEntry(x: 16.0, y: 43.0),
-        ChartDataEntry(x: 17.0, y: 12.0),
-        ChartDataEntry(x: 18.0, y: 22.0),
-        ChartDataEntry(x: 19.0, y: 33.0),
-        ChartDataEntry(x: 20.0, y: 55.0),
-        ChartDataEntry(x: 21.0, y: 17.0),
-        ChartDataEntry(x: 22.0, y: 18.0),
-        ChartDataEntry(x: 23.0, y: 14.0)
-    ]
     
     
 }
