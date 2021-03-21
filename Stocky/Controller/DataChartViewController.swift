@@ -52,19 +52,25 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
         print(entry)
     }
     
+    //MARK: - TODOS:
+    /*
+        - figure out how to change the position of highlightIndicator according to the dateSlider index
+        - maybe use .circleColors() to indicate the highest price as a different color circle than the rest
+     */
     func setData() {
         let priceData = LineChartDataSet(entries: getData(), label: "Closed Prices")
         
         priceData.mode = .cubicBezier
 //        priceData.drawCirclesEnabled = false
         priceData.circleRadius = 3
+//        priceData.circleColors = .init([.systemBlue, .systemRed, .white])
         priceData.lineWidth = 3
         priceData.setColor(.white)
         priceData.fill = Fill(color: .white)
         priceData.fillAlpha = 0.8
         priceData.drawFilledEnabled = true
         
-        //figure out how to change the position of highlightIndicator according to the dateSlider index
+       
         
         
         let data = LineChartData(dataSet: priceData)
