@@ -267,8 +267,30 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="350" id="3r8-Lt-OSK">
+                                        <rect key="frame" x="0.0" y="188" width="414" height="350"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3r8-Lt-OSK" id="IbR-9h-ePo">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dOn-SR-MQo">
+                                                    <rect key="frame" x="20" y="11" width="374" height="381"/>
+                                                    <connections>
+                                                        <segue destination="xQp-os-Vlp" kind="embed" identifier="sendChartData" id="WFA-4Y-WAH"/>
+                                                    </connections>
+                                                </containerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="dOn-SR-MQo" firstAttribute="top" secondItem="IbR-9h-ePo" secondAttribute="top" constant="11" id="P28-v6-p7d"/>
+                                                <constraint firstAttribute="trailing" secondItem="dOn-SR-MQo" secondAttribute="trailing" constant="20" symbolic="YES" id="cco-Ku-6hO"/>
+                                                <constraint firstAttribute="bottom" secondItem="dOn-SR-MQo" secondAttribute="bottom" constant="-42" id="g5U-LO-bTd"/>
+                                                <constraint firstItem="dOn-SR-MQo" firstAttribute="leading" secondItem="IbR-9h-ePo" secondAttribute="leading" constant="20" symbolic="YES" id="sn7-0j-K4u"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="200" id="SKC-qE-8n9">
-                                        <rect key="frame" x="0.0" y="188" width="414" height="200"/>
+                                        <rect key="frame" x="0.0" y="538" width="414" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SKC-qE-8n9" id="kIj-6m-hvd">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
@@ -387,28 +409,6 @@
                                                 <constraint firstAttribute="trailing" secondItem="SzI-rS-N8E" secondAttribute="trailing" constant="16" id="djr-iA-fDd"/>
                                                 <constraint firstItem="SzI-rS-N8E" firstAttribute="top" secondItem="kIj-6m-hvd" secondAttribute="top" constant="8" id="kXI-WW-Aa7"/>
                                                 <constraint firstAttribute="bottom" secondItem="SzI-rS-N8E" secondAttribute="bottom" constant="8" id="tsB-LJ-fEZ"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="500" id="3r8-Lt-OSK">
-                                        <rect key="frame" x="0.0" y="388" width="414" height="500"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3r8-Lt-OSK" id="IbR-9h-ePo">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dOn-SR-MQo">
-                                                    <rect key="frame" x="20" y="11" width="374" height="531"/>
-                                                    <connections>
-                                                        <segue destination="xQp-os-Vlp" kind="embed" identifier="sendChartData" id="WFA-4Y-WAH"/>
-                                                    </connections>
-                                                </containerView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="dOn-SR-MQo" firstAttribute="top" secondItem="IbR-9h-ePo" secondAttribute="top" constant="11" id="P28-v6-p7d"/>
-                                                <constraint firstAttribute="trailing" secondItem="dOn-SR-MQo" secondAttribute="trailing" constant="20" symbolic="YES" id="cco-Ku-6hO"/>
-                                                <constraint firstAttribute="bottom" secondItem="dOn-SR-MQo" secondAttribute="bottom" constant="-42" id="g5U-LO-bTd"/>
-                                                <constraint firstItem="dOn-SR-MQo" firstAttribute="leading" secondItem="IbR-9h-ePo" secondAttribute="leading" constant="20" symbolic="YES" id="sn7-0j-K4u"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -540,7 +540,7 @@
             <objects>
                 <viewController id="xQp-os-Vlp" customClass="DataChartViewController" customModule="Stocky" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IOo-3q-jj3">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="531"/>
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="381"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="3y9-bY-EBQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
