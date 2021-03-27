@@ -62,6 +62,7 @@ class CalculatorTableViewController: UITableViewController {
         navigationItem.title = asset?.searchResult.name
 //        symbolLabel.text = asset?.searchResult.symbol
         assetLabel.text = asset?.searchResult.symbol
+//        assetLabel.textColor = .themeRedShade
         investmentAmountCurrencyLabel.text = asset?.searchResult.currency 
         currencyLabels.forEach { (label) in
             label.text = asset?.searchResult.currency.addBrackets()
