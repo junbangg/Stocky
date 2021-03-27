@@ -59,9 +59,9 @@ class CalculatorTableViewController: UITableViewController {
     }
     
     private func setupViews() {
-        navigationItem.title = asset?.searchResult.symbol
+        navigationItem.title = asset?.searchResult.name
 //        symbolLabel.text = asset?.searchResult.symbol
-        assetLabel.text = asset?.searchResult.name
+        assetLabel.text = asset?.searchResult.symbol
         investmentAmountCurrencyLabel.text = asset?.searchResult.currency 
         currencyLabels.forEach { (label) in
             label.text = asset?.searchResult.currency.addBrackets()
