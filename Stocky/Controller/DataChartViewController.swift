@@ -58,7 +58,7 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
         - maybe use .circleColors() to indicate the highest price as a different color circle than the rest
      */
     func setData() {
-        let priceData = LineChartDataSet(entries: getData(), label: "Closed Prices")
+        let priceData = LineChartDataSet(entries: getData(), label: "수정종가")
         
         priceData.mode = .cubicBezier
 //        priceData.drawCirclesEnabled = false

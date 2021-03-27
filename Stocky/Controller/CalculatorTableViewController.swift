@@ -27,7 +27,7 @@ class CalculatorTableViewController: UITableViewController {
     @IBOutlet weak var initialInvestmentAmountTextField : UITextField!
     @IBOutlet weak var monthlyDollarCostAveragingTextField : UITextField!
     @IBOutlet weak var initialDateOfInvestmentTextField: UITextField!
-    @IBOutlet weak var symbolLabel : UILabel!
+//    @IBOutlet weak var symbolLabel : UILabel!
     @IBOutlet weak var assetLabel : UILabel!
     @IBOutlet var currencyLabels: [UILabel]!
     @IBOutlet weak var investmentAmountCurrencyLabel : UILabel!
@@ -60,7 +60,7 @@ class CalculatorTableViewController: UITableViewController {
     
     private func setupViews() {
         navigationItem.title = asset?.searchResult.symbol
-        symbolLabel.text = asset?.searchResult.symbol
+//        symbolLabel.text = asset?.searchResult.symbol
         assetLabel.text = asset?.searchResult.name
         investmentAmountCurrencyLabel.text = asset?.searchResult.currency 
         currencyLabels.forEach { (label) in
