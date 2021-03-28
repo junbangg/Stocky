@@ -148,6 +148,7 @@ class CalculatorTableViewController: UITableViewController {
         if segue.identifier == Segue.sendChartData,
            let dataChartViewController = segue.destination as? DataChartViewController {
             dataChartViewController.timeSeries = asset?.timeSeries
+            dataChartViewController.selectedIndex = initialDateOfInvestmentIndex
         }
         
     }

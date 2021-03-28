@@ -14,6 +14,7 @@ import Combine
 class DataChartViewController : UIViewController, ChartViewDelegate {
     
     var timeSeries : TimeSeries?
+    var selectedIndex : Int?
     
     
     lazy var lineChartView : LineChartView = {
