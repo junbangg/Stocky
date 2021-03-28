@@ -152,6 +152,7 @@ class CalculatorTableViewController: UITableViewController {
         }
         
     }
+    /// Function that handles the Date Selection sent over from DateSelectionTableViewController
     
     private func handleDateSelection(index : Int) {
         guard navigationController?.visibleViewController is DateSelectionTableViewController else { return }
@@ -174,6 +175,7 @@ class CalculatorTableViewController: UITableViewController {
     
     @IBAction func dateSliderDidChange(_ sender: UISlider) {
         initialDateOfInvestmentIndex = Int(sender.value)
+//        performSegue(withIdentifier: Segue.sendChartData, sender: asset?.timeSeries)
     }
 }
 

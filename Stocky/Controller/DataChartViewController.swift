@@ -39,13 +39,29 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
         return chartView
     }()
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        setData()
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(lineChartView)
         lineChartView.topToSuperview()
         lineChartView.width(to: view)
         lineChartView.heightToWidth(of: view)
-        setData()
+//        setData()
+    }
+    
+    /// New Experimental Code
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if selectedIndex != nil {
+            setData()
+            lineChartView.notifyDataSetChanged()
+            super.viewDidLoad()
+        }
+        
+        
     }
     
     
@@ -71,9 +87,6 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
         priceData.fillAlpha = 0.8
         priceData.drawFilledEnabled = true
         
-       
-        
-        
         let data = LineChartData(dataSet: priceData)
         lineChartView.data = data
     }
@@ -82,13 +95,25 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
         let monthData : [MonthData] = timeSeries?.getMonthData(dateReverseSort: false) ?? []
         var chartValues : [ChartDataEntry] = []
         var x = 0
-        for data in monthData {
-            let yData = data.adjustedClose
-            let data = data.date
+        /// New experimental code
+        guard let startIndex = selectedIndex else { return chartValues }
+        let endIndex = monthData.count
+        for index in startIndex...endIndex {
+            let priceData = monthData[index]
+            let yData = priceData.adjustedClose
+            let data = priceData.date
             let chartData = ChartDataEntry(x: x.doubleValue, y: yData, data: data)
             chartValues.append(chartData)
             x += 1
         }
+        ///Working original code
+//        for data in monthData {
+//            let yData = data.adjustedClose
+//            let data = data.date
+//            let chartData = ChartDataEntry(x: x.doubleValue, y: yData, data: data)
+//            chartValues.append(chartData)
+//            x += 1
+//        }
         return chartValues
     }
     
