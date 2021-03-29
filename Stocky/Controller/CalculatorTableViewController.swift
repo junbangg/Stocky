@@ -23,6 +23,7 @@ class CalculatorTableViewController: UITableViewController {
     @IBOutlet weak var gainLabel : UILabel!
     @IBOutlet weak var yieldLabel : UILabel!
     @IBOutlet weak var annualReturnLabel : UILabel!
+    @IBOutlet weak var latestSharePrice : UILabel!
     
     @IBOutlet weak var initialInvestmentAmountTextField : UITextField!
     @IBOutlet weak var monthlyDollarCostAveragingTextField : UITextField!
@@ -67,6 +68,7 @@ class CalculatorTableViewController: UITableViewController {
         currencyLabels.forEach { (label) in
             label.text = asset?.searchResult.currency.addBrackets()
         }
+        latestSharePrice.text = asset?.timeSeries.getMonthData(dateReverseSort: true).first?.adjustedClose.currencyFormatter
         
     }
     
@@ -128,7 +130,7 @@ class CalculatorTableViewController: UITableViewController {
                 this.yieldLabel.textColor = presentation.yieldLabelTextColor
                 this.annualReturnLabel.text = presentation.annualReturn
                 this.annualReturnLabel.textColor = presentation.annualReturnLabelTextColor
-                
+                this.latestSharePrice.text = presentation.latestSharePrice
                 
             }
             .store(in: &subscribers)

@@ -23,7 +23,7 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
         chartView.rightAxis.enabled = false
         let yAxis = chartView.leftAxis
         yAxis.labelFont = .boldSystemFont(ofSize: 13)
-        yAxis.setLabelCount(6, force: false)
+        yAxis.setLabelCount(4, force: false)
         yAxis.labelTextColor = .white
         yAxis.labelPosition = .outsideChart
         yAxis.axisLineColor = .white
@@ -41,9 +41,6 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
         return chartView
     }()
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        setData()
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,15 +52,15 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
     }
     
     /// New Experimental Code
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 //        if selectedIndex != nil {
 //            setData()
 //            lineChartView.notifyDataSetChanged()
 //        }
-//
-//
-//    }
+
+
+    }
     
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
@@ -121,19 +118,16 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
     }
     
 }
-
-class DateAxisValueFormatter : NSObject, IAxisValueFormatter
-{
+//https://stackoverflow.com/questions/54915102/trying-to-enter-date-string-in-chartdataentry
+class DateAxisValueFormatter : NSObject, IAxisValueFormatter {
   let dateFormatter = DateFormatter()
 
-  override init()
-  {
+  override init() {
     super.init()
     dateFormatter.dateFormat = "dd MMM"
   }
 
-  func stringForValue(_ value: Double, axis: AxisBase?) -> String
-  {
+  func stringForValue(_ value: Double, axis: AxisBase?) -> String {
     let secondsPerDay = 24.0 * 3600.0
     let date = Date(timeIntervalSince1970: value * secondsPerDay)
     return dateFormatter.string(from: date)

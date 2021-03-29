@@ -20,7 +20,8 @@ struct CalculatorPresenter {
                      yield: result.yield.percentageFormat.prefix(withText: gainSymbol).addBrackets(),
                      yieldLabelTextColor: isProfitable ? .systemGreen : .systemRed,
                      annualReturn: result.annualReturn.percentageFormat,
-                     annualReturnLabelTextColor: isProfitable ? .systemGreen : .systemRed)
+                     annualReturnLabelTextColor: isProfitable ? .systemGreen : .systemRed,
+                     latestSharePrice: result.latestSharePrice.currencyFormatter)
         
     }
 }
@@ -34,4 +35,5 @@ struct CalculatorPresentation {
     let yieldLabelTextColor : UIColor
     let annualReturn : String
     let annualReturnLabelTextColor : UIColor
+    let latestSharePrice: String
 }
