@@ -34,8 +34,7 @@ struct DCAService {
                      gain: gain,
                      yield: yield,
                      annualReturn: annualReturn,
-                     isProtiable: isProfitable,
-                     latestSharePrice: latestSharePrice)
+                     isProtiable: isProfitable)
     }
     func getInvestmentAmount(initialInvestmentAmount: Double,
                                      monthlyDollarCostAveragingAmount: Double,
@@ -88,6 +87,5 @@ struct DCAResult {
     let yield : Double
     let annualReturn : Double
     let isProtiable : Bool
-    let latestSharePrice: Double
 
 }

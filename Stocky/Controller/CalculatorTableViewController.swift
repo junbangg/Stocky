@@ -51,7 +51,6 @@ class CalculatorTableViewController: UITableViewController {
         observeForm()
         setupDateSlider()
         resetViews()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -130,7 +129,6 @@ class CalculatorTableViewController: UITableViewController {
                 this.yieldLabel.textColor = presentation.yieldLabelTextColor
                 this.annualReturnLabel.text = presentation.annualReturn
                 this.annualReturnLabel.textColor = presentation.annualReturnLabelTextColor
-                this.latestSharePrice.text = presentation.latestSharePrice
                 
             }
             .store(in: &subscribers)

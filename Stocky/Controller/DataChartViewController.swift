@@ -22,7 +22,7 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
         chartView.backgroundColor = .themeGreenShade
         chartView.rightAxis.enabled = false
         let yAxis = chartView.leftAxis
-        yAxis.labelFont = .boldSystemFont(ofSize: 13)
+        yAxis.labelFont = .boldSystemFont(ofSize: 15)
         yAxis.setLabelCount(4, force: false)
         yAxis.labelTextColor = .white
         yAxis.labelPosition = .outsideChart
