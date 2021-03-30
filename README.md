@@ -15,7 +15,7 @@ Dollar cost averaging calculator to project potential returns for financial asse
 
 #### Unit Testing
 
-#### Charts Library
+#### Charts Library - 데이터 시각화
 
 #### TinyConstraints Library
 

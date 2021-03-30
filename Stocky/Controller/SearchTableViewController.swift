@@ -5,7 +5,6 @@
 //  Created by Jun suk Bang on 2021/01/13.
 //
 
-//MARK: - Test for new mac
 
 import UIKit
 import Combine
@@ -25,7 +24,8 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
         sc.searchResultsUpdater = self
         sc.delegate = self
         sc.obscuresBackgroundDuringPresentation = false
-        sc.searchBar.placeholder = "Enter a company name or symbol"
+        sc.searchBar.placeholder = "e.g. Apple, AAPL"
+//        sc.searchBar.placeholder = "회사 이름 또는 종목코드를 검색하세요"
         sc.searchBar.autocapitalizationType = .allCharacters
         return sc
     }()
@@ -48,7 +48,7 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
     
     private func setupNavigationBar() {
         navigationItem.searchController = searchController
-        navigationItem.title = "Search"
+        navigationItem.title = "검색"
     }
     
     private func setupTableView() {

@@ -23,11 +23,12 @@ class CalculatorTableViewController: UITableViewController {
     @IBOutlet weak var gainLabel : UILabel!
     @IBOutlet weak var yieldLabel : UILabel!
     @IBOutlet weak var annualReturnLabel : UILabel!
+    @IBOutlet weak var latestSharePrice : UILabel!
     
     @IBOutlet weak var initialInvestmentAmountTextField : UITextField!
     @IBOutlet weak var monthlyDollarCostAveragingTextField : UITextField!
     @IBOutlet weak var initialDateOfInvestmentTextField: UITextField!
-    @IBOutlet weak var symbolLabel : UILabel!
+//    @IBOutlet weak var symbolLabel : UILabel!
     @IBOutlet weak var assetLabel : UILabel!
     @IBOutlet var currencyLabels: [UILabel]!
     @IBOutlet weak var investmentAmountCurrencyLabel : UILabel!
@@ -50,7 +51,6 @@ class CalculatorTableViewController: UITableViewController {
         observeForm()
         setupDateSlider()
         resetViews()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -59,13 +59,15 @@ class CalculatorTableViewController: UITableViewController {
     }
     
     private func setupViews() {
-        navigationItem.title = asset?.searchResult.symbol
-        symbolLabel.text = asset?.searchResult.symbol
-        assetLabel.text = asset?.searchResult.name
+        navigationItem.title = asset?.searchResult.name
+//        symbolLabel.text = asset?.searchResult.symbol
+        assetLabel.text = asset?.searchResult.symbol
+//        assetLabel.textColor = .themeRedShade
         investmentAmountCurrencyLabel.text = asset?.searchResult.currency 
         currencyLabels.forEach { (label) in
             label.text = asset?.searchResult.currency.addBrackets()
         }
+        latestSharePrice.text = asset?.timeSeries.getMonthData(dateReverseSort: true).first?.adjustedClose.currencyFormatter
         
     }
     
@@ -128,7 +130,6 @@ class CalculatorTableViewController: UITableViewController {
                 this.annualReturnLabel.text = presentation.annualReturn
                 this.annualReturnLabel.textColor = presentation.annualReturnLabelTextColor
                 
-                
             }
             .store(in: &subscribers)
         
@@ -147,9 +148,11 @@ class CalculatorTableViewController: UITableViewController {
         if segue.identifier == Segue.sendChartData,
            let dataChartViewController = segue.destination as? DataChartViewController {
             dataChartViewController.timeSeries = asset?.timeSeries
+            dataChartViewController.selectedIndex = initialDateOfInvestmentIndex
         }
         
     }
+    /// Function that handles the Date Selection sent over from DateSelectionTableViewController
     
     private func handleDateSelection(index : Int) {
         guard navigationController?.visibleViewController is DateSelectionTableViewController else { return }
@@ -172,6 +175,7 @@ class CalculatorTableViewController: UITableViewController {
     
     @IBAction func dateSliderDidChange(_ sender: UISlider) {
         initialDateOfInvestmentIndex = Int(sender.value)
+//        performSegue(withIdentifier: Segue.sendChartData, sender: asset?.timeSeries)
     }
 }
 
