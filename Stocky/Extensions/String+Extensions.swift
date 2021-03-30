@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 /// String extensions to improve code readibility
 
 extension String {
