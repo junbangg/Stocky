@@ -8,10 +8,10 @@
 		<dict>
 			<key>orderHint</key>
 <<<<<<< HEAD
-			<integer>5</integer>
+			<integer>3</integer>
 =======
-			<integer>0</integer>
->>>>>>> main
+			<integer>5</integer>
+>>>>>>> chart_version
 		</dict>
 	</dict>
 </dict>
