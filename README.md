@@ -1,5 +1,5 @@
 # Stocky
-Dollar cost averaging calculator to project potential returns for financial assets
+매입원가 평균법으로 나스닥(NASDAQ) 투자종목의 수익성을 계산 할 수 있는 앱
 
 
 # 사용한 기술
