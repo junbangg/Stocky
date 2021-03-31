@@ -32,5 +32,3 @@
 ![alt text](https://github.com/junbangg/Stocky/blob/main/img/3.png?raw=true)
 
 
-## 날짜 
-![alt text](https://github.com/junbangg/Stocky/blob/main/img/4.png?raw=true)
