@@ -1,5 +1,5 @@
 # Stocky
-Dollar cost averaging calculator to project potential returns for financial assets
+매입원가 평균법으로 나스닥(NASDAQ) 투자종목의 수익성을 계산 할 수 있는 앱
 
 
 # 사용한 기술
@@ -15,7 +15,7 @@ Dollar cost averaging calculator to project potential returns for financial asse
 
 #### Unit Testing
 
-#### Charts Library - 데이터 시각화
+#### Charts Library - 데이터 시각화 https://github.com/danielgindi/Charts
 
 #### TinyConstraints Library
 
@@ -32,5 +32,3 @@ Dollar cost averaging calculator to project potential returns for financial asse
 ![alt text](https://github.com/junbangg/Stocky/blob/main/img/3.png?raw=true)
 
 
-## 날짜 
-![alt text](https://github.com/junbangg/Stocky/blob/main/img/4.png?raw=true)
