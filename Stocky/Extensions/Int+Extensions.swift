@@ -7,16 +7,26 @@
 
 import Foundation
 
-/// Int extensions for code readibility
+/**
+ Int Extensions
+ 
+ # Purpose
+    - Code Readibility
+    - Reusability
+ 
+ # Components
+    - var floatValue : Float
+    - var doubleValue : Double
+ */
 
 extension Int {
     
-    /// => converts an Int value to Float
+    /// Converts an Int value to Float type
     var floatValue : Float {
         return Float(self)
     }
     
-    /// => converts an Int value to Double
+    /// Converts Int value to Double type
     var doubleValue : Double {
         return Double(self)
     }

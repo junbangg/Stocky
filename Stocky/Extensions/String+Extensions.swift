@@ -7,19 +7,44 @@
 
 import Foundation
 
-/// String extensions to improve code readibility
+/**
+ String Extensions
+ # Purpose
+    - Code Readibility
+    - Reusability
+ 
+ # Functions
+    - func addBrackets() -> String
+    - func prefix() -> String
+    - func convertToDouble(text: String) -> Double?
+ */
 
 extension String {
-    /// => returns a string surrounded by a pair of brackets
+    /**
+    Function that wraps a text with parentheses
+     - Returns: String
+     */
     func addBrackets() -> String {
         return "(\(self))"
     }
-    /// => returns String(self + parameter)
+    
+    /**
+    Function that adds text to the beginning of a String Object
+      - Parameter text: [text to add to beginning of String]
+      - Returns: String(text+self)
+      - Code
+        ```
+        let amount = 500
+        let newText = amount.prefix(withText: "$")
+        ```
+     */
     func prefix(withText text : String) -> String {
         return text + self
     }
-    
-    /// => returns stirng converted to Double(optional)
+    /**
+       Function that converts String to Double format
+        - Returns: Double?
+     */
     func convertToDouble() -> Double? {
         return Double(self)
     }

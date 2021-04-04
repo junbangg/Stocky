@@ -7,11 +7,23 @@
 
 import UIKit
 
-/// UITextField extensions to add simple functionality to UIView
+
+/**
+ UITextField extensions to add functionalities to UIView
+ # Purpose
+    - Code Readibility
+    - Code Organization
+ 
+ # Functions
+    -  func addDoneButton()
+    - @objc private func dismissKeyBoard()
+ */
 
 extension UITextField {
     
-    /// => adds a "Done" button to keypad
+    /**
+     Function that adds a "Done" Button to Keypad
+     */
     func addDoneButton() {
         let screenWidth = UIScreen.main.bounds.width
         let doneToolBar : UIToolbar = UIToolbar(frame: .init(x: 0, y: 0, width: screenWidth, height: 50))
@@ -24,7 +36,9 @@ extension UITextField {
         inputAccessoryView = doneToolBar
     }
     
-    /// => private function to improve readibility
+    /**
+     Function that dismisses Keyboard
+     */
     @objc private func dismissKeyboard() {
         resignFirstResponder()
     }
