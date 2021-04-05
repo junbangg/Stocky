@@ -17,7 +17,7 @@ struct CalculatorPresenter {
                       currentValue: result.currentValue.currencyFormatter,
                      investmentAmount: result.investmentAmount.toCurrencyFormat(hasDecimalPlaces: false),
                      gain: result.gain.toCurrencyFormat(hasDollarSymbol: true, hasDecimalPlaces: false).prefix(withText: gainSymbol),
-                     yield: result.yield.percentageFormat.prefix(withText: gainSymbol).addBrackets(),
+                     yield: result.yield.percentageFormat.prefix(withText: gainSymbol).addParentheses(),
                      yieldLabelTextColor: isProfitable ? .systemGreen : .systemRed,
                      annualReturn: result.annualReturn.percentageFormat,
                      annualReturnLabelTextColor: isProfitable ? .systemGreen : .systemRed)

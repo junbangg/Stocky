@@ -65,7 +65,7 @@ class CalculatorTableViewController: UITableViewController {
 //        assetLabel.textColor = .themeRedShade
         investmentAmountCurrencyLabel.text = asset?.searchResult.currency 
         currencyLabels.forEach { (label) in
-            label.text = asset?.searchResult.currency.addBrackets()
+            label.text = asset?.searchResult.currency.addParentheses()
         }
         latestSharePrice.text = asset?.timeSeries.getMonthData(dateReverseSort: true).first?.adjustedClose.currencyFormatter
         

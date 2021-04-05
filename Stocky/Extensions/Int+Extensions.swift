@@ -21,13 +21,15 @@ import Foundation
 
 extension Int {
     
+    /// Converts Int value to Double type
+    var doubleValue : Double {
+        return Double(self)
+    }
+    
     /// Converts an Int value to Float type
     var floatValue : Float {
         return Float(self)
     }
     
-    /// Converts Int value to Double type
-    var doubleValue : Double {
-        return Double(self)
-    }
+    
 }

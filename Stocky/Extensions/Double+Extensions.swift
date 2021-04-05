@@ -37,7 +37,7 @@ extension Double {
         => "$2300"
      # Usage
      Used to easily convert a String to Currency Format while maintaining readability
-     # Code
+     # Code Example
      ```
      let result = result.currentValue.currencyFormatter
      ```
@@ -54,7 +54,7 @@ extension Double {
         => "%50"
      # Usage
      Used to easily convert a String to Percentage Format while maintaining readability
-     # Code
+     # Code Example
      ```
      let result = result.annualReturn.percentageFormat
      ```
@@ -72,7 +72,7 @@ extension Double {
      Used to convert strings with different use cases to Percentage format
         - Strings with / without $ Symbol
         - Strings with with / without Decimal Places
-     # Code
+     # Code Example
      ```
      let result = result.annualReturn.percentageFormat
      ```

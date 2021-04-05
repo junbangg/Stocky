@@ -23,7 +23,7 @@ extension Date {
      Converts String to Month / Year Format
      # Usage
      Used for reformatting Date String to a "March 2021" format
-     # Code
+     # Code Example
      ```
      let monthData = monthDatas[index]
      let dateString = monthData.date.MMYYFormat
