@@ -8,14 +8,14 @@
 import Foundation
 import MBProgressHUD
 /**
-UIColor Extensions
+UIAnimatable Extensions
  
  # Purpose
-    - Code Readibility
-    - Reusability
+    - Implements usage for loading animation
  
  # Components
-    - Custom UIColors
+    - func showLoadingAnimation()
+    - func dismissLoadingAnimation()
  */
 protocol UIAnimatable where Self: UIViewController {
     func showLoadingAnimation()
@@ -23,12 +23,37 @@ protocol UIAnimatable where Self: UIViewController {
 }
 
 extension UIAnimatable {
-    
+
+    /**
+     Shows loading animation
+     # Code Example
+     ```
+     .sink { [unowned self] (searchQuery) in
+         showLoadingAnimation()
+         ...
+     }.store(in: &subscribers)
+     ```
+     */
     func showLoadingAnimation() {
         DispatchQueue.main.async {
             MBProgressHUD.showAdded(to: self.view, animated: true)
         }
     }
+    /**
+     Hides loading animation
+     # Code Example
+     ```
+     apiService.fetchTimeSeries(key: symbol).sink { [weak self] (completion) in
+         self?.dismissLoadingAnimation()
+         switch completion{
+         case .failure(let error):
+             print(error)
+         case .finished:
+             break
+         }
+     }
+     ```
+     */
     func dismissLoadingAnimation() {
         DispatchQueue.main.async {
             MBProgressHUD.hide(for: self.view, animated: true)
