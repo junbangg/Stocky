@@ -19,8 +19,7 @@
 #### MBProgressHUD - https://github.com/jdg/MBProgressHUD
 #### Charts  -  https://github.com/danielgindi/Charts
 #### Loaf - https://github.com/schmidyy/Loaf
-
-#### TinyConstraints Library
+#### TinyConstraints Library - https://github.com/roberthein/TinyConstraints
 
 
 # 사용 예
