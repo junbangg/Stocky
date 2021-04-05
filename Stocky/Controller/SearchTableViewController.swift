@@ -63,7 +63,7 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
                 guard !searchQuery.isEmpty else {return}
                 showLoadingAnimation()
                 self.apiService.fetchSymbolsPublisher(key: searchQuery).sink { (completion) in
-                    hideLoadingAnimation()
+                    dismissLoadingAnimation()
                     switch completion {
                     case .failure(let error):
                         print(error.localizedDescription)
@@ -115,7 +115,7 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
     private func handleSelection(for symbol: String, searchResult: SearchResult) {
         showLoadingAnimation()
         apiService.fetchTimeSeries(key: symbol).sink { [weak self] (completion) in
-            self?.hideLoadingAnimation()
+            self?.dismissLoadingAnimation()
             switch completion{
             case .failure(let error):
                 print(error)
@@ -123,7 +123,7 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
                 break
             }
         } receiveValue: { [weak self] (timeSeries) in
-            self?.hideLoadingAnimation()
+            self?.dismissLoadingAnimation()
             let asset = Asset(searchResult: searchResult , timeSeries: timeSeries)
             self?.performSegue(withIdentifier: "showCalculator", sender: asset)
             self?.searchController.searchBar.text = nil

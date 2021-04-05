@@ -27,6 +27,8 @@ extension UIColor {
      ```
      chartView.backgroundColor = .themeGreenShade
      ```
+     # Reference
+     https://stackoverflow.com/questions/24263007/how-to-use-hex-color-values
      */
     convenience init(_ hex: String, alpha: CGFloat = 1.0) {
         var cString : String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()

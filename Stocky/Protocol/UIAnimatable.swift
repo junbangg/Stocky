@@ -7,10 +7,19 @@
 
 import Foundation
 import MBProgressHUD
-
+/**
+UIColor Extensions
+ 
+ # Purpose
+    - Code Readibility
+    - Reusability
+ 
+ # Components
+    - Custom UIColors
+ */
 protocol UIAnimatable where Self: UIViewController {
     func showLoadingAnimation()
-    func hideLoadingAnimation()
+    func dismissLoadingAnimation()
 }
 
 extension UIAnimatable {
@@ -20,7 +29,7 @@ extension UIAnimatable {
             MBProgressHUD.showAdded(to: self.view, animated: true)
         }
     }
-    func hideLoadingAnimation() {
+    func dismissLoadingAnimation() {
         DispatchQueue.main.async {
             MBProgressHUD.hide(for: self.view, animated: true)
         }
