@@ -36,6 +36,7 @@ struct DCAService {
                      annualReturn: annualReturn,
                      isProtiable: isProfitable)
     }
+    
     func getInvestmentAmount(initialInvestmentAmount: Double,
                                      monthlyDollarCostAveragingAmount: Double,
                                      initialDateOfInvestmentIndex: Int) -> Double{

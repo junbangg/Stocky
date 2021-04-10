@@ -127,6 +127,7 @@
 				364CD4E125CAA6B800BE426C /* Extensions */,
 				36BDC34025B5D00F006C42F4 /* Protocol */,
 				361A995425B07E5200FCED62 /* Model */,
+				ED81236A262183950035CFA3 /* Networking */,
 				361A995025B07BA300FCED62 /* Service */,
 				36F10B9525B06B2E00AA4E06 /* Controller */,
 				36F10B9425B06B2800AA4E06 /* View */,
@@ -143,7 +144,6 @@
 		361A995025B07BA300FCED62 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				361A995125B07BAD00FCED62 /* APIService.swift */,
 				36EF810025DFFC9700F01821 /* DCAService.swift */,
 				ED90A04425ED30F300C2BE4E /* CalculatorPresenter.swift */,
 			);
@@ -216,6 +216,14 @@
 				45EB70C165F2AAC122965CC5 /* Pods_Stocky.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ED81236A262183950035CFA3 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				361A995125B07BAD00FCED62 /* APIService.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		EDF8805425EBD16500B2947F /* StockyTests */ = {
