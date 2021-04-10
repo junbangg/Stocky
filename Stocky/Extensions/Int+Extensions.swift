@@ -5,8 +5,6 @@
 //  Created by Jun suk Bang on 2021/02/18.
 //
 
-import Foundation
-
 /**
  Int Extensions
  
@@ -18,6 +16,8 @@ import Foundation
     - var floatValue : Float
     - var doubleValue : Double
  */
+
+import Foundation
 
 extension Int {
     

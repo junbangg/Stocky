@@ -5,8 +5,6 @@
 //  Created by Jun suk Bang on 2021/01/18.
 //
 
-import Foundation
-import MBProgressHUD
 /**
 UIAnimatable Extensions
  
@@ -17,6 +15,10 @@ UIAnimatable Extensions
     - func showLoadingAnimation()
     - func dismissLoadingAnimation()
  */
+
+import Foundation
+import MBProgressHUD
+
 protocol UIAnimatable where Self: UIViewController {
     func showLoadingAnimation()
     func dismissLoadingAnimation()

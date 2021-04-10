@@ -5,8 +5,6 @@
 //  Created by Jun suk Bang on 2021/02/05.
 //
 
-import Foundation
-
 /**
  Extensions for "Date" Type
  
@@ -17,6 +15,9 @@ import Foundation
  # Components
     - MMYYFormat
  */
+
+import Foundation
+
 extension Date {
     
     /**

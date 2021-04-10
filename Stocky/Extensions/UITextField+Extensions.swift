@@ -5,9 +5,6 @@
 //  Created by Jun suk Bang on 2021/02/04.
 //
 
-import UIKit
-
-
 /**
  UITextField extensions to add functionalities to UIView
  # Purpose
@@ -18,6 +15,8 @@ import UIKit
     -  func addDoneButton()
     - @objc private func dismissKeyBoard()
  */
+
+import UIKit
 
 extension UITextField {
     

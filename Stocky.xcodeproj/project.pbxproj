@@ -153,9 +153,9 @@
 		361A995425B07E5200FCED62 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				364CD4DE25CA867700BE426C /* Asset.swift */,
 				361A995525B07E5E00FCED62 /* SearchResults.swift */,
 				369B82AE25C1A19D00FB8C1A /* TimeSeries.swift */,
-				364CD4DE25CA867700BE426C /* Asset.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

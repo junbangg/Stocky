@@ -5,8 +5,6 @@
 //  Created by Jun suk Bang on 2021/02/21.
 //
 
-import UIKit
-
 /**
 UIColor Extensions
  
@@ -18,7 +16,10 @@ UIColor Extensions
     - Custom UIColors
  */
 
+import UIKit
+
 extension UIColor {
+    
     static let themeRedShade = UIColor("fae2e1")
     static let themeGreenShade = UIColor("b0f1dd")
     /**

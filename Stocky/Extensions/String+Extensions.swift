@@ -5,8 +5,6 @@
 //  Created by Jun suk Bang on 2021/02/03.
 //
 
-import Foundation
-
 /**
  String Extensions
  # Purpose
@@ -18,6 +16,8 @@ import Foundation
     - func prefix() -> String
     - func convertToDouble(text: String) -> Double?
  */
+
+import Foundation
 
 extension String {
     

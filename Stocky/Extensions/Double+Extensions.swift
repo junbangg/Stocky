@@ -5,8 +5,6 @@
 //  Created by Jun suk Bang on 2021/02/19.
 //
 
-import Foundation
-
 /**
  Double Extensions
  
@@ -20,6 +18,8 @@ import Foundation
     - var percentageFormat : String
     - func toCurrencyFormat(hasDollarSymbol: Bool, hasDecimalPlaces: Bool ) -> String
  */
+
+import Foundation
 
 
 extension Double {
