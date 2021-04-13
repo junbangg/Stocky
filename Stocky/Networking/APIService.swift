@@ -10,16 +10,16 @@ import Foundation
 import Combine
 
 /**
-Struct used for networking with API
+ Struct used for networking with API
  
-# Components
-    - enum APIServiceError  : Error cases
-    - var API_KEY : chooses a random api key provided in apiKeys
-    - let apiKeys : array of valid apikeys (for consistency)
-    - public func fetchSymbolsPublisher(key) : Used to fetch data to present in SearchTableViewController when user searches for stock
-    - public func fetchTimeSeries(key) : Used to fetch more detailed data when user selects a search result in SearchTableViewController
-    - private func parseQuery() : Used to format query string into usable in URL String
-    - private func pareseURL(): Used to format url string to URL type
+ # Components
+ - enum APIServiceError  : Error cases
+ - var API_KEY : chooses a random api key provided in apiKeys
+ - let apiKeys : array of valid apikeys (for consistency)
+ - public func fetchSymbolsPublisher(key) : Used to fetch data to present in SearchTableViewController when user searches for stock
+ - public func fetchTimeSeries(key) : Used to fetch more detailed data when user selects a search result in SearchTableViewController
+ - private func parseQuery() : Used to format query string into usable in URL String
+ - private func pareseURL(): Used to format url string to URL type
  */
 struct APIService {
     
@@ -64,7 +64,6 @@ struct APIService {
         case .failure(let error):
             return Fail(error: error).eraseToAnyPublisher()
         }
-        
     }
     
     /// Function used to network with API to fetch time series data (when user taps on a search result)
