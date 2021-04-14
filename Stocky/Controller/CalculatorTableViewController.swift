@@ -168,9 +168,9 @@ class CalculatorTableViewController: UITableViewController {
     private func resetViews() {
         currentValueLabel.text = "0.00"
         investmentAmountLabel.text = "0.00"
-        gainLabel.text = "-"
-        yieldLabel.text = "-"
-        annualReturnLabel.text = "-"
+        gainLabel.text = "$0"
+        yieldLabel.text = "0%"
+        annualReturnLabel.text = "0%"
     }
     
     @IBAction func dateSliderDidChange(_ sender: UISlider) {

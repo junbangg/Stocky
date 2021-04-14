@@ -7,7 +7,12 @@
 
 import UIKit
 
+/// More elegant way for updating data presented in CalculatorTableViewController
 struct CalculatorPresenter {
+    
+    /// Function to convert DCAResult data to data presentable in CalculatorTableViewController
+    /// - Parameter result: DCAResult with data prepared for presentation
+    /// - Returns: CalculatorPresentation
     func getPresentation(result : DCAResult) -> CalculatorPresentation {
         
         let isProfitable = result.isProtiable == true

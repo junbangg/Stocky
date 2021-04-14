@@ -37,7 +37,6 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
     @Published var searchQuery = String()
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
@@ -88,7 +87,6 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
         }.store(in: &subscribers)
         
     }
-    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults?.items.count ?? 0
