@@ -116,7 +116,7 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
         $stage.sink { [unowned self] (mode) in
             switch mode {
             case .greeting:
-                self.tableView.backgroundView = SearchPlaceholderView() 
+                self.tableView.backgroundView = WelcomeView()
             case .search:
                 self.tableView.backgroundView = nil
             }
