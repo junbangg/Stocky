@@ -19,7 +19,6 @@ class SearchTableViewCell : UITableViewCell {
         assetTypeLabel.text = searchResult.type
             .appending(" ")
             .appending(searchResult.currency)
-        
     }
     
 }

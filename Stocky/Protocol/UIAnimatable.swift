@@ -9,7 +9,7 @@
 UIAnimatable Extensions
  
  # Purpose
-    - Implements usage for loading animation
+    - Protocol for the usage of MBProgressHUD
  
  # Components
     - func showLoadingAnimation()

@@ -30,6 +30,7 @@ struct CalculatorPresenter {
     }
 }
 
+/// Final object before presentation
 struct CalculatorPresentation {
     let currentValueLabelBackgroundColor : UIColor
     let currentValue : String
