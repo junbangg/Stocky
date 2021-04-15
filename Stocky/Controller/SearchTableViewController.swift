@@ -51,7 +51,7 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
         super.viewDidLoad()
         setupNavigationBar()
         setupTableView()
-        obvserveForm()
+        observeInputs()
     }
     //MARK: - Navigation Bar
     private func setupNavigationBar() {
@@ -91,7 +91,7 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
     }
     //MARK: - observeForm Method
     /// Function that observes the UI for changes in data.. namely the Search query provided by the user
-    private func obvserveForm() {
+    private func observeInputs() {
         $searchQuery
             .debounce(for: .milliseconds(750), scheduler: RunLoop.main)
             .sink { [unowned self] (searchQuery) in
@@ -164,7 +164,9 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
 //MARK: - Extensions
 
 /// Extensions for SearchTableViewController
-/// Conforms to UISearchResultsUpdating and UISearchControllerDelegate
+/// Conforms to
+///     - UISearchResultsUpdating
+///     - UISearchControllerDelegate
 extension SearchTableViewController : UISearchResultsUpdating, UISearchControllerDelegate {
     
     /// updates the searchQuery Publisher
