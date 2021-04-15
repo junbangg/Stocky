@@ -11,12 +11,16 @@ import TinyConstraints
 import Charts
 import Combine
 
+/**
+ UIViewController to present Chart
+ */
 class DataChartViewController : UIViewController, ChartViewDelegate {
     
     var timeSeries : TimeSeries?
     var selectedIndex : Int?
     
-    
+    //MARK: - Linechart View
+    /// Creates Linechartview
     lazy var lineChartView : LineChartView = {
         let chartView = LineChartView()
         chartView.backgroundColor = .themeGreenShade
@@ -41,7 +45,7 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
         return chartView
     }()
     
-    
+    //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(lineChartView)
@@ -51,20 +55,13 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
         setData()
     }
     
-    /// New Experimental Code
+    /// New Experimental Code for dynamic chart
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 //        if selectedIndex != nil {
 //            setData()
 //            lineChartView.notifyDataSetChanged()
 //        }
-
-
-    }
-    
-    
-    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        print(entry)
     }
     
     //MARK: - TODOS:
@@ -72,8 +69,10 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
         - figure out how to change the position of highlightIndicator according to the dateSlider index
         - maybe use .circleColors() to indicate the highest price as a different color circle than the rest
      */
+    //MARK: - Set data
+    /// Sets charts data and style configurations
     func setData() {
-        let priceData = LineChartDataSet(entries: getData(), label: "수정종가")
+        let priceData = LineChartDataSet(entries: fetchData(), label: "수정종가")
         
         priceData.mode = .cubicBezier
 //        priceData.drawCirclesEnabled = false
@@ -89,8 +88,9 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
         let data = LineChartData(dataSet: priceData)
         lineChartView.data = data
     }
-    
-    private func getData() -> [ChartDataEntry]{
+    //MARK: - get data
+    /// Fetches data from timeSeries and configures to [ChartDataEntry]
+    private func fetchData() -> [ChartDataEntry]{
         let monthData : [MonthData] = timeSeries?.getMonthData(dateReverseSort: false) ?? []
         var chartValues : [ChartDataEntry] = []
         var x = 0
@@ -118,6 +118,7 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
     }
     
 }
+/// Class that is used for configuring Xaxis labels
 //https://stackoverflow.com/questions/54915102/trying-to-enter-date-string-in-chartdataentry
 class DateAxisValueFormatter : NSObject, IAxisValueFormatter {
   let dateFormatter = DateFormatter()
