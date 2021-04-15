@@ -139,7 +139,6 @@ class CalculatorTableViewController: UITableViewController {
                 this.annualReturnLabel.textColor = presentation.annualReturnLabelTextColor
             }
             .store(in: &subscribers)
-        
     }
     //MARK: - prepare for segue
     /// Segues for date selection and chart data
