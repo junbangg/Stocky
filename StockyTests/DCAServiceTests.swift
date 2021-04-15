@@ -10,6 +10,7 @@
 import XCTest
 @testable import Stocky
 
+///Unit Tests for DCA Service
 class DCAServiceTests: XCTestCase {
     
     var sut: DCAService!
@@ -79,6 +80,7 @@ class DCAServiceTests: XCTestCase {
         XCTAssertEqual(result.currentValue, 17342.224, accuracy: 0.1)
         XCTAssertEqual(result.gain, 4842.224, accuracy: 0.1)
         XCTAssertEqual(result.yield, 0.3873, accuracy: 0.0001)
+        
     }
     /// GIven: Profitable Asset without DCA applied
     /// Expected: Positive gains

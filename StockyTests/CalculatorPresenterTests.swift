@@ -8,6 +8,7 @@
 import XCTest
 @testable import Stocky
 
+/// Unit Tests for CalculatorPresenter
 class CalculatorPresenterTests: XCTestCase {
     
     var sut : CalculatorPresenter!
@@ -16,7 +17,6 @@ class CalculatorPresenterTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         sut = CalculatorPresenter()
         try super.setUpWithError()
-        
     }
 
     override func tearDownWithError() throws {
@@ -25,12 +25,23 @@ class CalculatorPresenterTests: XCTestCase {
         try super.tearDownWithError()
     }
     
-    /// Naming Convention
-    // Test_Given_Expect
-    
-    /// Testi Format
-    // Given -> When -> Then
+    /**
      
+     Test Cases
+     
+     Convention for test function name
+     - Testing _ Given  _ Expected
+     
+     Format for test function
+     - Given
+     - When
+     - Then?
+    
+     */
+    //MARK: - Test for Annual Return Label
+    /// Testing: Annual Return Label Text Color
+    /// Given : profitable result
+    /// Expected:  system green color
     func testAnnualReturnLabelTextColor_givenResultIsProfitable_expectSystemGreen() throws {
         //Given
         let result = DCAResult.init(currentValue: 0,
@@ -46,7 +57,28 @@ class CalculatorPresenterTests: XCTestCase {
         XCTAssertEqual(presentation.annualReturnLabelTextColor, .systemGreen)
         
     }
-    
+    /// Testing: Annual Return Label Text Color
+    /// Given : non-profitable result
+    /// Expected:  system red color
+    func testAnnualReturnLabelTextColor_givenResultIsNonProfitable_expectSystemRed() throws {
+        //Given
+        let result = DCAResult.init(currentValue: 0,
+                                    investmentAmount: 0,
+                                    gain: 0,
+                                    yield: 0,
+                                    annualReturn: 0,
+                                    isProtiable: false)
+        //When
+        let presentation = sut.getPresentation(result: result)
+        
+        // Then
+        XCTAssertEqual(presentation.annualReturnLabelTextColor, .systemRed)
+        
+    }
+    //MARK: - Test for Yield Label
+    /// Testing: Yield Label Text Color
+    /// Given : profitable result
+    /// Expected:  system green color
     func testYieldLabelTextColor_givenResultIsProfitable_expectSystemGreen() throws {
         //Given
         let result = DCAResult.init(currentValue: 0,
@@ -63,22 +95,9 @@ class CalculatorPresenterTests: XCTestCase {
         
     }
     
-    func testAnnualReturnLabelTextColor_givenResultIsNonProfitable_expectSystemRed() throws {
-        //Given
-        let result = DCAResult.init(currentValue: 0,
-                                    investmentAmount: 0,
-                                    gain: 0,
-                                    yield: 0,
-                                    annualReturn: 0,
-                                    isProtiable: false)
-        //When
-        let presentation = sut.getPresentation(result: result)
-        
-        // Then
-        XCTAssertEqual(presentation.annualReturnLabelTextColor, .systemRed)
-        
-    }
-    
+    /// Testing: Yield Label Text Color
+    /// Given : non-profitable result
+    /// Expected:  system red color
     func testYieldLabelTextColor_givenResultIsNonProfitable_expectSystemRed() throws {
         //Given
         let result = DCAResult.init(currentValue: 0,
@@ -94,7 +113,10 @@ class CalculatorPresenterTests: XCTestCase {
         XCTAssertEqual(presentation.yieldLabelTextColor, .systemRed)
         
     }
-    
+    //MARK: - Test for Yield Label
+    /// Testing: Yield Label Text
+    /// Given : text
+    /// Expected:  brackets
     func testYieldLabel_expectBrackets() throws {
         let first : Character = "("
         let last : Character = ")"
