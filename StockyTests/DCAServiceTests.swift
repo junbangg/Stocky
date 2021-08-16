@@ -126,7 +126,7 @@ class DCAServiceTests: XCTestCase {
     /// Expected: Negative gains
     func testResult_givenNonprofitableAssetAndDCAIsUsed_expectNegativeGains() {
         //given
-        let initialInvestmentAmount : Double = 5000
+        let initialInvestmentAmount: Double = 5000
         let monthlyDollarCostAveragingAmount : Double = 1500
         let initialDateOfInvestmentIndex : Int = 5
         let asset = buildNonProfitableAsset()
