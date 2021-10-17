@@ -4,28 +4,25 @@
 //
 //  Created by Jun Bang on 2021/03/01.
 //
-
 import XCTest
 @testable import Stocky
-
 /// Unit Tests for CalculatorPresenter
 class CalculatorPresenterTests: XCTestCase {
     
     //MARK: - Setup code
-    var sut : CalculatorPresenter!
+    var sut: CalculatorPresenter!
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         sut = CalculatorPresenter()
         try super.setUpWithError()
     }
-
+    
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         sut = nil
         try super.tearDownWithError()
     }
-    
     /**
      
      Test Cases
@@ -74,7 +71,6 @@ class CalculatorPresenterTests: XCTestCase {
         
         // Then
         XCTAssertEqual(presentation.annualReturnLabelTextColor, .systemRed)
-        
     }
     //MARK: - Test for Yield Label
     /// Testing: Yield Label Text Color
@@ -93,9 +89,7 @@ class CalculatorPresenterTests: XCTestCase {
         
         // Then
         XCTAssertEqual(presentation.yieldLabelTextColor, .systemGreen)
-        
     }
-    
     /// Testing: Yield Label Text Color
     /// Given : non-profitable result
     /// Expected:  system red color
@@ -109,18 +103,16 @@ class CalculatorPresenterTests: XCTestCase {
                                     isProtiable: false)
         //When
         let presentation = sut.getPresentation(result: result)
-        
         // Then
         XCTAssertEqual(presentation.yieldLabelTextColor, .systemRed)
-        
     }
     //MARK: - Test for Yield Label
     /// Testing: Yield Label Text
     /// Given : text
     /// Expected:  brackets
     func testYieldLabel_expectBrackets() throws {
-        let first : Character = "("
-        let last : Character = ")"
+        let first: Character = "("
+        let last: Character = ")"
         //Given
         let result = DCAResult.init(currentValue: 0,
                                     investmentAmount: 0,
@@ -130,12 +122,8 @@ class CalculatorPresenterTests: XCTestCase {
                                     isProtiable: false)
         // When
         let presentation = sut.getPresentation(result: result)
-        
         //Then
         XCTAssertEqual(presentation.yield.first, first)
         XCTAssertEqual(presentation.yield.last, last)
     }
-    
-    
-
 }
