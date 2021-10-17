@@ -19,7 +19,6 @@
 import Foundation
 
 extension Date {
-    
     /**
      Converts String to Month / Year Format
      # Usage
@@ -30,8 +29,7 @@ extension Date {
      let dateString = monthData.date.MMYYFormat
      ```
      */
-    
-    var MMYYFormat : String {
+    var MMYYFormat: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM yyyy"
         return dateFormatter.string(from: self)
