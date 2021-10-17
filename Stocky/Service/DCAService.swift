@@ -89,17 +89,15 @@ struct DCAService {
     ///   - numberOfShares: number of shares
     ///   - latestSharePrice: lastest share price
     /// - Returns: Current Value of investment
-    private func getCurrentValue(numberOfShares : Double, latestSharePrice : Double) -> Double {
+    private func getCurrentValue(numberOfShares: Double, latestSharePrice: Double) -> Double {
         return numberOfShares * latestSharePrice
     }
-    
     /// Function to calculate latest shared price
     /// - Parameter asset: Asset that holds all data required for calculation
     /// - Returns: Extracts latest shared price data
-    private func getLatestSharedPrice(asset : Asset) -> Double {
+    private func getLatestSharedPrice(asset: Asset) -> Double {
         return asset.timeSeries.getMonthData(isReversed: true).first?.adjustedClose ?? 0
     }
-    
     /// Function to extract number of shares
     /// - Parameters:
     ///   - asset: Asset that holds all data required for calculation
@@ -122,17 +120,13 @@ struct DCAService {
         }
         return totalShares
     }
-    
 }
-
-
 /// Result type of Dollar Cost Averaging 
 struct DCAResult {
-    let currentValue : Double
-    let investmentAmount : Double
-    let gain : Double
-    let yield : Double
-    let annualReturn : Double
-    let isProtiable : Bool
-
+    let currentValue: Double
+    let investmentAmount: Double
+    let gain: Double
+    let yield: Double
+    let annualReturn: Double
+    let isProtiable: Bool
 }
