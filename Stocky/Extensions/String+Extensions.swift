@@ -20,7 +20,6 @@
 import Foundation
 
 extension String {
-    
     /**
     Function that wraps a text with parentheses
      - Returns: String
@@ -28,7 +27,6 @@ extension String {
     func addParentheses() -> String {
         return "(\(self))"
     }
-    
     /**
        Function that converts String to Double format
         - Returns: Double?
@@ -36,7 +34,6 @@ extension String {
     func convertToDouble() -> Double? {
         return Double(self)
     }
-    
     /**
     Function that adds text to the beginning of a String Object
       - Parameter text: [text to add to beginning of String]
@@ -47,10 +44,7 @@ extension String {
         let newText = amount.prefix(withText: "$")
         ```
      */
-    func prefix(withText text : String) -> String {
+    func prefix(withText text: String) -> String {
         return text + self
     }
-    
-    
-    
 }
