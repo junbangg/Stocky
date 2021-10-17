@@ -31,8 +31,8 @@ Datatype for storing retreived TimeSeries data
  */
 struct TimeSeries : Decodable {
     
-    let meta : Meta
-    let timeSeries : [String: TimeSeriesData]
+    let meta: Meta
+    let timeSeries: [String: TimeSeriesData]
     enum CodingKeys: String, CodingKey {
         case meta = "Meta Data"
         case timeSeries = "Monthly Adjusted Time Series"
@@ -47,7 +47,7 @@ struct TimeSeries : Decodable {
      - Returns: An array of sorted MonthData structs
      */
     func getMonthData(isReversed: Bool) -> [MonthData] {
-        var monthDataArray : [MonthData] = []
+        var monthDataArray: [MonthData] = []
         
         /// Sorts by key(data, ex: "1999-12-31")
         let sortedTimeSeries = isReversed ? timeSeries.sorted(by: {$0.key > $1.key}) : timeSeries.sorted(by: {$0.key < $1.key})
@@ -79,7 +79,7 @@ struct TimeSeries : Decodable {
     /// Function to compute adjustedOpen price
     /// - Parameter timeSeriesData: TSData type with price data
     /// - Returns: Adjusted open price
-    private func calculateAdjustedOpen(with timeSeriesData : TimeSeriesData) -> Double? {
+    private func calculateAdjustedOpen(with timeSeriesData: TimeSeriesData) -> Double? {
         
         guard let open = timeSeriesData.open.convertToDouble(),
               let adjustedClose = timeSeriesData.adjustedClose.convertToDouble(),
@@ -94,8 +94,8 @@ Datatype that acts as a header for the data
 # Components
     - symbol : NASDAQ symbol (AAPL)
  */
-struct Meta : Decodable {
-    let symbol : String
+struct Meta: Decodable {
+    let symbol: String
     enum CodingKeys: String, CodingKey {
         case symbol = "2. Symbol"
     }
@@ -108,10 +108,10 @@ Datatype that stores price related data
     - close : closed price
     - adjustedClose : adjusted close price
  */
-struct TimeSeriesData : Decodable {
-    let open : String
-    let close : String
-    let adjustedClose : String
+struct TimeSeriesData: Decodable {
+    let open: String
+    let close: String
+    let adjustedClose: String
     
     enum CodingKeys: String, CodingKey {
         case open = "1. open"
