@@ -7,7 +7,6 @@
 
 import UIKit
 import Combine
-
 /// Table View View Controller for Search
 class SearchTableViewController: UITableViewController, UIAnimatable {
     /**
@@ -22,7 +21,7 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
     // MARK: - UISearchController
     //code to ensure that the app compiles at all times
     /// Instance of UISearchController used to handle users search
-    private lazy var searchController : UISearchController = {
+    private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.delegate = self
@@ -32,20 +31,15 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
         searchController.searchBar.autocapitalizationType = .allCharacters
         return searchController
     }()
-    
     /// Instance of APIService for networking with API
     private let apiService = APIService()
     private var subscribers = Set<AnyCancellable>()
-    
     /// Search results returned from API
-    private var searchResults : SearchResults?
-    
+    private var searchResults: SearchResults?
     /// Property used to keep track of view stage
-    @Published private var stage : Stage = .greeting
-    
+    @Published private var stage: Stage = .greeting
     /// searchQuery is kept track of by Published
     @Published var searchQuery = String()
-    
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +52,6 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
         navigationItem.searchController = searchController
         navigationItem.title = "검색"
     }
-    
     //MARK: - Table View methods
     private func setupTableView() {
         tableView.isScrollEnabled = false
@@ -68,7 +61,6 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults?.items.count ?? 0
     }
-    
     /// Create cell configured with data
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as! SearchTableViewCell
@@ -122,8 +114,6 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
             }
         }.store(in: &subscribers)
     }
-    
-    
     //MARK: - handleSelection Method
     /// Function that handles cell selection event. This occurs when cell is selected by user
     /// - Parameters:
@@ -148,7 +138,6 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
             self?.searchController.searchBar.text = nil
         }.store(in: &subscribers)
     }
-    
     // MARK: - Segue -> CalculatorTableView
     /// Segue function to navigate to CalculatorTableViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -158,16 +147,13 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
             destination.asset = asset
         }
     }
-    
 }
-
 //MARK: - Extensions
-
 /// Extensions for SearchTableViewController
 /// Conforms to
 ///     - UISearchResultsUpdating
 ///     - UISearchControllerDelegate
-extension SearchTableViewController : UISearchResultsUpdating, UISearchControllerDelegate {
+extension SearchTableViewController: UISearchResultsUpdating, UISearchControllerDelegate {
     
     /// updates the searchQuery Publisher
     func updateSearchResults(for searchController: UISearchController) {
