@@ -22,21 +22,20 @@ import Combine
  */
 struct APIService {
     /// Error enum type
-    enum APIServiceError: Error {
+    private enum APIServiceError: Error {
         case encoding
         case badRequest
     }
     /// Variable that will choose a random key from apiKeys
-    var API_KEY: String {
+    private var API_KEY: String {
         return apiKeys.randomElement() ?? ""
     }
     /// Array of valid API keys
-    let apiKeys = ["VWG848WN4TOAHX1P", "R4QEF20WS1UNXOP2", "3YVKJCWZ41BU608T", "Y9PIZ80TZ0XV3HVA"]
+    private let apiKeys = ["VWG848WN4TOAHX1P", "R4QEF20WS1UNXOP2", "3YVKJCWZ41BU608T", "Y9PIZ80TZ0XV3HVA"]
     /// Function used to network with API to fetch data to present in SearchTableViewContoller when user inputs search query
     /// - Parameter key : User search query
     /// - Returns: AnyPublisher<SearchResults, Error>
     func fetchPreviewData(with key: String) -> AnyPublisher<SearchResults, Error> {
-        
         /// Parses key into "keywords" that will be used in networking URL string
         let keyParseResult = parse(query: key)
         var keywords = String()
