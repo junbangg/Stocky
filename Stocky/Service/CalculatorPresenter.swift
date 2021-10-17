@@ -18,8 +18,8 @@ struct CalculatorPresenter {
         
         return .init( currentValueLabelBackgroundColor: isProfitable ? .themeGreenShade : .themeRedShade,
                       currentValue: result.currentValue.currencyFormatter,
-                     investmentAmount: result.investmentAmount.toCurrencyFormat(hasDecimalPlaces: false),
-                     gain: result.gain.toCurrencyFormat(hasDollarSymbol: true, hasDecimalPlaces: false).prefix(withText: gainSymbol),
+                     investmentAmount: result.investmentAmount.convertToCurrencyFormat(hasDecimalPlaces: false),
+                     gain: result.gain.convertToCurrencyFormat(hasDollarSymbol: true, hasDecimalPlaces: false).prefix(withText: gainSymbol),
                      yield: result.yield.percentageFormat.prefix(withText: gainSymbol).addParentheses(),
                      yieldLabelTextColor: isProfitable ? .systemGreen : .systemRed,
                      annualReturn: result.annualReturn.percentageFormat,

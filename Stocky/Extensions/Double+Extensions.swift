@@ -28,7 +28,7 @@ extension Double {
      # Usage
      Used as default values for Date Strings
      */
-    var twoDecimalFormatString: String {
+    private var twoDecimalFormatString: String {
         return String(format: "%.2f", self)
     }
     /**
@@ -76,7 +76,7 @@ extension Double {
      let result = result.annualReturn.percentageFormat
      ```
      */
-    func toCurrencyFormat(hasDollarSymbol: Bool = true, hasDecimalPlaces: Bool = true) -> String {
+    func convertToCurrencyFormat(hasDollarSymbol: Bool = true, hasDecimalPlaces: Bool = true) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         if hasDollarSymbol == false {
