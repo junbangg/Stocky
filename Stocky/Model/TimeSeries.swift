@@ -30,7 +30,6 @@ Datatype for storing retreived TimeSeries data
     - func calculateAdjustedOpen() : Calculates AdjustedOpen price
  */
 struct TimeSeries: Decodable {
-    
     let meta: Meta
     let timeSeries: [String: TimeSeriesData]
     enum CodingKeys: String, CodingKey {
@@ -48,10 +47,8 @@ struct TimeSeries: Decodable {
      */
     func getMonthData(isReversed: Bool) -> [MonthData] {
         var monthDataArray: [MonthData] = []
-        
         /// Sorts by key(data, ex: "1999-12-31")
         let sortedTimeSeries = isReversed ? timeSeries.sorted(by: {$0.key > $1.key}) : timeSeries.sorted(by: {$0.key < $1.key})
-        
         /// Handeling optionals
         //        sortedTimeSeries.forEach { (dateString, data) in
         //            let dateFormatter = DateFormatter()
@@ -72,7 +69,6 @@ struct TimeSeries: Decodable {
             
             monthDataArray.append(monthData)
         }
-        
         return monthDataArray
     }
     
@@ -84,7 +80,7 @@ struct TimeSeries: Decodable {
         guard let open = timeSeriesData.open.convertToDouble(),
               let adjustedClose = timeSeriesData.adjustedClose.convertToDouble(),
               let close = timeSeriesData.close.convertToDouble() else { return nil }
-        
+
         return open * adjustedClose / close
     }
 }
