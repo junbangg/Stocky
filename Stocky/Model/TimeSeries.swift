@@ -32,7 +32,7 @@ Datatype for storing retreived TimeSeries data
 struct TimeSeries : Decodable {
     
     let meta : Meta
-    let timeSeries : [String: TSData]
+    let timeSeries : [String: TimeSeriesData]
     enum CodingKeys: String, CodingKey {
         case meta = "Meta Data"
         case timeSeries = "Monthly Adjusted Time Series"
@@ -66,7 +66,7 @@ struct TimeSeries : Decodable {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
             guard let date = dateFormatter.date(from: dateString),
-                  let adjustedOpen = calculateAdjustedOpen(tsdata: data),
+                  let adjustedOpen = calculateAdjustedOpen(with: data),
                   let adjustedClose = data.adjustedClose.convertToDouble() else { return [] }
             let monthData = MonthData(date: date, adjustedOpen: adjustedOpen, adjustedClose: adjustedClose)
             
@@ -77,13 +77,13 @@ struct TimeSeries : Decodable {
     }
     
     /// Function to compute adjustedOpen price
-    /// - Parameter tsdata: TSData type with price data
+    /// - Parameter timeSeriesData: TSData type with price data
     /// - Returns: Adjusted open price
-    private func calculateAdjustedOpen(tsdata : TSData) -> Double? {
+    private func calculateAdjustedOpen(with timeSeriesData : TimeSeriesData) -> Double? {
         
-        guard let open = tsdata.open.convertToDouble(),
-              let adjustedClose = tsdata.adjustedClose.convertToDouble(),
-              let close = tsdata.close.convertToDouble() else { return nil }
+        guard let open = timeSeriesData.open.convertToDouble(),
+              let adjustedClose = timeSeriesData.adjustedClose.convertToDouble(),
+              let close = timeSeriesData.close.convertToDouble() else { return nil }
         
         return open * adjustedClose / close
     }
@@ -108,7 +108,7 @@ Datatype that stores price related data
     - close : closed price
     - adjustedClose : adjusted close price
  */
-struct TSData : Decodable {
+struct TimeSeriesData : Decodable {
     let open : String
     let close : String
     let adjustedClose : String
