@@ -4,13 +4,11 @@
 //
 //  Created by Jun suk Bang on 2021/01/17.
 //
-
 import UIKit
 ///Placeholder view for welcome stage of app (before the user touches search)
-class WelcomeView : UIView {
-    
+class WelcomeView: UIView {
     /// Image view for app logo
-    private let appLogo : UIImageView = {
+    private let appLogo: UIImageView = {
         let image = UIImage(named: "stocky")
         let imageView = UIImageView()
         imageView.image = image
@@ -18,7 +16,7 @@ class WelcomeView : UIView {
         return imageView
     }()
     /// UILabel to accompany app logo
-    private let greeting : UILabel = {
+    private let greeting: UILabel = {
         let label = UILabel()
         label.text = "원하는 종목의 수익성을 계산해보세요!"
         label.font = UIFont(name: "AvenirNext-Medium", size: 20)!
@@ -27,7 +25,7 @@ class WelcomeView : UIView {
         return label
     }()
     /// Stack view is used to stack appLogo image and greeting label
-    private lazy var stackView : UIStackView = {
+    private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [appLogo, greeting])
         stackView.axis = .vertical
         stackView.spacing = 24
@@ -39,7 +37,6 @@ class WelcomeView : UIView {
         super.init(frame: frame)
         setupViews()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -52,7 +49,6 @@ class WelcomeView : UIView {
             stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
             stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             appLogo.heightAnchor.constraint(equalToConstant: 160)
-        
         ])
     }
 }
