@@ -6,14 +6,11 @@
 //
 
 import UIKit
-
 /// Custom Tableview cell for Search Tableview
-class SearchTableViewCell : UITableViewCell {
-    
-    @IBOutlet weak var assetNameLabel : UILabel!
-    @IBOutlet weak var assetSymbolLabel : UILabel!
-    @IBOutlet weak var assetTypeLabel : UILabel!
-    
+class SearchTableViewCell: UITableViewCell {
+    @IBOutlet weak var assetNameLabel: UILabel!
+    @IBOutlet weak var assetSymbolLabel: UILabel!
+    @IBOutlet weak var assetTypeLabel: UILabel!
     /// Function to configure custom cell
     /// - Parameter searchResult: SearchResult that contains data to display search results
     func configure(with searchResult: SearchResult) {
@@ -23,5 +20,4 @@ class SearchTableViewCell : UITableViewCell {
             .appending(" ")
             .appending(searchResult.currency)
     }
-    
 }
