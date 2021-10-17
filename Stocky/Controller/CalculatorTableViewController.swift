@@ -18,29 +18,29 @@ class CalculatorTableViewController: UITableViewController {
     }
     //MARK: - IBOutlets
     //Labels
-    @IBOutlet weak var currentValueLabel : UILabel!
-    @IBOutlet weak var investmentAmountLabel : UILabel!
-    @IBOutlet weak var gainLabel : UILabel!
-    @IBOutlet weak var yieldLabel : UILabel!
-    @IBOutlet weak var annualReturnLabel : UILabel!
-    @IBOutlet weak var latestSharePrice : UILabel!
+    @IBOutlet weak var currentValueLabel: UILabel!
+    @IBOutlet weak var investmentAmountLabel: UILabel!
+    @IBOutlet weak var gainLabel: UILabel!
+    @IBOutlet weak var yieldLabel: UILabel!
+    @IBOutlet weak var annualReturnLabel: UILabel!
+    @IBOutlet weak var latestSharePrice: UILabel!
     
-    @IBOutlet weak var initialInvestmentAmountTextField : UITextField!
-    @IBOutlet weak var monthlyDollarCostAveragingTextField : UITextField!
+    @IBOutlet weak var initialInvestmentAmountTextField: UITextField!
+    @IBOutlet weak var monthlyDollarCostAveragingTextField: UITextField!
     @IBOutlet weak var initialDateOfInvestmentTextField: UITextField!
     //    @IBOutlet weak var symbolLabel : UILabel!
-    @IBOutlet weak var assetLabel : UILabel!
+    @IBOutlet weak var assetLabel: UILabel!
     @IBOutlet var currencyLabels: [UILabel]!
-    @IBOutlet weak var investmentAmountCurrencyLabel : UILabel!
-    @IBOutlet weak var dateSlider : UISlider!
+    @IBOutlet weak var investmentAmountCurrencyLabel: UILabel!
+    @IBOutlet weak var dateSlider: UISlider!
     
     //MARK: - Publishers and properties for Data communication
-    var asset : Asset?
+    var asset: Asset?
     
     /// index of selected initial date month
-    @Published var initialDateOfInvestmentIndex : Int?
-    @Published var initialInvestmentAmount : Int?
-    @Published var monthlyDollarCostAveragingAmount : Int?
+    @Published var initialDateOfInvestmentIndex: Int?
+    @Published var initialInvestmentAmount: Int?
+    @Published var monthlyDollarCostAveragingAmount: Int?
     //    @Published var closingPrices :
     private var dcaService = DCAService()
     private var subscribers = Set<AnyCancellable>()
@@ -110,7 +110,6 @@ class CalculatorTableViewController: UITableViewController {
             .compactMap({($0.object as? UITextField)?.text})
             .sink { [weak self] (text) in
                 self?.monthlyDollarCostAveragingAmount = Int(text) ?? 0
-                
             }.store(in: &subscribers)
         /// Combines last elements from 3 publishers
         /// ( initial investment + monthly dollar cost averaging amount + initial date of investment ) is used to calculate DCA
@@ -161,7 +160,7 @@ class CalculatorTableViewController: UITableViewController {
     }
     //MARK: - Handle Date Selection
     /// Function that handles the Date Selection sent over from DateSelectionTableViewController
-    private func handleDateSelection(index : Int) {
+    private func handleDateSelection(index: Int) {
         guard navigationController?.visibleViewController is DateSelectionTableViewController else { return }
         /// pops view controller when date is selected
         navigationController?.popViewController(animated: true)
@@ -185,12 +184,11 @@ class CalculatorTableViewController: UITableViewController {
         initialDateOfInvestmentIndex = Int(sender.value)
     }
 }
-
 //MARK: - Extensions
 /// Conforms to
 ///     - UITextFieldDelegate
 //showDateSelection
-extension CalculatorTableViewController : UITextFieldDelegate {
+extension CalculatorTableViewController: UITextFieldDelegate {
     /// If user touches textfield -> Segue triggered
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == initialDateOfInvestmentTextField {
