@@ -29,7 +29,7 @@ Datatype for storing retreived TimeSeries data
     - func getMonthData() : Formats the timeSeries data to usable version
     - func calculateAdjustedOpen() : Calculates AdjustedOpen price
  */
-struct TimeSeries : Decodable {
+struct TimeSeries: Decodable {
     
     let meta: Meta
     let timeSeries: [String: TimeSeriesData]
