@@ -79,13 +79,14 @@ extension Double {
     func convertToCurrencyFormat(hasDollarSymbol: Bool = true, hasDecimalPlaces: Bool = true) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
-        if hasDollarSymbol == false {
+        
+        if !hasDollarSymbol {
             formatter.currencySymbol = ""
         }
-        if hasDollarSymbol == true {
+        if hasDollarSymbol {
             formatter.currencySymbol = "$"
         }
-        if hasDecimalPlaces == false {
+        if !hasDecimalPlaces {
             formatter.maximumFractionDigits = 0
         }
         return formatter.string(from: self as NSNumber) ?? twoDecimalFormatString
