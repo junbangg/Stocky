@@ -43,14 +43,14 @@ struct TimeSeries : Decodable {
      # Logic
      After sorting the TimeSeries data(reversed or normal), data is formatted to fit the MonthData struct
      
-     - Parameter dateReverseSort: Used to differentiate whether the timeSeries data should be sorted in a reversed order or not
+     - Parameter isReversed: Used to differentiate whether the timeSeries data should be sorted in a reversed order or not
      - Returns: An array of sorted MonthData structs
      */
-    func getMonthData(dateReverseSort: Bool) -> [MonthData] {
+    func getMonthData(isReversed: Bool) -> [MonthData] {
         var monthDataArray : [MonthData] = []
         
         /// Sorts by key(data, ex: "1999-12-31")
-        let sortedTimeSeries = dateReverseSort ? timeSeries.sorted(by: {$0.key > $1.key}) : timeSeries.sorted(by: {$0.key < $1.key})
+        let sortedTimeSeries = isReversed ? timeSeries.sorted(by: {$0.key > $1.key}) : timeSeries.sorted(by: {$0.key < $1.key})
         
         /// Handeling optionals
         //        sortedTimeSeries.forEach { (dateString, data) in
