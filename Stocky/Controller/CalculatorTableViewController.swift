@@ -12,7 +12,7 @@ import Charts
 class CalculatorTableViewController: UITableViewController {
     
     /// Segue identifiers
-    enum Segue {
+    private enum Segue {
         static let showDataSelection = "showDateSelection"
         static let sendChartData = "sendChartData"
     }
