@@ -16,7 +16,6 @@ Model datatype for storing the initial search(fetch) results
  */
 
 struct Asset {
-    
-    let searchResult : SearchResult
-    let timeSeries : TimeSeries
+    let searchResult: SearchResult
+    let timeSeries: TimeSeries
 }

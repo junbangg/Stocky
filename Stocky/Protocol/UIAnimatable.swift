@@ -18,8 +18,6 @@ UIAnimatable Extensions
 
 import Foundation
 import MBProgressHUD
-
-
 /// Protocol
 protocol UIAnimatable where Self: UIViewController {
     func showLoadingAnimation()
@@ -27,7 +25,6 @@ protocol UIAnimatable where Self: UIViewController {
 }
 
 extension UIAnimatable {
-
     /**
      Shows loading animation
      # Code Example

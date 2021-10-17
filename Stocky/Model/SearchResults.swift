@@ -14,11 +14,9 @@ Model Datatype for storing an array of Search results
     - items : Array of SearchResult structs
  */
 
-struct SearchResults : Decodable {
-    
-    let items : [SearchResult]
-    
-    enum CodingKeys : String, CodingKey {
+struct SearchResults: Decodable {
+    let items: [SearchResult]
+    enum CodingKeys: String, CodingKey {
         case items = "bestMatches"
     }
 }
@@ -33,13 +31,13 @@ Struct to store search result data
     - currency : type of currency (ex. USD, EURO)
  */
 
-struct SearchResult : Decodable {
-    let symbol : String
-    let name : String
-    let type : String
-    let currency : String
+struct SearchResult: Decodable {
+    let symbol: String
+    let name: String
+    let type: String
+    let currency: String
 
-    enum CodingKeys : String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case symbol = "1. symbol"
         case name = "2. name"
         case type = "3. type"
