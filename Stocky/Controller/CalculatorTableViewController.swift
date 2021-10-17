@@ -71,7 +71,7 @@ class CalculatorTableViewController: UITableViewController {
         currencyLabels.forEach { (label) in
             label.text = asset?.searchResult.currency.addParentheses()
         }
-        latestSharePrice.text = asset?.timeSeries.getMonthData(isReversed: true).first?.adjustedClose.currencyFormatter
+        latestSharePrice.text = asset?.timeSeries.getMonthData(isReversed: true).first?.adjustedClose.currencyFormat
     }
     //MARK: - Setup TextFields
     private func setupTextFields() {

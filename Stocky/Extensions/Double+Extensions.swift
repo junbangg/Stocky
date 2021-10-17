@@ -41,7 +41,7 @@ extension Double {
      let result = result.currentValue.currencyFormatter
      ```
      */
-    var currencyFormatter: String {
+    var currencyFormat: String {
         /// NumberFormatter() is used to change String to "Currency" format
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency

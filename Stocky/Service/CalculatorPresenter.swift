@@ -17,7 +17,7 @@ struct CalculatorPresenter {
         let gainSymbol = isProfitable ? "+" : ""
         
         return .init( currentValueLabelBackgroundColor: isProfitable ? .themeGreenShade : .themeRedShade,
-                      currentValue: result.currentValue.currencyFormatter,
+                      currentValue: result.currentValue.currencyFormat,
                      investmentAmount: result.investmentAmount.convertToCurrencyFormat(hasDecimalPlaces: false),
                      gain: result.gain.convertToCurrencyFormat(hasDollarSymbol: true, hasDecimalPlaces: false).prefix(withText: gainSymbol),
                      yield: result.yield.percentageFormat.prefix(withText: gainSymbol).addParentheses(),
