@@ -12,7 +12,6 @@ import XCTest
 
 ///Unit Tests for DCA Service
 class DCAServiceTests: XCTestCase {
-    
     //MARK: - Setup code
     var sut: DCAService!
     
@@ -27,7 +26,6 @@ class DCAServiceTests: XCTestCase {
         try super.tearDownWithError()
         sut = nil
     }
-    
     /**
      
      Test Cases
@@ -53,9 +51,9 @@ class DCAServiceTests: XCTestCase {
     /// Expected: Positive gains
     func testResult_givenProfitableAssetAndDCAIsUsed_expectPositiveGains() {
         //given
-        let initialInvestmentAmount : Double = 5000
-        let monthlyDollarCostAveragingAmount : Double = 1500
-        let initialDateOfInvestmentIndex : Int = 5
+        let initialInvestmentAmount: Double = 5000
+        let monthlyDollarCostAveragingAmount: Double = 1500
+        let initialDateOfInvestmentIndex: Int = 5
         let asset = buildProfitableAsset()
         //when
         let result = sut.calculate(asset: asset,
@@ -81,15 +79,14 @@ class DCAServiceTests: XCTestCase {
         XCTAssertEqual(result.currentValue, 17342.224, accuracy: 0.1)
         XCTAssertEqual(result.gain, 4842.224, accuracy: 0.1)
         XCTAssertEqual(result.yield, 0.3873, accuracy: 0.0001)
-        
     }
     /// GIven: Profitable Asset without DCA applied
     /// Expected: Positive gains
     func testResult_givenProfitableAssetAndDCAIsNotUsed_expectPositiveGains() {
         //given
-        let initialInvestmentAmount : Double = 5000
-        let monthlyDollarCostAveragingAmount : Double = 0
-        let initialDateOfInvestmentIndex : Int = 3
+        let initialInvestmentAmount: Double = 5000
+        let monthlyDollarCostAveragingAmount: Double = 0
+        let initialDateOfInvestmentIndex: Int = 3
         let asset = buildProfitableAsset()
         //when
         let result = sut.calculate(asset: asset,
@@ -120,15 +117,14 @@ class DCAServiceTests: XCTestCase {
         XCTAssertEqual(result.currentValue, 6666.666, accuracy: 0.1)
         XCTAssertEqual(result.gain, 1666.666, accuracy: 0.1)
         XCTAssertEqual(result.yield, 0.3333, accuracy: 0.0001)
-        
     }
     /// GIven: Non-profitable Asset with DCA applied
     /// Expected: Negative gains
     func testResult_givenNonprofitableAssetAndDCAIsUsed_expectNegativeGains() {
         //given
         let initialInvestmentAmount: Double = 5000
-        let monthlyDollarCostAveragingAmount : Double = 1500
-        let initialDateOfInvestmentIndex : Int = 5
+        let monthlyDollarCostAveragingAmount: Double = 1500
+        let initialDateOfInvestmentIndex: Int = 5
         let asset = buildNonProfitableAsset()
         //when
         let result = sut.calculate(asset: asset,
@@ -155,8 +151,6 @@ class DCAServiceTests: XCTestCase {
         // Gains = current value - invesment amount = 9189.323 - 12500 = -3310.677
         /// Yield Formula
         // Yield = gains / investment amount : -3310.677 / 12500 = -0.2648
-        
-        
         XCTAssertEqual(result.currentValue, 9189.323, accuracy: 0.1)
         XCTAssertEqual(result.gain, -3310.677, accuracy: 0.1)
         XCTAssertEqual(result.yield, -0.2648, accuracy: 0.0001)
@@ -165,9 +159,9 @@ class DCAServiceTests: XCTestCase {
     /// Expected: Negative gains
     func testResult_givenLosingAssetAndDCAIsNotUsed_expectNegative() {
         //given
-        let initialInvestmentAmount : Double = 5000
-        let monthlyDollarCostAveragingAmount : Double = 0
-        let initialDateOfInvestmentIndex : Int = 3
+        let initialInvestmentAmount: Double = 5000
+        let monthlyDollarCostAveragingAmount: Double = 0
+        let initialDateOfInvestmentIndex: Int = 3
         let asset = buildNonProfitableAsset()
         //when
         let result = sut.calculate(asset: asset,
@@ -192,8 +186,7 @@ class DCAServiceTests: XCTestCase {
         // Gains = current value - invesment amount = $3666.6666 - 5000 = -1333.333
         /// Yield Formula
         // Yield = gains / investment amount : -1333.333 / 5000 = -0.26666
-        
-        
+
         XCTAssertEqual(result.currentValue, 3666.666, accuracy: 0.1)
         XCTAssertEqual(result.gain, -1333.333, accuracy: 0.1)
         XCTAssertEqual(result.yield, -0.26666, accuracy: 0.0001)
@@ -203,29 +196,28 @@ class DCAServiceTests: XCTestCase {
     private func buildProfitableAsset() -> Asset {
         let searchResult = buildSearchResult()
         let meta = buildMeta()
-        let timeSeries : [String : TSData] = ["2008-01-29": TSData(open: "100", close: "110", adjustedClose: "110"),
-                                              "2008-02-29": TSData(open: "110", close: "120", adjustedClose: "120"),
-                                              "2008-03-29": TSData(open: "120", close: "130", adjustedClose: "130"),
-                                              "2008-04-29": TSData(open: "130", close: "140", adjustedClose: "140"),
-                                              "2008-05-29": TSData(open: "140", close: "150", adjustedClose: "150"),
-                                              "2008-06-29": TSData(open: "150", close: "160", adjustedClose: "160")]
+        let timeSeries: [String: TimeSeriesData] = ["2008-01-29": TimeSeriesData(open: "100", close: "110", adjustedClose: "110"),
+                                              "2008-02-29": TimeSeriesData(open: "110", close: "120", adjustedClose: "120"),
+                                              "2008-03-29": TimeSeriesData(open: "120", close: "130", adjustedClose: "130"),
+                                              "2008-04-29": TimeSeriesData(open: "130", close: "140", adjustedClose: "140"),
+                                              "2008-05-29": TimeSeriesData(open: "140", close: "150", adjustedClose: "150"),
+                                              "2008-06-29": TimeSeriesData(open: "150", close: "160", adjustedClose: "160")]
         
-        let timeSeriesMonthlyAdjusted  = TimeSeries(meta: meta, timeSeries: timeSeries)
-        
+        let timeSeriesMonthlyAdjusted = TimeSeries(meta: meta, timeSeries: timeSeries)
         return Asset(searchResult: searchResult, timeSeries: timeSeriesMonthlyAdjusted)
     }
     /// Method for building Test Asset (Non-profitable)
     private func buildNonProfitableAsset() -> Asset {
         let searchResult = buildSearchResult()
         let meta = buildMeta()
-        let timeSeries : [String : TSData] = ["2021-01-25": TSData(open: "170", close: "160", adjustedClose: "160"),
-                                              "2021-02-25": TSData(open: "160", close: "150", adjustedClose: "150"),
-                                              "2021-03-25": TSData(open: "150", close: "140", adjustedClose: "140"),
-                                              "2021-04-25": TSData(open: "140", close: "130", adjustedClose: "130"),
-                                              "2021-05-25": TSData(open: "130", close: "120", adjustedClose: "120"),
-                                              "2021-06-25": TSData(open: "120", close: "110", adjustedClose: "110")]
+        let timeSeries: [String: TimeSeriesData] = ["2021-01-25": TimeSeriesData(open: "170", close: "160", adjustedClose: "160"),
+                                              "2021-02-25": TimeSeriesData(open: "160", close: "150", adjustedClose: "150"),
+                                              "2021-03-25": TimeSeriesData(open: "150", close: "140", adjustedClose: "140"),
+                                              "2021-04-25": TimeSeriesData(open: "140", close: "130", adjustedClose: "130"),
+                                              "2021-05-25": TimeSeriesData(open: "130", close: "120", adjustedClose: "120"),
+                                              "2021-06-25": TimeSeriesData(open: "120", close: "110", adjustedClose: "110")]
         
-        let timeSeriesMonthlyAdjusted  = TimeSeries(meta: meta, timeSeries: timeSeries)
+        let timeSeriesMonthlyAdjusted = TimeSeries(meta: meta, timeSeries: timeSeries)
         
         return Asset(searchResult: searchResult, timeSeries: timeSeriesMonthlyAdjusted)
     }
@@ -238,38 +230,32 @@ class DCAServiceTests: XCTestCase {
         return Meta(symbol: "XYZ")
     }
     //MARK: - Tests for investment amount
-    
     /// Test to check investment amount when DCA is used
     func testInvestmentAmount_whenDCAIsUsed_expectResult() {
         // given
-        let initialInvestmentAmount : Double = 500
-        let monthlyDollarCostAveragingAmount : Double  = 300
-        let initialDateOfInvestmentIndex : Int = 4 // 5 months ago
+        let initialInvestmentAmount: Double = 500
+        let monthlyDollarCostAveragingAmount: Double  = 300
+        let initialDateOfInvestmentIndex: Int = 4 // 5 months ago
         // when
         let investmentAmount = sut.getInvestmentAmount(initialInvestmentAmount: initialInvestmentAmount, monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount, initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
         // expected
         XCTAssertEqual(investmentAmount, 1700)
-        
         // Initial Amount : $ 500
         // DCA: 4 x $300 = $1200
         // total: $400 + $500 = $1700
-        
     }
     /// Test to check investment amount when DCA is not used
     func testInvestmentAmount_whenDCAIsNotUsed_expectResult() {
         // given
-        let initialInvestmentAmount : Double = 500
-        let monthlyDollarCostAveragingAmount : Double  = 0
-        let initialDateOfInvestmentIndex : Int = 4 // 5 months ago
+        let initialInvestmentAmount: Double = 500
+        let monthlyDollarCostAveragingAmount: Double  = 0
+        let initialDateOfInvestmentIndex: Int = 4 // 5 months ago
         // when
         let investmentAmount = sut.getInvestmentAmount(initialInvestmentAmount: initialInvestmentAmount, monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount, initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
         // expected
         XCTAssertEqual(investmentAmount, 500)
-        
         // Initial Amount : $ 500
         // DCA: 4 x $0 = $0
         // total: $0 + $500 = $500
-        
     }
-    
 }
