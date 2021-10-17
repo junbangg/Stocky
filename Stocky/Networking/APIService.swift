@@ -38,10 +38,10 @@ struct APIService {
     /// Function used to network with API to fetch data to present in SearchTableViewContoller when user inputs search query
     /// - Parameter key : User search query
     /// - Returns: AnyPublisher<SearchResults, Error>
-    func fetchPreviewData(key : String) -> AnyPublisher<SearchResults, Error> {
+    func fetchPreviewData(with key : String) -> AnyPublisher<SearchResults, Error> {
         
         /// Parses key into "keywords" that will be used in networking URL string
-        let keyParseResult = parseQuery(text: key)
+        let keyParseResult = parse(query: key)
         var keywords = String()
         switch keyParseResult {
         case .success(let query):
@@ -52,7 +52,7 @@ struct APIService {
         /// Preparation for networking with API.
         let urlString = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=\(keywords)&apikey=\(API_KEY)"
         /// Parses URL String
-        let urlParseResult = parseURL(urlString: urlString)
+        let urlParseResult = parse(urlString: urlString)
         switch urlParseResult {
         case .success(let url):
             /// Perform Networking
@@ -67,11 +67,11 @@ struct APIService {
     }
     
     /// Function used to network with API to fetch time series data (when user taps on a search result)
-    /// - Parameter key: NADAQ Code(symbol) of stock to search
+    /// - Parameter with key: NADAQ Code(symbol) of stock to search
     /// - Returns: AnyPublisher<TimeSeries, Error>
-    func fetchTimeSeriesData(key: String) -> AnyPublisher<TimeSeries, Error> {
+    func fetchTimeSeriesData(with key: String) -> AnyPublisher<TimeSeries, Error> {
         /// Parses Search query into "symbol" that will be used in networking URL string
-        let keyParseResult = parseQuery(text: key)
+        let keyParseResult = parse(query: key)
         var symbol = String()
         switch keyParseResult {
         case .success(let query):
@@ -82,7 +82,7 @@ struct APIService {
         
         let urlString = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=\(symbol)&apikey=\(API_KEY)"
         /// Parses URL
-        let urlResult = parseURL(urlString: urlString)
+        let urlResult = parse(urlString: urlString)
         switch urlResult {
         case .success(let url):
             /// Performs Networking
@@ -98,11 +98,11 @@ struct APIService {
     
     
     /// Function to parse text into string usable in URL String
-    /// - Parameter text: text to parse
+    /// - Parameter query: text to parse
     /// - Returns: Result<String, Error>
-    private func parseQuery(text: String) -> Result<String, Error> {
+    private func parse(query: String) -> Result<String, Error> {
         /// text is encoded
-        if let query = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
+        if let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
             return .success(query)
         }else {
             return .failure(APIServiceError.encoding)
@@ -112,7 +112,7 @@ struct APIService {
     /// Function to parse urlstring into URL Format
     /// - Parameter urlString: original urlString
     /// - Returns: Result<URL, Error>
-    private func parseURL(urlString: String) -> Result<URL, Error> {
+    private func parse(urlString: String) -> Result<URL, Error> {
         /// raw url string is converted to URL format
         if let url = URL(string: urlString) {
             return .success(url)

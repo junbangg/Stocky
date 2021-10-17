@@ -97,7 +97,7 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
             .sink { [unowned self] (searchQuery) in
                 guard !searchQuery.isEmpty else {return}
                 showLoadingAnimation()
-                self.apiService.fetchPreviewData(key: searchQuery).sink { (completion) in
+                self.apiService.fetchPreviewData(with: searchQuery).sink { (completion) in
                     dismissLoadingAnimation()
                     switch completion {
                     case .failure(let error):
@@ -131,7 +131,7 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
     ///   - searchResult: SearchResult with data to present in table view
     private func handleSelection(for symbol: String, searchResult: SearchResult) {
         showLoadingAnimation()
-        apiService.fetchTimeSeriesData(key: symbol).sink { [weak self] (completion) in
+        apiService.fetchTimeSeriesData(with: symbol).sink { [weak self] (completion) in
             self?.dismissLoadingAnimation()
             switch completion{
             case .failure(let error):
