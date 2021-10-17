@@ -97,7 +97,7 @@ struct DCAService {
     /// - Parameter asset: Asset that holds all data required for calculation
     /// - Returns: Extracts latest shared price data
     private func getLatestSharedPrice(asset : Asset) -> Double {
-        return asset.timeSeries.getMonthData(dateReverseSort: true).first?.adjustedClose ?? 0
+        return asset.timeSeries.getMonthData(isReversed: true).first?.adjustedClose ?? 0
     }
     
     /// Function to extract number of shares
@@ -113,10 +113,10 @@ struct DCAService {
                                    initialDateOfInvestmentIndex: Int) -> Double {
         
         var totalShares = Double()
-        let initialInvestmentOpenPrice = asset.timeSeries.getMonthData(dateReverseSort: true)[initialDateOfInvestmentIndex].adjustedOpen
+        let initialInvestmentOpenPrice = asset.timeSeries.getMonthData(isReversed: true)[initialDateOfInvestmentIndex].adjustedOpen
         let initialInvestmentShares = initialInvestmentAmount / initialInvestmentOpenPrice
         totalShares += initialInvestmentShares
-        asset.timeSeries.getMonthData(dateReverseSort: true).prefix(initialDateOfInvestmentIndex).forEach { (monthInfo) in
+        asset.timeSeries.getMonthData(isReversed: true).prefix(initialDateOfInvestmentIndex).forEach { (monthInfo) in
             let dcaInvestmentShares = monthlyDollarCostAveragingAmount / monthInfo.adjustedOpen
             totalShares += dcaInvestmentShares
         }

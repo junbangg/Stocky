@@ -30,7 +30,7 @@ class DateSelectionTableViewController : UITableViewController {
     }
     //MARK: - Setup table view
     private func setupTableView() {
-        monthDatas = timeSeries?.getMonthData(dateReverseSort: true) ?? []
+        monthDatas = timeSeries?.getMonthData(isReversed: true) ?? []
     }
 }
 

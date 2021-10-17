@@ -71,7 +71,7 @@ class CalculatorTableViewController: UITableViewController {
         currencyLabels.forEach { (label) in
             label.text = asset?.searchResult.currency.addParentheses()
         }
-        latestSharePrice.text = asset?.timeSeries.getMonthData(dateReverseSort: true).first?.adjustedClose.currencyFormatter
+        latestSharePrice.text = asset?.timeSeries.getMonthData(isReversed: true).first?.adjustedClose.currencyFormatter
     }
     //MARK: - Setup TextFields
     private func setupTextFields() {
@@ -83,7 +83,7 @@ class CalculatorTableViewController: UITableViewController {
     /// Function to setup maximum value for date slider
     ///         - max is set to number of months in timeSeries data
     private func setupDateSlider() {
-        if let count = asset?.timeSeries.getMonthData(dateReverseSort: true).count {
+        if let count = asset?.timeSeries.getMonthData(isReversed: true).count {
             let dateSliderCount = count - 1
             dateSlider.maximumValue = dateSliderCount.floatValue
         }
@@ -95,7 +95,7 @@ class CalculatorTableViewController: UITableViewController {
         $initialDateOfInvestmentIndex.sink { [weak self] (index) in
             guard let index = index else { return }
             self?.dateSlider.value = index.floatValue
-            if let dateString = self?.asset?.timeSeries.getMonthData(dateReverseSort: true)[index].date.MMYYFormat {
+            if let dateString = self?.asset?.timeSeries.getMonthData(isReversed: true)[index].date.MMYYFormat {
                 self?.initialDateOfInvestmentTextField.text = dateString
             }
         }.store(in: &subscribers)
@@ -165,7 +165,7 @@ class CalculatorTableViewController: UITableViewController {
         guard navigationController?.visibleViewController is DateSelectionTableViewController else { return }
         /// pops view controller when date is selected
         navigationController?.popViewController(animated: true)
-        if let monthDatas = asset?.timeSeries.getMonthData(dateReverseSort: true) {
+        if let monthDatas = asset?.timeSeries.getMonthData(isReversed: true) {
             initialDateOfInvestmentIndex = index
             let monthData = monthDatas[index]
             let dateString = monthData.date.MMYYFormat

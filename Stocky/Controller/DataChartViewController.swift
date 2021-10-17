@@ -91,7 +91,7 @@ class DataChartViewController : UIViewController, ChartViewDelegate {
     //MARK: - get data
     /// Fetches data from timeSeries and configures to [ChartDataEntry]
     private func fetchData() -> [ChartDataEntry]{
-        let monthData : [MonthData] = timeSeries?.getMonthData(dateReverseSort: false) ?? []
+        let monthData : [MonthData] = timeSeries?.getMonthData(isReversed: false) ?? []
         var chartValues : [ChartDataEntry] = []
         var x = 0
         /// New experimental code
