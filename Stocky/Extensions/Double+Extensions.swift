@@ -21,7 +21,6 @@
 
 import Foundation
 
-
 extension Double {
     /**
      Slices String decimal to the second place
@@ -29,7 +28,7 @@ extension Double {
      # Usage
      Used as default values for Date Strings
      */
-    var twoDecimalFormatString : String {
+    var twoDecimalFormatString: String {
         return String(format: "%.2f", self)
     }
     /**
@@ -42,7 +41,7 @@ extension Double {
      let result = result.currentValue.currencyFormatter
      ```
      */
-    var currencyFormatter : String {
+    var currencyFormatter: String {
         /// NumberFormatter() is used to change String to "Currency" format
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
@@ -59,7 +58,7 @@ extension Double {
      let result = result.annualReturn.percentageFormat
      ```
      */
-    var percentageFormat : String {
+    var percentageFormat: String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .percent
         formatter.maximumFractionDigits = 2
@@ -77,7 +76,7 @@ extension Double {
      let result = result.annualReturn.percentageFormat
      ```
      */
-    func toCurrencyFormat(hasDollarSymbol : Bool = true, hasDecimalPlaces : Bool = true) -> String {
+    func toCurrencyFormat(hasDollarSymbol: Bool = true, hasDecimalPlaces: Bool = true) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         if hasDollarSymbol == false {
@@ -91,5 +90,4 @@ extension Double {
         }
         return formatter.string(from: self as NSNumber) ?? twoDecimalFormatString
     }
-    
 }

@@ -4,7 +4,6 @@
 //
 //  Created by Jun suk Bang on 2021/02/21.
 //
-
 /**
 UIColor Extensions
  
@@ -19,7 +18,6 @@ UIColor Extensions
 import UIKit
 
 extension UIColor {
-    
     static let themeRedShade = UIColor("fae2e1")
     static let themeGreenShade = UIColor("b0f1dd")
     /**
@@ -32,15 +30,14 @@ extension UIColor {
      https://stackoverflow.com/questions/24263007/how-to-use-hex-color-values
      */
     convenience init(_ hex: String, alpha: CGFloat = 1.0) {
-        var cString : String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+        var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         if (cString.hasPrefix("#")) { cString.removeFirst() }
         
         if ((cString.count)) != 6 {
             self.init("ff0000") // return red color for wrong hex input
             return
         }
-        
-        var rgbValue : UInt64 = 0
+        var rgbValue: UInt64 = 0
         Scanner(string: cString).scanHexInt64(&rgbValue)
         
         self.init(red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
