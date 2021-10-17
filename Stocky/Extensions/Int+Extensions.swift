@@ -20,16 +20,12 @@
 import Foundation
 
 extension Int {
-    
     /// Converts Int value to Double type
-    var doubleValue : Double {
+    var doubleValue: Double {
         return Double(self)
     }
-    
     /// Converts an Int value to Float type
-    var floatValue : Float {
+    var floatValue: Float {
         return Float(self)
     }
-    
-    
 }
