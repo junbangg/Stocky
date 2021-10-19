@@ -5,14 +5,14 @@
 //  Created by Jun suk Bang on 2021/02/21.
 //
 /**
-UIColor Extensions
+ UIColor Extensions
  
  # Purpose
-    - Code Readibility
-    - Reusability
+ - Code Readibility
+ - Reusability
  
  # Components
-    - Custom UIColors
+ - Custom UIColors
  */
 
 import UIKit

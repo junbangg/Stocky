@@ -52,10 +52,6 @@ class DataChartViewController: UIViewController, ChartViewDelegate {
     /// New Experimental Code for dynamic chart
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //        if selectedIndex != nil {
-        //            setData()
-        //            lineChartView.notifyDataSetChanged()
-        //        }
     }
     //MARK: - TODOS:
     /*
@@ -68,10 +64,8 @@ class DataChartViewController: UIViewController, ChartViewDelegate {
         let priceData = LineChartDataSet(entries: fetchData(), label: "수정종가")
         
         priceData.mode = .cubicBezier
-        //        priceData.drawCirclesEnabled = false
         priceData.circleRadius = 3
         
-        //        priceData.circleColors = .init([.systemBlue, .systemRed, .white])
         priceData.lineWidth = 3
         priceData.setColor(.white)
         priceData.fill = Fill(color: .white)
