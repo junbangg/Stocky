@@ -124,7 +124,7 @@ class CalculatorTableViewController: UITableViewController {
                 ///***** since there is a weak self
                 guard let this = self else { return }
                 /// Calculate DCA
-                let dcaResult = this.dcaService.calculate(asset, initialInvestmentAmount.doubleValue, monthlyDollarCostAveragingAmount.doubleValue, initialDateOfInvestmentIndex)
+                let dcaResult = this.dcaService.calculateDCA(asset, initialInvestmentAmount.doubleValue, monthlyDollarCostAveragingAmount.doubleValue, initialDateOfInvestmentIndex)
                 
                 let presentation = this.calculatorPresenter.getPresentation(result: dcaResult)
                 /// Update UI
