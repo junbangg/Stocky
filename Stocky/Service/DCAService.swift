@@ -38,16 +38,16 @@ struct DCAService {
         
         let numberOfShares = getNumberOfShares(asset: asset, initialInvestmentAmount: initialInvestmentAmount, monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount, initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
         
-        let currentValue = getCurrentValue(numberOfShares: numberOfShares, latestSharePrice: latestSharePrice)
+        let currentInvestmentValue = getCurrentInvestmentValue(numberOfShares, latestSharePrice)
         
-        let isProfitable = currentValue > investmentAmount
+        let isProfitable = currentInvestmentValue > investmentAmount
         
-        let gain = currentValue - investmentAmount
+        let gain = currentInvestmentValue - investmentAmount
         let yield = gain / investmentAmount
         
-        let annualReturn = getAnnualReturn(currentValue: currentValue, investmentAmount: investmentAmount, initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
+        let annualReturn = getAnnualReturn(currentValue: currentInvestmentValue, investmentAmount: investmentAmount, initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
         
-        return .init(currentValue: currentValue,
+        return .init(currentValue: currentInvestmentValue,
                      investmentAmount: investmentAmount,
                      gain: gain,
                      yield: yield,
@@ -89,7 +89,7 @@ struct DCAService {
     ///   - numberOfShares: number of shares
     ///   - latestSharePrice: lastest share price
     /// - Returns: Current Value of investment
-    private func getCurrentValue(numberOfShares: Double, latestSharePrice: Double) -> Double {
+    private func getCurrentInvestmentValue(_ numberOfShares: Double, _ latestSharePrice: Double) -> Double {
         return numberOfShares * latestSharePrice
     }
     /// Function to calculate latest shared price
