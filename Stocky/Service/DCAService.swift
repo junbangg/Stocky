@@ -34,7 +34,7 @@ struct DCAService {
         let investmentAmount = getInvestmentAmount(initialInvestmentAmount: initialInvestmentAmount,              monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount,
                                                    initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
         
-        let latestSharePrice = getLatestSharedPrice(asset: asset)
+        let latestSharePrice = getLatestSharedPrice(of: asset)
         
         let numberOfShares = getNumberOfShares(asset: asset, initialInvestmentAmount: initialInvestmentAmount, monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount, initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
         
@@ -95,7 +95,7 @@ struct DCAService {
     /// Function to calculate latest shared price
     /// - Parameter asset: Asset that holds all data required for calculation
     /// - Returns: Extracts latest shared price data
-    private func getLatestSharedPrice(asset: Asset) -> Double {
+    private func getLatestSharedPrice(of asset: Asset) -> Double {
         return asset.timeSeries.getMonthData(isReversed: true).first?.adjustedClose ?? 0
     }
     /// Function to extract number of shares
