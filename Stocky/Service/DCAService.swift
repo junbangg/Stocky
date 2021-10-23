@@ -45,7 +45,7 @@ struct DCAService {
         
         let yield = gain / investmentAmount
         
-        let annualReturn = getAnnualReturn(currentValue: currentInvestmentValue, investmentAmount: investmentAmount, initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
+        let annualReturn = getAnnualReturn(currentInvestmentValue, investmentAmount, initialDateOfInvestmentIndex)
         
         return .init(currentValue: currentInvestmentValue,
                      investmentAmount: investmentAmount,
@@ -73,12 +73,12 @@ struct DCAService {
     
     /// Function to calculate annual return
     /// - Parameters:
-    ///   - currentValue: current value of investment
+    ///   - currentInvestmentValue: current value of investment
     ///   - investmentAmount: result of getInvestmentAmount()
     ///   - initialDateOfInvestmentIndex: initial date of investment provided by user converted to index
     /// - Returns: Annual return
-    private func getAnnualReturn(currentValue: Double, investmentAmount: Double, initialDateOfInvestmentIndex: Int) -> Double {
-        let rate = currentValue / investmentAmount
+    private func getAnnualReturn(_ currentInvestmentValue: Double, _ investmentAmount: Double, _ initialDateOfInvestmentIndex: Int) -> Double {
+        let rate = currentInvestmentValue / investmentAmount
         let years = (initialDateOfInvestmentIndex.doubleValue + 1) / 12
         let result = pow(rate, 1/years) - 1
         return result
