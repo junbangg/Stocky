@@ -26,10 +26,10 @@ struct DCAService {
     ///   - monthlyDollarCostAveragingAmount: monthly dollar cost averaging  provided by user
     ///   - initialDateOfInvestmentIndex: initial date of investment provided by user converted to index
     /// - Returns: DCAResult with data to present in view
-    func calculate(asset: Asset,
-                   initialInvestmentAmount: Double,
-                   monthlyDollarCostAveragingAmount: Double,
-                   initialDateOfInvestmentIndex: Int) -> DCAResult{
+    func calculate(_ asset: Asset,
+                   _ initialInvestmentAmount: Double,
+                   _ monthlyDollarCostAveragingAmount: Double,
+                   _ initialDateOfInvestmentIndex: Int) -> DCAResult{
         
         let investmentAmount = getInvestmentAmount(initialInvestmentAmount, monthlyDollarCostAveragingAmount, initialDateOfInvestmentIndex)
         

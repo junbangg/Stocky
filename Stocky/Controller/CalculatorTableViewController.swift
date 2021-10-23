@@ -124,9 +124,9 @@ class CalculatorTableViewController: UITableViewController {
                 ///***** since there is a weak self
                 guard let this = self else { return }
                 /// Calculate DCA
-                let result = this.dcaService.calculate(asset: asset, initialInvestmentAmount: initialInvestmentAmount.doubleValue, monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount.doubleValue, initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
+                let dcaResult = this.dcaService.calculate(asset, initialInvestmentAmount.doubleValue, monthlyDollarCostAveragingAmount.doubleValue, initialDateOfInvestmentIndex)
                 
-                let presentation = this.calculatorPresenter.getPresentation(result: result)
+                let presentation = this.calculatorPresenter.getPresentation(result: dcaResult)
                 /// Update UI
                 this.currentValueLabel.backgroundColor = presentation.currentValueLabelBackgroundColor
                 this.currentValueLabel.text = presentation.currentValue
