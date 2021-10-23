@@ -31,8 +31,7 @@ struct DCAService {
                    monthlyDollarCostAveragingAmount: Double,
                    initialDateOfInvestmentIndex: Int) -> DCAResult{
         
-        let investmentAmount = getInvestmentAmount(initialInvestmentAmount: initialInvestmentAmount,              monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount,
-                                                   initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
+        let investmentAmount = getInvestmentAmount(initialInvestmentAmount, monthlyDollarCostAveragingAmount, initialDateOfInvestmentIndex)
         
         let latestSharePrice = getLatestSharedPrice(of: asset)
         
@@ -61,9 +60,9 @@ struct DCAService {
     ///   - monthlyDollarCostAveragingAmount: monthly dollar cost averaging  provided by user
     ///   - initialDateOfInvestmentIndex: initial date of investment provided by user converted to index
     /// - Returns: Investment amount
-    func getInvestmentAmount(initialInvestmentAmount: Double,
-                                     monthlyDollarCostAveragingAmount: Double,
-                                     initialDateOfInvestmentIndex: Int) -> Double {
+    func getInvestmentAmount(_ initialInvestmentAmount: Double,
+                             _ monthlyDollarCostAveragingAmount: Double,
+                             _ initialDateOfInvestmentIndex: Int) -> Double {
         var totalAmount = Double()
         totalAmount += initialInvestmentAmount
         let dollarCostAveragingAmount = initialDateOfInvestmentIndex.doubleValue * monthlyDollarCostAveragingAmount
