@@ -60,7 +60,7 @@ class DateSelectionTableViewCell: UITableViewCell {
     
     private enum MonthsAgoString: String, CustomStringConvertible {
         case oneMonth = "1 개월 전"
-        case nMonth = "개월 전"
+        case nMonths = "개월 전"
         case recent = "방금 투자"
         
         var description: String {
@@ -76,7 +76,7 @@ class DateSelectionTableViewCell: UITableViewCell {
         if index == 1 {
             monthsAgoLabel.text = "\(MonthsAgoString.oneMonth)"
         } else if index > 1{
-            monthsAgoLabel.text = "\(index) \(MonthsAgoString.nMonth)"
+            monthsAgoLabel.text = "\(index) \(MonthsAgoString.nMonths)"
         } else {
             monthsAgoLabel.text = "\(MonthsAgoString.recent)"
         }
