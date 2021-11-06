@@ -58,17 +58,27 @@ class DateSelectionTableViewCell: UITableViewCell {
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var monthsAgoLabel: UILabel!
     
+    private enum MonthsAgoString: String, CustomStringConvertible {
+        case oneMonth = "1 개월 전"
+        case nMonth = "개월 전"
+        case recent = "방금 투자"
+        
+        var description: String {
+            return rawValue
+        }
+    }
+    
     func configure(with monthData: MonthData, with index: Int, isSelected: Bool) {
         monthLabel.text = monthData.date.MMYYFormat
         /// Checkmark appears on selected cell
         accessoryType = isSelected ? .checkmark : .none
         /// Updates monthsAgoLabel text by index
         if index == 1 {
-            monthsAgoLabel.text = "1 month ago"
+            monthsAgoLabel.text = "\(MonthsAgoString.oneMonth)"
         } else if index > 1{
-            monthsAgoLabel.text = "\(index) months ago"
+            monthsAgoLabel.text = "\(index) + \(MonthsAgoString.nMonth)"
         } else {
-            monthsAgoLabel.text = "Just invested"
+            monthsAgoLabel.text = "\(MonthsAgoString.recent)"
         }
     }
 }
