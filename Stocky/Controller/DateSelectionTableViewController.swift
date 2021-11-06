@@ -76,7 +76,7 @@ class DateSelectionTableViewCell: UITableViewCell {
         if index == 1 {
             monthsAgoLabel.text = "\(MonthsAgoString.oneMonth)"
         } else if index > 1{
-            monthsAgoLabel.text = "\(index) + \(MonthsAgoString.nMonth)"
+            monthsAgoLabel.text = "\(index) \(MonthsAgoString.nMonth)"
         } else {
             monthsAgoLabel.text = "\(MonthsAgoString.recent)"
         }
