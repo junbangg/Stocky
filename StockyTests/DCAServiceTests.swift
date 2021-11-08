@@ -56,10 +56,10 @@ class DCAServiceTests: XCTestCase {
         let initialDateOfInvestmentIndex: Int = 5
         let asset = buildProfitableAsset()
         //when
-        let result = sut.calculate(asset: asset,
-                                   initialInvestmentAmount: initialInvestmentAmount,
-                                   monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount,
-                                   initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
+        let result = sut.calculateDCA(asset,
+                                      initialInvestmentAmount,
+                                      monthlyDollarCostAveragingAmount,
+                                      initialDateOfInvestmentIndex)
         //then
         // Initial Investment : $5000
         // DCA : $1500 x 5 = $7500
@@ -89,10 +89,10 @@ class DCAServiceTests: XCTestCase {
         let initialDateOfInvestmentIndex: Int = 3
         let asset = buildProfitableAsset()
         //when
-        let result = sut.calculate(asset: asset,
-                                   initialInvestmentAmount: initialInvestmentAmount,
-                                   monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount,
-                                   initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
+        let result = sut.calculateDCA(asset,
+                                      initialInvestmentAmount,
+                                      monthlyDollarCostAveragingAmount,
+                                      initialDateOfInvestmentIndex)
         //then
         // Initial Investment : $5000
         // DCA : $0 x 3 = $0
@@ -127,10 +127,10 @@ class DCAServiceTests: XCTestCase {
         let initialDateOfInvestmentIndex: Int = 5
         let asset = buildNonProfitableAsset()
         //when
-        let result = sut.calculate(asset: asset,
-                                   initialInvestmentAmount: initialInvestmentAmount,
-                                   monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount,
-                                   initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
+        let result = sut.calculateDCA(asset,
+                                      initialInvestmentAmount,
+                                      monthlyDollarCostAveragingAmount,
+                                      initialDateOfInvestmentIndex)
         //then
         // Initial Investment : $5000
         // DCA : $1500 x 5 = $7500
@@ -164,10 +164,10 @@ class DCAServiceTests: XCTestCase {
         let initialDateOfInvestmentIndex: Int = 3
         let asset = buildNonProfitableAsset()
         //when
-        let result = sut.calculate(asset: asset,
-                                   initialInvestmentAmount: initialInvestmentAmount,
-                                   monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount,
-                                   initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
+        let result = sut.calculateDCA(asset,
+                                      initialInvestmentAmount,
+                                      monthlyDollarCostAveragingAmount,
+                                      initialDateOfInvestmentIndex)
         //then
         // Initial Investment : $5000
         // DCA : $0 x 3 = $0
@@ -186,7 +186,7 @@ class DCAServiceTests: XCTestCase {
         // Gains = current value - invesment amount = $3666.6666 - 5000 = -1333.333
         /// Yield Formula
         // Yield = gains / investment amount : -1333.333 / 5000 = -0.26666
-
+        
         XCTAssertEqual(result.currentValue, 3666.666, accuracy: 0.1)
         XCTAssertEqual(result.gain, -1333.333, accuracy: 0.1)
         XCTAssertEqual(result.yield, -0.26666, accuracy: 0.0001)
@@ -197,11 +197,11 @@ class DCAServiceTests: XCTestCase {
         let searchResult = buildSearchResult()
         let meta = buildMeta()
         let timeSeries: [String: TimeSeriesData] = ["2008-01-29": TimeSeriesData(open: "100", close: "110", adjustedClose: "110"),
-                                              "2008-02-29": TimeSeriesData(open: "110", close: "120", adjustedClose: "120"),
-                                              "2008-03-29": TimeSeriesData(open: "120", close: "130", adjustedClose: "130"),
-                                              "2008-04-29": TimeSeriesData(open: "130", close: "140", adjustedClose: "140"),
-                                              "2008-05-29": TimeSeriesData(open: "140", close: "150", adjustedClose: "150"),
-                                              "2008-06-29": TimeSeriesData(open: "150", close: "160", adjustedClose: "160")]
+                                                    "2008-02-29": TimeSeriesData(open: "110", close: "120", adjustedClose: "120"),
+                                                    "2008-03-29": TimeSeriesData(open: "120", close: "130", adjustedClose: "130"),
+                                                    "2008-04-29": TimeSeriesData(open: "130", close: "140", adjustedClose: "140"),
+                                                    "2008-05-29": TimeSeriesData(open: "140", close: "150", adjustedClose: "150"),
+                                                    "2008-06-29": TimeSeriesData(open: "150", close: "160", adjustedClose: "160")]
         
         let timeSeriesMonthlyAdjusted = TimeSeries(meta: meta, timeSeries: timeSeries)
         return Asset(searchResult: searchResult, timeSeries: timeSeriesMonthlyAdjusted)
@@ -211,11 +211,11 @@ class DCAServiceTests: XCTestCase {
         let searchResult = buildSearchResult()
         let meta = buildMeta()
         let timeSeries: [String: TimeSeriesData] = ["2021-01-25": TimeSeriesData(open: "170", close: "160", adjustedClose: "160"),
-                                              "2021-02-25": TimeSeriesData(open: "160", close: "150", adjustedClose: "150"),
-                                              "2021-03-25": TimeSeriesData(open: "150", close: "140", adjustedClose: "140"),
-                                              "2021-04-25": TimeSeriesData(open: "140", close: "130", adjustedClose: "130"),
-                                              "2021-05-25": TimeSeriesData(open: "130", close: "120", adjustedClose: "120"),
-                                              "2021-06-25": TimeSeriesData(open: "120", close: "110", adjustedClose: "110")]
+                                                    "2021-02-25": TimeSeriesData(open: "160", close: "150", adjustedClose: "150"),
+                                                    "2021-03-25": TimeSeriesData(open: "150", close: "140", adjustedClose: "140"),
+                                                    "2021-04-25": TimeSeriesData(open: "140", close: "130", adjustedClose: "130"),
+                                                    "2021-05-25": TimeSeriesData(open: "130", close: "120", adjustedClose: "120"),
+                                                    "2021-06-25": TimeSeriesData(open: "120", close: "110", adjustedClose: "110")]
         
         let timeSeriesMonthlyAdjusted = TimeSeries(meta: meta, timeSeries: timeSeries)
         
@@ -237,7 +237,10 @@ class DCAServiceTests: XCTestCase {
         let monthlyDollarCostAveragingAmount: Double  = 300
         let initialDateOfInvestmentIndex: Int = 4 // 5 months ago
         // when
-        let investmentAmount = sut.getInvestmentAmount(initialInvestmentAmount: initialInvestmentAmount, monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount, initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
+        let investmentAmount = sut.getInvestmentAmount(initialInvestmentAmount,
+                                                       monthlyDollarCostAveragingAmount,
+                                                       initialDateOfInvestmentIndex)
+
         // expected
         XCTAssertEqual(investmentAmount, 1700)
         // Initial Amount : $ 500
@@ -251,7 +254,9 @@ class DCAServiceTests: XCTestCase {
         let monthlyDollarCostAveragingAmount: Double  = 0
         let initialDateOfInvestmentIndex: Int = 4 // 5 months ago
         // when
-        let investmentAmount = sut.getInvestmentAmount(initialInvestmentAmount: initialInvestmentAmount, monthlyDollarCostAveragingAmount: monthlyDollarCostAveragingAmount, initialDateOfInvestmentIndex: initialDateOfInvestmentIndex)
+        let investmentAmount = sut.getInvestmentAmount(initialInvestmentAmount,
+                                                       monthlyDollarCostAveragingAmount,
+                                                       initialDateOfInvestmentIndex)
         // expected
         XCTAssertEqual(investmentAmount, 500)
         // Initial Amount : $ 500
