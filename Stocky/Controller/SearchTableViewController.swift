@@ -18,6 +18,15 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
         case greeting
         case search
     }
+    
+    private enum UIStrings: String, CustomStringConvertible {
+        case searchBarPlaceholder = "e.g. Apple, AAPL"
+        case search = "검색"
+            
+        var description: String {
+            return rawValue
+        }
+    }
     // MARK: - UISearchController
     //code to ensure that the app compiles at all times
     /// Instance of UISearchController used to handle users search
@@ -26,7 +35,7 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
         searchController.searchResultsUpdater = self
         searchController.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "e.g. Apple, AAPL"
+        searchController.searchBar.placeholder = "\(UIStrings.searchBarPlaceholder)"
         //        searchController.searchBar.placeholder = "회사 이름 또는 종목코드를 검색하세요"
         searchController.searchBar.autocapitalizationType = .allCharacters
         return searchController
@@ -50,7 +59,7 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
     //MARK: - Navigation Bar
     private func setupNavigationBar() {
         navigationItem.searchController = searchController
-        navigationItem.title = "검색"
+        navigationItem.title = "\(UIStrings.search)"
     }
     //MARK: - Table View methods
     private func setupTableView() {
