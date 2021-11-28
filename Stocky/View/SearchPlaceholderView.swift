@@ -6,7 +6,7 @@
 //
 import UIKit
 ///Placeholder view for welcome stage of app (before the user touches search)
-class WelcomeView: UIView {
+final class WelcomeView: UIView {
     /// Image view for app logo
     private let appLogo: UIImageView = {
         let image = UIImage(named: "stocky")

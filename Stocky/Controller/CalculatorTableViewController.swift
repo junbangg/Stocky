@@ -9,7 +9,7 @@ import Combine
 import Charts
 
 /// TODO : After user finished entering values, immediately change focus to the next input for better UX
-class CalculatorTableViewController: UITableViewController {
+final class CalculatorTableViewController: UITableViewController {
     
     /// Segue identifiers
     private enum Segue {

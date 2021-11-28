@@ -9,7 +9,7 @@ import UIKit
 
 /// UITableViewController for date selection
 
-class DateSelectionTableViewController: UITableViewController {
+final class DateSelectionTableViewController: UITableViewController {
     //MARK: -  Properties
     var timeSeries: TimeSeries?
     var selectedIndex: Int?

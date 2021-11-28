@@ -7,7 +7,7 @@
 
 import UIKit
 /// Custom Tableview cell for Search Tableview
-class SearchTableViewCell: UITableViewCell {
+final class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var assetNameLabel: UILabel!
     @IBOutlet weak var assetSymbolLabel: UILabel!
     @IBOutlet weak var assetTypeLabel: UILabel!

@@ -12,7 +12,7 @@ import Combine
 /**
  UIViewController to present Chart
  */
-class DataChartViewController: UIViewController, ChartViewDelegate {
+final class DataChartViewController: UIViewController, ChartViewDelegate {
     var timeSeries: TimeSeries?
     var selectedIndex: Int?
     //MARK: - Linechart View
