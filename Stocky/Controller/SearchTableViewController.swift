@@ -20,11 +20,16 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
     }
     
     private enum UIStrings: String, CustomStringConvertible {
-        case searchBarPlaceholder = "e.g. Apple, AAPL"
-        case search = "검색"
+        case searchBarPlaceholder
+        case search
             
         var description: String {
-            return rawValue
+            switch self {
+            case .searchBarPlaceholder:
+                return "e.g. Apple, AAPL"
+            case .search:
+                return "검색"
+            }
         }
     }
     // MARK: - UISearchController
