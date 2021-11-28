@@ -32,6 +32,17 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
             }
         }
     }
+    
+    private enum SegueIdentifiers: String, CustomStringConvertible {
+        case showCalculator
+        
+        var description: String {
+            switch self {
+            case .showCalculator:
+                return "showCalculator"
+            }
+        }
+    }
     // MARK: - UISearchController
     //code to ensure that the app compiles at all times
     /// Instance of UISearchController used to handle users search
@@ -148,14 +159,14 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
             /// Creates an Asset instance
             let asset = Asset(searchResult: searchResult , timeSeries: timeSeries)
             /// go to calculator view
-            self?.performSegue(withIdentifier: "showCalculator", sender: asset)
+            self?.performSegue(withIdentifier: "\(SegueIdentifiers.showCalculator)", sender: asset)
             self?.searchController.searchBar.text = nil
         }.store(in: &subscribers)
     }
     // MARK: - Segue -> CalculatorTableView
     /// Segue function to navigate to CalculatorTableViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showCalculator",
+        if segue.identifier == "\(SegueIdentifiers.showCalculator)",
            let destination = segue.destination as? CalculatorTableViewController,
            let asset = sender as? Asset {
             destination.asset = asset
