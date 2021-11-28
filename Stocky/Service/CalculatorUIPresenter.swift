@@ -7,11 +7,11 @@
 
 import UIKit
 /// More elegant way for updating data presented in CalculatorTableViewController
-struct CalculatorPresenter {
+struct CalculatorUIPresenter {
     /// Function to convert DCAResult data to data presentable in CalculatorTableViewController
     /// - Parameter result: DCAResult with data prepared for presentation
     /// - Returns: CalculatorPresentation
-    func getPresentation(result: DCAResult) -> CalculatorPresentation {
+    func getPresentation(result: DCAResult) -> CalculatorUIPresentation {
         
         let isProfitable = result.isProtiable == true
         let gainSymbol = isProfitable ? "+" : ""
@@ -28,7 +28,7 @@ struct CalculatorPresenter {
 }
 
 /// Final object before presentation
-struct CalculatorPresentation {
+struct CalculatorUIPresentation {
     let currentValueLabelBackgroundColor: UIColor
     let currentValue: String
     let investmentAmount: String

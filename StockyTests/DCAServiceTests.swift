@@ -28,7 +28,7 @@ class DCAServiceTests: XCTestCase {
     }
     /**
      
-     Test Cases
+     Test Caseds
      - 1. asset = winning | dca = true => positive gains
      - 2. asset = winning | dca = false => positive gains
      - 3. asset = losing | dca = true => negative gains

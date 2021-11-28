@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 /// Table View View Controller for Search
-class SearchTableViewController: UITableViewController, UIAnimatable {
+final class SearchTableViewController: UITableViewController, UIAnimatable {
     /**
      enumeration to divide View stages.. used to distinguish between when a search has been conducted or not
         - greeting : before the user selects search bar
