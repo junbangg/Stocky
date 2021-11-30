@@ -15,6 +15,7 @@ struct MonthData {
 struct TimeSeries: Decodable {
     let meta: Meta
     let timeSeries: [String: TimeSeriesData]
+    
     enum CodingKeys: String, CodingKey {
         case meta = "Meta Data"
         case timeSeries = "Monthly Adjusted Time Series"
@@ -31,7 +32,6 @@ struct TimeSeries: Decodable {
                   let adjustedOpen = calculateAdjustedOpen(with: data),
                   let adjustedClose = data.adjustedClose.convertToDouble() else { return [] }
             let monthData = MonthData(date: date, adjustedOpen: adjustedOpen, adjustedClose: adjustedClose)
-            
             monthDataArray.append(monthData)
         }
         
