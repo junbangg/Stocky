@@ -22,57 +22,57 @@ final class CalculatorPresenterTests: XCTestCase {
     }
     //MARK: - Test for Annual Return Label
     private func testAnnualReturnLabelTextColor_givenResultIsProfitable_expectSystemGreen() throws {
-        let mockResult = DCAResult.init(currentValue: 0,
+        let result = DCAResult.init(currentValue: 0,
                                     investmentAmount: 0,
                                     gain: 0,
                                     yield: 0,
                                     annualReturn: 0,
                                     isProtiable: true)
-        let presentation = sut.getPresentation(result: mockResult)
+        let presentation = sut.getPresentation(result: result)
         XCTAssertEqual(presentation.annualReturnLabelTextColor, .systemGreen)
     }
     private func testAnnualReturnLabelTextColor_givenResultIsNonProfitable_expectSystemRed() throws {
-        let mockResult = DCAResult.init(currentValue: 0,
+        let result = DCAResult.init(currentValue: 0,
                                     investmentAmount: 0,
                                     gain: 0,
                                     yield: 0,
                                     annualReturn: 0,
                                     isProtiable: false)
-        let presentation = sut.getPresentation(result: mockResult)
+        let presentation = sut.getPresentation(result: result)
         XCTAssertEqual(presentation.annualReturnLabelTextColor, .systemRed)
     }
     //MARK: - Test for Yield Label
     private func testYieldLabelTextColor_givenResultIsProfitable_expectSystemGreen() throws {
-        let mockResult = DCAResult.init(currentValue: 0,
+        let result = DCAResult.init(currentValue: 0,
                                     investmentAmount: 0,
                                     gain: 0,
                                     yield: 0,
                                     annualReturn: 0,
                                     isProtiable: true)
-        let presentation = sut.getPresentation(result: mockResult)
+        let presentation = sut.getPresentation(result: result)
         XCTAssertEqual(presentation.yieldLabelTextColor, .systemGreen)
     }
     private func testYieldLabelTextColor_givenResultIsNonProfitable_expectSystemRed() throws {
-        let mockResult = DCAResult.init(currentValue: 0,
+        let result = DCAResult.init(currentValue: 0,
                                     investmentAmount: 0,
                                     gain: 0,
                                     yield: 0,
                                     annualReturn: 0,
                                     isProtiable: false)
-        let presentation = sut.getPresentation(result: mockResult)
+        let presentation = sut.getPresentation(result: result)
         XCTAssertEqual(presentation.yieldLabelTextColor, .systemRed)
     }
     //MARK: - Test for Yield Label
     private func testYieldLabel_expectBrackets() throws {
         let first: Character = "("
         let last: Character = ")"
-        let mockResult = DCAResult.init(currentValue: 0,
+        let result = DCAResult.init(currentValue: 0,
                                     investmentAmount: 0,
                                     gain: 0,
                                     yield: 0.25,
                                     annualReturn: 0,
                                     isProtiable: false)
-        let presentation = sut.getPresentation(result: mockResult)
+        let presentation = sut.getPresentation(result: result)
         XCTAssertEqual(presentation.yield.first, first)
         XCTAssertEqual(presentation.yield.last, last)
     }
