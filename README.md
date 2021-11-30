@@ -28,16 +28,16 @@
 ## 홈 화면
 ![alt text](https://github.com/junbangg/Stocky/blob/main/img/1.png?raw=true)
 
-![searchResult](https://user-images.githubusercontent.com/33091784/144051574-af8e73e7-36b0-44bd-af66-c71ea7266d20.gif)
-
-
-## 검색 화면
-![alt text](https://github.com/junbangg/Stocky/blob/main/img/2.png?raw=true)
+## 검색 기능
 
 ![search](https://user-images.githubusercontent.com/33091784/144051586-9b69e49f-5289-41a9-9c4f-ac275d08b847.gif)
 
+## 검색 화면
+![alt text](https://github.com/junbangg/Stocky/blob/main/img/2.png?raw=true)
+![searchResult](https://user-images.githubusercontent.com/33091784/144051574-af8e73e7-36b0-44bd-af66-c71ea7266d20.gif)
 
-## 검색 결과
+
+## 계산 기능
 ![alt text](https://github.com/junbangg/Stocky/blob/main/img/3.png?raw=true)
 
 ![calculator](https://user-images.githubusercontent.com/33091784/144051604-76c144a8-182f-4720-ab93-be36dad21957.gif)
