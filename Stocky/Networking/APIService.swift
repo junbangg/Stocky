@@ -61,7 +61,6 @@ struct APIService {
         
         switch urlResult {
         case .success(let url):
-            /// Performs Networking
             return URLSession.shared.dataTaskPublisher(for: url)
                 .map({$0.data})
                 .decode(type: TimeSeries.self, decoder: JSONDecoder())
