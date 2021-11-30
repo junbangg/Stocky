@@ -100,7 +100,9 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
         $searchQuery
             .debounce(for: .milliseconds(750), scheduler: RunLoop.main)
             .sink { [unowned self] (searchQuery) in
-                guard !searchQuery.isEmpty else {return}
+                guard !searchQuery.isEmpty else {
+                    return
+                }
                 showLoadingAnimation()
                 self.apiService.fetchPreviewData(with: searchQuery).sink { (completion) in
                     dismissLoadingAnimation()
@@ -158,9 +160,12 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
 extension SearchTableViewController: UISearchResultsUpdating, UISearchControllerDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchQuery = searchController.searchBar.text,
-              !searchQuery.isEmpty else { return }
+              !searchQuery.isEmpty else {
+            return
+        }
         self.searchQuery = searchQuery
     }
+    
     func willPresentSearchController(_ searchController: UISearchController) {
         stage = .search
     }

@@ -30,7 +30,9 @@ struct TimeSeries: Decodable {
             dateFormatter.dateFormat = "yyyy-MM-dd"
             guard let date = dateFormatter.date(from: dateString),
                   let adjustedOpen = calculateAdjustedOpen(with: data),
-                  let adjustedClose = data.adjustedClose.convertToDouble() else { return [] }
+                  let adjustedClose = data.adjustedClose.convertToDouble() else {
+                return []
+            }
             let monthData = MonthData(date: date, adjustedOpen: adjustedOpen, adjustedClose: adjustedClose)
             monthDataArray.append(monthData)
         }
@@ -41,7 +43,9 @@ struct TimeSeries: Decodable {
     private func calculateAdjustedOpen(with timeSeriesData: TimeSeriesData) -> Double? {
         guard let open = timeSeriesData.open.convertToDouble(),
               let adjustedClose = timeSeriesData.adjustedClose.convertToDouble(),
-              let close = timeSeriesData.close.convertToDouble() else { return nil }
+              let close = timeSeriesData.close.convertToDouble() else {
+            return nil
+        }
 
         return open * adjustedClose / close
     }

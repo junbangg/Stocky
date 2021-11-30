@@ -79,7 +79,9 @@ final class CalculatorTableViewController: UITableViewController {
     //MARK: - Observe Form
     private func observeInputs() {
         $initialDateOfInvestmentIndex.sink { [weak self] (index) in
-            guard let index = index else { return }
+            guard let index = index else {
+                return
+            }
             self?.dateSlider.value = index.floatValue
             if let dateString = self?.asset?.timeSeries.getMonthData(isReversed: true)[index].date.MMYYFormat {
                 self?.initialDateOfInvestmentTextField.text = dateString
@@ -104,13 +106,16 @@ final class CalculatorTableViewController: UITableViewController {
                 guard let initialInvestmentAmount = initialInvestmentAmount,
                       let monthlyDollarCostAveragingAmount = monthlyDollarCostAveragingAmount,
                       let initialDateOfInvestmentIndex = initialDateOfInvestmentIndex,
-                      let asset = self?.asset else { return }
+                      let asset = self?.asset else {
+                    return
+                }
                 
-                guard let this = self else { return }
+                guard let this = self else {
+                    return
+                }
                 let dcaResult = this.dcaService.calculateDCA(asset, initialInvestmentAmount.doubleValue, monthlyDollarCostAveragingAmount.doubleValue, initialDateOfInvestmentIndex)
                 
                 let presentation = this.calculatorPresenter.getPresentation(result: dcaResult)
-                
                 this.currentValueLabel.backgroundColor = presentation.currentValueLabelBackgroundColor
                 this.currentValueLabel.text = presentation.currentValue
                 this.investmentAmountLabel.text = presentation.investmentAmount
@@ -141,7 +146,9 @@ final class CalculatorTableViewController: UITableViewController {
     }
     //MARK: - Handle Date Selection
     private func handleDateSelection(index: Int) {
-        guard navigationController?.visibleViewController is DateSelectionTableViewController else { return }
+        guard navigationController?.visibleViewController is DateSelectionTableViewController else {
+            return
+        }
         navigationController?.popViewController(animated: true)
         if let monthDatas = asset?.timeSeries.getMonthData(isReversed: true) {
             initialDateOfInvestmentIndex = index
