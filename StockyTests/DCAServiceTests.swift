@@ -210,8 +210,8 @@ final class DCAServiceTests: XCTestCase {
                                                     "2008-04-29": TimeSeriesData(open: "130", close: "140", adjustedClose: "140"),
                                                     "2008-05-29": TimeSeriesData(open: "140", close: "150", adjustedClose: "150"),
                                                     "2008-06-29": TimeSeriesData(open: "150", close: "160", adjustedClose: "160")]
-        
         let timeSeriesMonthlyAdjusted = TimeSeries(meta: meta, timeSeries: timeSeries)
+        
         return Asset(searchResult: searchResult, timeSeries: timeSeriesMonthlyAdjusted)
     }
     
@@ -224,7 +224,6 @@ final class DCAServiceTests: XCTestCase {
                                                     "2021-04-25": TimeSeriesData(open: "140", close: "130", adjustedClose: "130"),
                                                     "2021-05-25": TimeSeriesData(open: "130", close: "120", adjustedClose: "120"),
                                                     "2021-06-25": TimeSeriesData(open: "120", close: "110", adjustedClose: "110")]
-        
         let timeSeriesMonthlyAdjusted = TimeSeries(meta: meta, timeSeries: timeSeries)
         
         return Asset(searchResult: searchResult, timeSeries: timeSeriesMonthlyAdjusted)
