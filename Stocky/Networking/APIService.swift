@@ -19,6 +19,8 @@ struct APIService {
     
     private let apiKeys = ["VWG848WN4TOAHX1P", "R4QEF20WS1UNXOP2", "3YVKJCWZ41BU608T", "Y9PIZ80TZ0XV3HVA"]
     
+    // TODO: keyParseResult 메서드로 묶어서 분리
+    // TODO: urlstring 다른 방법으로 관리
     func fetchPreviewData(with key: String) -> AnyPublisher<SearchResults, Error> {
         let keyParseResult = parse(query: key)
         var keywords = String()
@@ -45,6 +47,8 @@ struct APIService {
         }
     }
     
+    // TODO: keyParseResult 메서드로 묶어서 분리
+    // TODO: urlstring 다른 방법으로 관리
     func fetchTimeSeriesData(with key: String) -> AnyPublisher<TimeSeries, Error> {
         let keyParseResult = parse(query: key)
         var symbol = String()
