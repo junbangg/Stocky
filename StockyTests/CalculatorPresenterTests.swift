@@ -6,6 +6,7 @@
 //
 import XCTest
 @testable import Stocky
+
 class CalculatorPresenterTests: XCTestCase {
     //MARK: - Setup code
     var sut: UIPresentable!
