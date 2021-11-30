@@ -6,13 +6,11 @@
 //
 
 import UIKit
-/// Custom Tableview cell for Search Tableview
 final class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var assetNameLabel: UILabel!
     @IBOutlet weak var assetSymbolLabel: UILabel!
     @IBOutlet weak var assetTypeLabel: UILabel!
-    /// Function to configure custom cell
-    /// - Parameter searchResult: SearchResult that contains data to display search results
+    
     func configure(with searchResult: SearchResult) {
         assetNameLabel.text = searchResult.name
         assetSymbolLabel.text = searchResult.symbol

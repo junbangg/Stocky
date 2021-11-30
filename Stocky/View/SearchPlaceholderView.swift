@@ -5,9 +5,8 @@
 //  Created by Jun suk Bang on 2021/01/17.
 //
 import UIKit
-///Placeholder view for welcome stage of app (before the user touches search)
+
 final class WelcomeView: UIView {
-    /// Image view for app logo
     private let appLogo: UIImageView = {
         let image = UIImage(named: "stocky")
         let imageView = UIImageView()
@@ -16,7 +15,7 @@ final class WelcomeView: UIView {
         
         return imageView
     }()
-    /// UILabel to accompany app logo
+    
     private let greeting: UILabel = {
         let label = UILabel()
         label.text = "원하는 종목의 수익성을 계산해보세요!"
@@ -26,7 +25,7 @@ final class WelcomeView: UIView {
         
         return label
     }()
-    /// Stack view is used to stack appLogo image and greeting label
+    
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [appLogo, greeting])
         stackView.axis = .vertical
@@ -35,7 +34,7 @@ final class WelcomeView: UIView {
         
         return stackView
     }()
-    ///override init Is used instead of viewDidLoad when View is created programmatically
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()

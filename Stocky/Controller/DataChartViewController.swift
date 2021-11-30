@@ -9,14 +9,11 @@ import UIKit
 import TinyConstraints
 import Charts
 import Combine
-/**
- UIViewController to present Chart
- */
+
 final class DataChartViewController: UIViewController, ChartViewDelegate {
     var timeSeries: TimeSeries?
     var selectedIndex: Int?
     //MARK: - Linechart View
-    /// Creates Linechartview
     lazy var lineChartView: LineChartView = {
         let chartView = LineChartView()
         chartView.backgroundColor = .themeGreenShade
