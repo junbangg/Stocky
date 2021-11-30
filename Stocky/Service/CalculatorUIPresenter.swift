@@ -7,7 +7,7 @@
 
 import UIKit
 /// More elegant way for updating data presented in CalculatorTableViewController
-struct CalculatorUIPresenter {
+struct CalculatorUIPresenter: UIPresentable {
     /// Function to convert DCAResult data to data presentable in CalculatorTableViewController
     /// - Parameter result: DCAResult with data prepared for presentation
     /// - Returns: CalculatorPresentation

@@ -44,7 +44,7 @@ final class CalculatorTableViewController: UITableViewController {
     //    @Published var closingPrices :
     private var dcaService = DCAService()
     private var subscribers = Set<AnyCancellable>()
-    private let calculatorPresenter = CalculatorUIPresenter()
+    private let calculatorPresenter: UIPresentable! = CalculatorUIPresenter()
     
     //MARK: - viewDidLoad()
     override func viewDidLoad() {
