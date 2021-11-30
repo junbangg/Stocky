@@ -12,7 +12,6 @@ struct CalculatorUIPresenter: UIPresentable {
     /// - Parameter result: DCAResult with data prepared for presentation
     /// - Returns: CalculatorPresentation
     func getPresentation(result: DCAResult) -> CalculatorUIPresentation {
-        
         let isProfitable = result.isProtiable == true
         let gainSymbol = isProfitable ? "+" : ""
         

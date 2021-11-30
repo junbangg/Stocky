@@ -62,10 +62,8 @@ final class DataChartViewController: UIViewController, ChartViewDelegate {
     /// Sets charts data and style configurations
     func setData() {
         let priceData = LineChartDataSet(entries: fetchData(), label: "수정종가")
-        
         priceData.mode = .cubicBezier
         priceData.circleRadius = 3
-        
         priceData.lineWidth = 3
         priceData.setColor(.white)
         priceData.fill = Fill(color: .white)
@@ -101,6 +99,7 @@ final class DataChartViewController: UIViewController, ChartViewDelegate {
             chartValues.append(chartData)
             x += 1
         }
+        
         return chartValues
     }
 }
@@ -117,6 +116,7 @@ class DateAxisValueFormatter: NSObject, IAxisValueFormatter {
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         let secondsPerDay = 24.0 * 3600.0
         let date = Date(timeIntervalSince1970: value * secondsPerDay)
+        
         return dateFormatter.string(from: date)
     }
 }

@@ -8,7 +8,6 @@
 import UIKit
 
 /// UITableViewController for date selection
-
 final class DateSelectionTableViewController: UITableViewController {
     //MARK: -  Properties
     var timeSeries: TimeSeries?
@@ -44,6 +43,7 @@ extension DateSelectionTableViewController {
         let index = indexPath.item
         let isSelected = index == selectedIndex
         cell.configure(with: monthData, with: index, isSelected: isSelected)
+        
         return cell
     }
     /// Selected row

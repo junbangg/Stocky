@@ -69,14 +69,13 @@ struct TimeSeries: Decodable {
             
             monthDataArray.append(monthData)
         }
+        
         return monthDataArray
     }
-    
     /// Function to compute adjustedOpen price
     /// - Parameter timeSeriesData: TSData type with price data
     /// - Returns: Adjusted open price
     private func calculateAdjustedOpen(with timeSeriesData: TimeSeriesData) -> Double? {
-        
         guard let open = timeSeriesData.open.convertToDouble(),
               let adjustedClose = timeSeriesData.adjustedClose.convertToDouble(),
               let close = timeSeriesData.close.convertToDouble() else { return nil }

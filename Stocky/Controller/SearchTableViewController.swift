@@ -52,8 +52,8 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
         searchController.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "\(UIStrings.searchBarPlaceholder)"
-        //        searchController.searchBar.placeholder = "회사 이름 또는 종목코드를 검색하세요"
         searchController.searchBar.autocapitalizationType = .allCharacters
+        
         return searchController
     }()
     /// Instance of APIService for networking with API
@@ -93,6 +93,7 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
             let searchResult = searchResults.items[indexPath.row]
             cell.configure(with: searchResult)
         }
+        
         return cell
     }
     /// Cell Selection
@@ -179,7 +180,6 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
 ///     - UISearchResultsUpdating
 ///     - UISearchControllerDelegate
 extension SearchTableViewController: UISearchResultsUpdating, UISearchControllerDelegate {
-    
     /// updates the searchQuery Publisher
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchQuery = searchController.searchBar.text,

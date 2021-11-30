@@ -13,6 +13,7 @@ final class WelcomeView: UIView {
         let imageView = UIImageView()
         imageView.image = image
         imageView.contentMode = .scaleAspectFit
+        
         return imageView
     }()
     /// UILabel to accompany app logo
@@ -22,6 +23,7 @@ final class WelcomeView: UIView {
         label.font = UIFont(name: "AvenirNext-Medium", size: 20)!
         label.numberOfLines = 0
         label.textAlignment = .center
+        
         return label
     }()
     /// Stack view is used to stack appLogo image and greeting label
@@ -30,6 +32,7 @@ final class WelcomeView: UIView {
         stackView.axis = .vertical
         stackView.spacing = 24
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         return stackView
     }()
     ///override init Is used instead of viewDidLoad when View is created programmatically
@@ -37,6 +40,7 @@ final class WelcomeView: UIView {
         super.init(frame: frame)
         setupViews()
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
