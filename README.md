@@ -34,7 +34,7 @@
 ## 검색 결과
 ![searchResult](https://user-images.githubusercontent.com/33091784/144051574-af8e73e7-36b0-44bd-af66-c71ea7266d20.gif)
 
-
 ## 계산 기능
-![calculator](https://user-images.githubusercontent.com/33091784/144051604-76c144a8-182f-4720-ab93-be36dad21957.gif)
+![calculator](https://user-images.githubusercontent.com/33091784/144052656-d1f13703-d06e-485e-84c5-1c576dc49499.gif)
+
 
