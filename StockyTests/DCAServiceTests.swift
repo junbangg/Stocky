@@ -11,7 +11,6 @@ import XCTest
 @testable import Stocky
 
 final class DCAServiceTests: XCTestCase {
-    //MARK: - Setup code
     private var sut: DCAService!
     
     override func setUpWithError() throws {
@@ -41,7 +40,9 @@ final class DCAServiceTests: XCTestCase {
      
      - When DCA is not used: value is set to 0
      */
+    
     //MARK: - Tests for DCA calculation
+    
     private func testResult_givenProfitableAssetAndDCAIsUsed_expectPositiveGains() {
         let initialInvestmentAmount: Double = 5000
         let monthlyDollarCostAveragingAmount: Double = 1500
@@ -172,6 +173,7 @@ final class DCAServiceTests: XCTestCase {
     }
     
     //MARK: - Tests for investment amount
+    
     private func testInvestmentAmount_whenDCAIsUsed_expectResult() {
         let initialInvestmentAmount: Double = 500
         let monthlyDollarCostAveragingAmount: Double  = 300
@@ -201,6 +203,7 @@ final class DCAServiceTests: XCTestCase {
     }
     
     //MARK: - Methods for building test data
+    
     private func createProfitableAsset() -> Asset {
         let searchResult = createSearchResult()
         let meta = createMeta()

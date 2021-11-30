@@ -7,7 +7,6 @@
 import Foundation
 
 extension Double {
-    
     private var twoDecimalFormatString: String {
         return String(format: "%.2f", self)
     }

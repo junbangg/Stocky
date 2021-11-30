@@ -13,7 +13,9 @@ import Combine
 final class DataChartViewController: UIViewController, ChartViewDelegate {
     var timeSeries: TimeSeries?
     var selectedIndex: Int?
+    
     //MARK: - Linechart View
+    
     lazy var lineChartView: LineChartView = {
         let chartView = LineChartView()
         chartView.backgroundColor = .themeGreenShade
@@ -37,7 +39,9 @@ final class DataChartViewController: UIViewController, ChartViewDelegate {
         
         return chartView
     }()
+    
     //MARK: - viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(lineChartView)
@@ -50,12 +54,15 @@ final class DataChartViewController: UIViewController, ChartViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-    //MARK: - TODOS:
+    
+    //TODO:
     /*
      - figure out how to change the position of highlightIndicator according to the dateSlider index
      - maybe use .circleColors() to indicate the highest price as a different color circle than the rest
      */
+    
     //MARK: - Set data
+    
     /// Sets charts data and style configurations
     func setData() {
         let priceData = LineChartDataSet(entries: fetchData(), label: "수정종가")
@@ -70,7 +77,9 @@ final class DataChartViewController: UIViewController, ChartViewDelegate {
         let data = LineChartData(dataSet: priceData)
         lineChartView.data = data
     }
+    
     //MARK: - get data
+    
     /// Fetches data from timeSeries and configures to [ChartDataEntry]
     private func fetchData() -> [ChartDataEntry]{
         let monthData: [MonthData] = timeSeries?.getMonthData(isReversed: false) ?? []

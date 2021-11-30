@@ -8,7 +8,6 @@ import XCTest
 @testable import Stocky
 
 final class CalculatorPresenterTests: XCTestCase {
-    //MARK: - Setup code
     var sut: UIPresentable!
 
     override func setUpWithError() throws {
@@ -22,6 +21,7 @@ final class CalculatorPresenterTests: XCTestCase {
     }
     
     //MARK: - Test for Annual Return Label
+    
     private func testAnnualReturnLabelTextColor_givenResultIsProfitable_expectSystemGreen() throws {
         let result = DCAResult.init(currentValue: 0,
                                     investmentAmount: 0,
@@ -45,6 +45,7 @@ final class CalculatorPresenterTests: XCTestCase {
     }
     
     //MARK: - Test for Yield Label
+    
     private func testYieldLabelTextColor_givenResultIsProfitable_expectSystemGreen() throws {
         let result = DCAResult.init(currentValue: 0,
                                     investmentAmount: 0,
@@ -68,6 +69,7 @@ final class CalculatorPresenterTests: XCTestCase {
     }
     
     //MARK: - Test for Yield Label
+    
     private func testYieldLabel_expectBrackets() throws {
         let first: Character = "("
         let last: Character = ")"

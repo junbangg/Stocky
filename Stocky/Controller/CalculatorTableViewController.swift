@@ -30,6 +30,7 @@ final class CalculatorTableViewController: UITableViewController {
     @IBOutlet weak var dateSlider: UISlider!
     
     //MARK: - Publishers and properties for Data communication
+    
     var asset: Asset?
     @Published var initialDateOfInvestmentIndex: Int?
     @Published var initialInvestmentAmount: Int?
@@ -39,6 +40,7 @@ final class CalculatorTableViewController: UITableViewController {
     private let calculatorPresenter: UIPresentable! = CalculatorUIPresenter()
     
     //MARK: - viewDidLoad()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLabels()
@@ -49,11 +51,14 @@ final class CalculatorTableViewController: UITableViewController {
     }
     
     //MARK: - viewDidAppear()
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         initialInvestmentAmountTextField.becomeFirstResponder()
     }
+    
     //MARK: - setupViews()
+    
     private func setupLabels() {
         navigationItem.title = asset?.searchResult.name
         assetLabel.text = asset?.searchResult.symbol
@@ -63,20 +68,26 @@ final class CalculatorTableViewController: UITableViewController {
         }
         latestSharePrice.text = asset?.timeSeries.getMonthData(isReversed: true).first?.adjustedClose.currencyFormat
     }
+    
     //MARK: - Setup TextFields
+    
     private func setupTextFields() {
         initialInvestmentAmountTextField.addDoneButton()
         monthlyDollarCostAveragingTextField.addDoneButton()
         initialDateOfInvestmentTextField.delegate = self
     }
+    
     //MARK: - Setup Date Slider
+    
     private func setupDateSlider() {
         if let count = asset?.timeSeries.getMonthData(isReversed: true).count {
             let dateSliderCount = count - 1
             dateSlider.maximumValue = dateSliderCount.floatValue
         }
     }
+    
     //MARK: - Observe Form
+    
     private func observeInputs() {
         $initialDateOfInvestmentIndex.sink { [weak self] (index) in
             guard let index = index else {
@@ -127,7 +138,9 @@ final class CalculatorTableViewController: UITableViewController {
             }
             .store(in: &subscribers)
     }
+    
     //MARK: - prepare for segue
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segue.showDataSelection,
            let dateSelectionTableViewController = segue.destination as? DateSelectionTableViewController,
@@ -144,7 +157,9 @@ final class CalculatorTableViewController: UITableViewController {
             dataChartViewController.selectedIndex = initialDateOfInvestmentIndex
         }
     }
+    
     //MARK: - Handle Date Selection
+    
     private func handleDateSelection(index: Int) {
         guard navigationController?.visibleViewController is DateSelectionTableViewController else {
             return
@@ -157,7 +172,9 @@ final class CalculatorTableViewController: UITableViewController {
             initialDateOfInvestmentTextField.text = dateString
         }
     }
+    
     //MARK: - Reset Labels
+    
     private func resetLabels() {
         currentValueLabel.text = "0.00"
         investmentAmountLabel.text = "0.00"
@@ -165,14 +182,16 @@ final class CalculatorTableViewController: UITableViewController {
         yieldLabel.text = "0%"
         annualReturnLabel.text = "0%"
     }
+    
     //MARK: - Date Slider Update
+    
     @IBAction func dateSliderDidChange(_ sender: UISlider) {
         initialDateOfInvestmentIndex = Int(sender.value)
     }
 }
+
 //MARK: - Extensions
-/// Conforms to
-///     - UITextFieldDelegate
+
 extension CalculatorTableViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == initialDateOfInvestmentTextField {
