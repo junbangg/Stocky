@@ -46,7 +46,7 @@ final class DCAServiceTests: XCTestCase {
         let initialInvestmentAmount: Double = 5000
         let monthlyDollarCostAveragingAmount: Double = 1500
         let initialDateOfInvestmentIndex: Int = 5
-        let asset = buildProfitableAsset()
+        let asset = createProfitableAsset()
         let result = sut.calculateDCA(asset,
                                       initialInvestmentAmount,
                                       monthlyDollarCostAveragingAmount,
@@ -76,8 +76,7 @@ final class DCAServiceTests: XCTestCase {
         let initialInvestmentAmount: Double = 5000
         let monthlyDollarCostAveragingAmount: Double = 0
         let initialDateOfInvestmentIndex: Int = 3
-        let asset = buildProfitableAsset()
-        
+        let asset = createProfitableAsset()
         let result = sut.calculateDCA(asset,
                                       initialInvestmentAmount,
                                       monthlyDollarCostAveragingAmount,
@@ -111,8 +110,7 @@ final class DCAServiceTests: XCTestCase {
         let initialInvestmentAmount: Double = 5000
         let monthlyDollarCostAveragingAmount: Double = 1500
         let initialDateOfInvestmentIndex: Int = 5
-        let asset = buildNonProfitableAsset()
-        
+        let asset = createNonProfitableAsset()
         let result = sut.calculateDCA(asset,
                                       initialInvestmentAmount,
                                       monthlyDollarCostAveragingAmount,
@@ -145,8 +143,7 @@ final class DCAServiceTests: XCTestCase {
         let initialInvestmentAmount: Double = 5000
         let monthlyDollarCostAveragingAmount: Double = 0
         let initialDateOfInvestmentIndex: Int = 3
-        let asset = buildNonProfitableAsset()
-        
+        let asset = createNonProfitableAsset()
         let result = sut.calculateDCA(asset,
                                       initialInvestmentAmount,
                                       monthlyDollarCostAveragingAmount,
@@ -169,7 +166,6 @@ final class DCAServiceTests: XCTestCase {
         // Gains = current value - invesment amount = $3666.6666 - 5000 = -1333.333
         /// Yield Formula
         // Yield = gains / investment amount : -1333.333 / 5000 = -0.26666
-        
         XCTAssertEqual(result.currentValue, 3666.666, accuracy: 0.1)
         XCTAssertEqual(result.gain, -1333.333, accuracy: 0.1)
         XCTAssertEqual(result.yield, -0.26666, accuracy: 0.0001)
@@ -179,11 +175,9 @@ final class DCAServiceTests: XCTestCase {
         let initialInvestmentAmount: Double = 500
         let monthlyDollarCostAveragingAmount: Double  = 300
         let initialDateOfInvestmentIndex: Int = 4 // 5 months ago
-        
         let investmentAmount = sut.getInvestmentAmount(initialInvestmentAmount,
                                                        monthlyDollarCostAveragingAmount,
                                                        initialDateOfInvestmentIndex)
-
         // expected
         XCTAssertEqual(investmentAmount, 1700)
         // Initial Amount : $ 500
@@ -195,7 +189,6 @@ final class DCAServiceTests: XCTestCase {
         let initialInvestmentAmount: Double = 500
         let monthlyDollarCostAveragingAmount: Double  = 0
         let initialDateOfInvestmentIndex: Int = 4 // 5 months ago
-        
         let investmentAmount = sut.getInvestmentAmount(initialInvestmentAmount,
                                                        monthlyDollarCostAveragingAmount,
                                                        initialDateOfInvestmentIndex)
@@ -207,9 +200,9 @@ final class DCAServiceTests: XCTestCase {
     }
     
     //MARK: - Methods for building test data
-    private func buildProfitableAsset() -> Asset {
-        let searchResult = buildSearchResult()
-        let meta = buildMeta()
+    private func createProfitableAsset() -> Asset {
+        let searchResult = createSearchResult()
+        let meta = createMeta()
         let timeSeries: [String: TimeSeriesData] = ["2008-01-29": TimeSeriesData(open: "100", close: "110", adjustedClose: "110"),
                                                     "2008-02-29": TimeSeriesData(open: "110", close: "120", adjustedClose: "120"),
                                                     "2008-03-29": TimeSeriesData(open: "120", close: "130", adjustedClose: "130"),
@@ -221,9 +214,9 @@ final class DCAServiceTests: XCTestCase {
         return Asset(searchResult: searchResult, timeSeries: timeSeriesMonthlyAdjusted)
     }
     
-    private func buildNonProfitableAsset() -> Asset {
-        let searchResult = buildSearchResult()
-        let meta = buildMeta()
+    private func createNonProfitableAsset() -> Asset {
+        let searchResult = createSearchResult()
+        let meta = createMeta()
         let timeSeries: [String: TimeSeriesData] = ["2021-01-25": TimeSeriesData(open: "170", close: "160", adjustedClose: "160"),
                                                     "2021-02-25": TimeSeriesData(open: "160", close: "150", adjustedClose: "150"),
                                                     "2021-03-25": TimeSeriesData(open: "150", close: "140", adjustedClose: "140"),
@@ -236,11 +229,11 @@ final class DCAServiceTests: XCTestCase {
         return Asset(searchResult: searchResult, timeSeries: timeSeriesMonthlyAdjusted)
     }
     
-    private func buildSearchResult() -> SearchResult {
+    private func createSearchResult() -> SearchResult {
         return SearchResult(symbol: "XYZ", name: "XYZCompany", type: "ETF", currency: "USD")
     }
     
-    private func buildMeta() -> Meta {
+    private func createMeta() -> Meta {
         return Meta(symbol: "XYZ")
     }
 }
