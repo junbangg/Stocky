@@ -4,28 +4,12 @@
 //
 //  Created by Jun suk Bang on 2021/02/21.
 //
-/**
- UIColor Extensions
- 
- # Purpose
- - Code Readibility
- - Reusability
- 
- # Components
- - Custom UIColors
- */
-
 import UIKit
 
 extension UIColor {
     static let themeRedShade = UIColor("fae2e1")
     static let themeGreenShade = UIColor("b0f1dd")
     /**
-     Function that converts a hex string to a UIColor.
-     # Code Example
-     ```
-     chartView.backgroundColor = .themeGreenShade
-     ```
      # Reference
      https://stackoverflow.com/questions/24263007/how-to-use-hex-color-values
      */
