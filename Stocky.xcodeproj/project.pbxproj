@@ -233,8 +233,8 @@
 			isa = PBXGroup;
 			children = (
 				EDF8805525EBD16500B2947F /* DCAServiceTests.swift */,
-				EDF8805725EBD16500B2947F /* Info.plist */,
 				ED90A04E25ED361600C2BE4E /* CalculatorPresenterTests.swift */,
+				EDF8805725EBD16500B2947F /* Info.plist */,
 			);
 			path = StockyTests;
 			sourceTree = "<group>";
