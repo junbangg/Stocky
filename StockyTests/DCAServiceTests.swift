@@ -170,6 +170,7 @@ final class DCAServiceTests: XCTestCase {
         XCTAssertEqual(result.gain, -1333.333, accuracy: 0.1)
         XCTAssertEqual(result.yield, -0.26666, accuracy: 0.0001)
     }
+    
     //MARK: - Tests for investment amount
     private func testInvestmentAmount_whenDCAIsUsed_expectResult() {
         let initialInvestmentAmount: Double = 500
