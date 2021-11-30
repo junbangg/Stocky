@@ -6,20 +6,16 @@
 //
 import XCTest
 @testable import Stocky
-/// Unit Tests for CalculatorPresenter
 class CalculatorPresenterTests: XCTestCase {
-    
     //MARK: - Setup code
     var sut: UIPresentable!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
         sut = CalculatorUIPresenter()
         try super.setUpWithError()
     }
     
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         sut = nil
         try super.tearDownWithError()
     }
