@@ -43,6 +43,7 @@ extension DateSelectionTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return monthDatas.count
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as! DateSelectionTableViewCell
         let monthData = monthDatas[indexPath.item]
@@ -52,6 +53,7 @@ extension DateSelectionTableViewController {
         
         return cell
     }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         didSelectDate?(indexPath.item)
         tableView.deselectRow(at: indexPath, animated: true)
