@@ -13,12 +13,25 @@ struct APIService {
         case badRequest
     }
     
-    private var API_KEY: String {
-        return apiKeys.randomElement() ?? ""
+    private enum BaseAPI {
+        private static let baseURL = "https://www.alphavantage.co/query?function"
+        private static let apiKeys = ["VWG848WN4TOAHX1P", "R4QEF20WS1UNXOP2", "3YVKJCWZ41BU608T", "Y9PIZ80TZ0XV3HVA"]
+        private static var API_KEY: String {
+            return apiKeys.randomElement() ?? ""
+        }
+        
+        case symbolSearch(String)
+        case timeSeriesMonthlyAdjusted(String)
+        
+        var urlString: String {
+            switch self {
+            case .symbolSearch(let keywords):
+                return BaseAPI.baseURL + "=SYMBOL_SEARCH&keywords=\(keywords)&apikey=\(BaseAPI.API_KEY)"
+            case .timeSeriesMonthlyAdjusted(let symbol):
+                return BaseAPI.baseURL + "=TIME_SERIES_MONTHLY_ADJUSTED&symbol=\(symbol)&apikey=\(BaseAPI.API_KEY)"
+            }
+        }
     }
-    
-    private let apiKeys = ["VWG848WN4TOAHX1P", "R4QEF20WS1UNXOP2", "3YVKJCWZ41BU608T", "Y9PIZ80TZ0XV3HVA"]
-    
     // TODO: keyParseResult 메서드로 묶어서 분리
     // TODO: urlstring 다른 방법으로 관리
     func fetchPreviewData(with key: String) -> AnyPublisher<SearchResults, Error> {
@@ -32,7 +45,8 @@ struct APIService {
             return Fail(error: error).eraseToAnyPublisher()
         }
         
-        let urlString = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=\(keywords)&apikey=\(API_KEY)"
+//        let urlString = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=\(keywords)&apikey=\(API_KEY)"
+        let urlString = BaseAPI.symbolSearch(keywords).urlString
         let urlParseResult = parse(urlString: urlString)
         
         switch urlParseResult {
@@ -60,7 +74,8 @@ struct APIService {
             return Fail(error: error).eraseToAnyPublisher()
         }
         
-        let urlString = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=\(symbol)&apikey=\(API_KEY)"
+//        let urlString = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=\(symbol)&apikey=\(API_KEY)"
+        let urlString = BaseAPI.timeSeriesMonthlyAdjusted(symbol).urlString
         let urlResult = parse(urlString: urlString)
         
         switch urlResult {
