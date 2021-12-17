@@ -13,11 +13,16 @@ struct APIService {
         case badRequest
     }
     
-    private enum BaseAPI {
-        private static let baseURL = "https://www.alphavantage.co/query?function"
-        private static let apiKeys = ["VWG848WN4TOAHX1P", "R4QEF20WS1UNXOP2", "3YVKJCWZ41BU608T", "Y9PIZ80TZ0XV3HVA"]
-        private static var API_KEY: String {
-            return apiKeys.randomElement() ?? ""
+    private enum APIServiceOperation {
+        private enum APIServiceURL {
+            static let baseString = "https://www.alphavantage.co/query?function="
+            static let symbolSearchString = "SYMBOL_SEARCH&keywords="
+            static let timeSeriesMonthlyAdjustedString = "TIME_SERIES_MONTHLY_ADJUSTED&symbol="
+            static let apiKeyString = "&apikey="
+            static let apiKeys = ["VWG848WN4TOAHX1P", "R4QEF20WS1UNXOP2", "3YVKJCWZ41BU608T", "Y9PIZ80TZ0XV3HVA"]
+            static var API_KEY: String {
+                return apiKeys.randomElement() ?? ""
+            }
         }
         
         case symbolSearch(String)
@@ -26,12 +31,13 @@ struct APIService {
         var urlString: String {
             switch self {
             case .symbolSearch(let keywords):
-                return BaseAPI.baseURL + "=SYMBOL_SEARCH&keywords=\(keywords)&apikey=\(BaseAPI.API_KEY)"
+                return APIServiceURL.baseString + APIServiceURL.symbolSearchString + keywords + APIServiceURL.apiKeyString + APIServiceURL.API_KEY
             case .timeSeriesMonthlyAdjusted(let symbol):
-                return BaseAPI.baseURL + "=TIME_SERIES_MONTHLY_ADJUSTED&symbol=\(symbol)&apikey=\(BaseAPI.API_KEY)"
+                return APIServiceURL.baseString + APIServiceURL.timeSeriesMonthlyAdjustedString + symbol + APIServiceURL.apiKeyString + APIServiceURL.API_KEY
             }
         }
     }
+    
     // TODO: keyParseResult 메서드로 묶어서 분리
     // TODO: urlstring 다른 방법으로 관리
     func fetchPreviewData(with key: String) -> AnyPublisher<SearchResults, Error> {
@@ -45,8 +51,7 @@ struct APIService {
             return Fail(error: error).eraseToAnyPublisher()
         }
         
-//        let urlString = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=\(keywords)&apikey=\(API_KEY)"
-        let urlString = BaseAPI.symbolSearch(keywords).urlString
+        let urlString = APIServiceOperation.symbolSearch(keywords).urlString
         let urlParseResult = parse(urlString: urlString)
         
         switch urlParseResult {
@@ -74,8 +79,7 @@ struct APIService {
             return Fail(error: error).eraseToAnyPublisher()
         }
         
-//        let urlString = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=\(symbol)&apikey=\(API_KEY)"
-        let urlString = BaseAPI.timeSeriesMonthlyAdjusted(symbol).urlString
+        let urlString = APIServiceOperation.timeSeriesMonthlyAdjusted(symbol).urlString
         let urlResult = parse(urlString: urlString)
         
         switch urlResult {
