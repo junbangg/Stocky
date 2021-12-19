@@ -31,7 +31,7 @@ final class CalculatorTableViewController: UITableViewController {
     
     //MARK: - Publishers and properties for Data communication
     
-    var asset: Asset?
+    var asset: Asset!
     @Published var initialDateOfInvestmentIndex: Int?
     @Published var initialInvestmentAmount: Int?
     @Published var monthlyDollarCostAveragingAmount: Int?
@@ -55,6 +55,12 @@ final class CalculatorTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         initialInvestmentAmountTextField.becomeFirstResponder()
+    }
+    
+    //MARK: receive data
+    
+    func setAsset(with asset: Asset) {
+        self.asset = asset
     }
     
     //MARK: - setupViews()

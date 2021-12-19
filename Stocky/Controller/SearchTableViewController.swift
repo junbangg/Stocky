@@ -166,7 +166,8 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
         if segue.identifier == "\(SegueIdentifiers.showCalculator)",
            let destination = segue.destination as? CalculatorTableViewController,
            let asset = sender as? Asset {
-            destination.asset = asset
+//            destination.asset = asset
+            destination.setAsset(with: asset)
         }
     }
 }
