@@ -39,6 +39,17 @@ final class CalculatorTableViewController: UITableViewController {
     private var subscribers = Set<AnyCancellable>()
     private let calculatorPresenter: UIPresentable! = CalculatorUIPresenter()
     
+    //MARK: - initializer
+    init?(asset: Asset, coder: NSCoder) {
+        self.asset = asset
+        super.init(coder: coder)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("Class does not support nscoder")
+    }
+    
     //MARK: - viewDidLoad()
     
     override func viewDidLoad() {
@@ -59,9 +70,9 @@ final class CalculatorTableViewController: UITableViewController {
     
     //MARK: receive data
     
-    func setAsset(with asset: Asset) {
-        self.asset = asset
-    }
+//    func setAsset(with asset: Asset) {
+//        self.asset = asset
+//    }
     
     //MARK: - setupViews()
     

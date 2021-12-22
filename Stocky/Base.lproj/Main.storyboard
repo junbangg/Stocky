@@ -83,9 +83,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Ta9-on-Oue"/>
-                    <connections>
-                        <segue destination="kLs-zv-hDe" kind="show" identifier="showCalculator" id="Jf3-Pb-41T"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9JC-jq-6eg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -94,7 +91,7 @@
         <!--Calculator Table View Controller-->
         <scene sceneID="cWq-dc-KGB">
             <objects>
-                <tableViewController id="kLs-zv-hDe" customClass="CalculatorTableViewController" customModule="Stocky" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CalculatorTableViewController" id="kLs-zv-hDe" customClass="CalculatorTableViewController" customModule="Stocky" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="r3u-tg-Jbm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -450,7 +447,6 @@
                         <outletCollection property="currencyLabels" destination="WbE-ip-9J4" collectionClass="NSMutableArray" id="zSF-bg-iIx"/>
                         <outletCollection property="currencyLabels" destination="AbS-Ik-OML" collectionClass="NSMutableArray" id="KBz-fg-Jp6"/>
                         <outletCollection property="currencyLabels" destination="q00-ov-oQU" collectionClass="NSMutableArray" id="DBw-JU-Llw"/>
-                        <segue destination="m62-T4-vZN" kind="show" identifier="showDateSelection" id="kZb-Hu-YXg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U1a-4H-Xcl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -155,21 +155,28 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
         } receiveValue: { [weak self] (timeSeries) in
             self?.dismissLoadingAnimation()
             let asset = Asset(searchResult: searchResult , timeSeries: timeSeries)
-            self?.performSegue(withIdentifier: "\(SegueIdentifiers.showCalculator)", sender: asset)
+//            self?.performSegue(withIdentifier: "\(SegueIdentifiers.showCalculator)", sender: asset)
+            guard let viewController = self?.storyboard?.instantiateViewController(identifier: "CalculatorTableViewController", creator: { coder in
+                CalculatorTableViewController(asset: asset, coder: coder)
+            }) else {
+                fatalError("Failed to create CalculatorTableViewVC")
+            }
+            self?.navigationController?.pushViewController(viewController, animated: true)
             self?.searchController.searchBar.text = nil
         }.store(in: &subscribers)
     }
     
     // MARK: - Segue -> CalculatorTableView
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "\(SegueIdentifiers.showCalculator)",
-           let destination = segue.destination as? CalculatorTableViewController,
-           let asset = sender as? Asset {
-//            destination.asset = asset
-            destination.setAsset(with: asset)
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "\(SegueIdentifiers.showCalculator)",
+//           var destination = segue.destination as? CalculatorTableViewController,
+//           let asset = sender as? Asset {
+////            destination.asset = asset
+////            destination.setAsset(with: asset)
+//            destination = CalculatorTableViewController(asset: asset)
+//        }
+//    }
 }
 
 //MARK: - Extensions
