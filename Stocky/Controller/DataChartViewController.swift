@@ -11,11 +11,9 @@ import Charts
 import Combine
 
 final class DataChartViewController: UIViewController, ChartViewDelegate {
+    //MARK: - Properties
     var timeSeries: TimeSeries?
     var selectedIndex: Int?
-    
-    //MARK: - Linechart View
-    
     lazy var lineChartView: LineChartView = {
         let chartView = LineChartView()
         chartView.backgroundColor = .themeGreenShade
@@ -40,7 +38,7 @@ final class DataChartViewController: UIViewController, ChartViewDelegate {
         return chartView
     }()
     
-    //MARK: - viewDidLoad
+    //MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,10 +58,11 @@ final class DataChartViewController: UIViewController, ChartViewDelegate {
      - figure out how to change the position of highlightIndicator according to the dateSlider index
      - maybe use .circleColors() to indicate the highest price as a different color circle than the rest
      */
-    
-    //MARK: - Set data
-    
-    /// Sets charts data and style configurations
+}
+
+//MARK: - Business Logic
+
+extension DataChartViewController {
     func setData() {
         let priceData = LineChartDataSet(entries: fetchData(), label: "수정종가")
         priceData.mode = .cubicBezier
@@ -77,8 +76,6 @@ final class DataChartViewController: UIViewController, ChartViewDelegate {
         let data = LineChartData(dataSet: priceData)
         lineChartView.data = data
     }
-    
-    //MARK: - get data
     
     /// Fetches data from timeSeries and configures to [ChartDataEntry]
     private func fetchData() -> [ChartDataEntry]{
@@ -109,7 +106,9 @@ final class DataChartViewController: UIViewController, ChartViewDelegate {
         return chartValues
     }
 }
-/// Class that is used for configuring Xaxis labels
+
+//MARK: - Axis Formatter Class
+
 //https://stackoverflow.com/questions/54915102/trying-to-enter-date-string-in-chartdataentry
 class DateAxisValueFormatter: NSObject, IAxisValueFormatter {
     let dateFormatter = DateFormatter()
