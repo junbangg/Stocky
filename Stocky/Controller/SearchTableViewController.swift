@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 final class SearchTableViewController: UITableViewController, UIAnimatable {
-    //MARK: - 중첩 타입
+    //MARK: - Nested Types
     private enum Stage {
         case greeting
         case search
@@ -40,7 +40,7 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
         }
     }
     
-    // MARK: - 프로퍼티
+    // MARK: - Properties
     
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
@@ -59,7 +59,7 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
     @Published private var stage: Stage = .greeting
     @Published var searchQuery = String()
     
-    //MARK: - 생명주기 메서드
+    //MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +69,7 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
     }
 }
 
-//MARK: - UI 메서드
+//MARK: - UI Methods
 
 extension SearchTableViewController {
     private func setupNavigationBar() {
@@ -78,7 +78,7 @@ extension SearchTableViewController {
     }
 }
 
-//MARK: - TableView 메서드
+//MARK: - TableView Methods
 
 extension SearchTableViewController {
     private func setupTableView() {
@@ -110,7 +110,7 @@ extension SearchTableViewController {
     }
 }
 
-// MARK: - 메서드
+// MARK: - Business Logic
 
 extension SearchTableViewController {
     private func observeInputs() {
@@ -182,7 +182,7 @@ extension SearchTableViewController {
     //    }
 }
 
-//MARK: - 프로토콜 Conformance
+//MARK: - Protocol Conformance
 
 extension SearchTableViewController: UISearchResultsUpdating, UISearchControllerDelegate {
     func updateSearchResults(for searchController: UISearchController) {
