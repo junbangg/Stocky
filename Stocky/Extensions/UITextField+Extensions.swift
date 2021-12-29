@@ -19,6 +19,7 @@ extension UITextField {
         let flexBarButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneBarButtonItem: UIBarButtonItem = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(dismissKeyboard ))
         let items = [flexBarButtonItem, doneBarButtonItem]
+        
         doneToolBar.items = items
         doneToolBar.sizeToFit()
         inputAccessoryView = doneToolBar

@@ -7,6 +7,17 @@
 
 import UIKit
 
+struct CalculatorUIPresentation {
+    let currentValueLabelBackgroundColor: UIColor
+    let currentValue: String
+    let investmentAmount: String
+    let gain: String
+    let yield: String
+    let yieldLabelTextColor: UIColor
+    let annualReturn: String
+    let annualReturnLabelTextColor: UIColor
+}
+
 struct CalculatorUIPresenter: UIPresentable {
     func getPresentation(result: DCAResult) -> CalculatorUIPresentation {
         let isProfitable = result.isProtiable == true
@@ -21,15 +32,4 @@ struct CalculatorUIPresenter: UIPresentable {
                      annualReturn: result.annualReturn.percentageFormat,
                      annualReturnLabelTextColor: isProfitable ? .systemGreen : .systemRed)
     }
-}
-
-struct CalculatorUIPresentation {
-    let currentValueLabelBackgroundColor: UIColor
-    let currentValue: String
-    let investmentAmount: String
-    let gain: String
-    let yield: String
-    let yieldLabelTextColor: UIColor
-    let annualReturn: String
-    let annualReturnLabelTextColor: UIColor
 }
