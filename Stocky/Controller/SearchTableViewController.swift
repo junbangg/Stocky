@@ -9,6 +9,7 @@ import UIKit
 import Combine
 
 final class SearchTableViewController: UITableViewController, UIAnimatable {
+    //MARK: - 중첩 타입
     private enum Stage {
         case greeting
         case search
@@ -17,7 +18,7 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
     private enum UIStrings: String, CustomStringConvertible {
         case searchBarPlaceholder
         case search
-            
+        
         var description: String {
             switch self {
             case .searchBarPlaceholder:
@@ -39,7 +40,7 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
         }
     }
     
-    // MARK: - UISearchController
+    // MARK: - 프로퍼티
     
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
@@ -58,7 +59,7 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
     @Published private var stage: Stage = .greeting
     @Published var searchQuery = String()
     
-    //MARK: - viewDidLoad
+    //MARK: - 생명주기 메서드
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,16 +67,20 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
         setupTableView()
         observeInputs()
     }
-    
-    //MARK: - Navigation Bar
-    
+}
+
+//MARK: - UI 메서드
+
+extension SearchTableViewController {
     private func setupNavigationBar() {
         navigationItem.searchController = searchController
         navigationItem.title = "\(UIStrings.search)"
     }
-    
-    //MARK: - Table View methods
-    
+}
+
+//MARK: - TableView 메서드
+
+extension SearchTableViewController {
     private func setupTableView() {
         tableView.isScrollEnabled = false
         tableView.tableFooterView = UIView()
@@ -103,9 +108,11 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    //MARK: - observeForm Method
-    
+}
+
+// MARK: - 메서드
+
+extension SearchTableViewController {
     private func observeInputs() {
         $searchQuery
             .debounce(for: .milliseconds(750), scheduler: RunLoop.main)
@@ -140,8 +147,6 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
         }.store(in: &subscribers)
     }
     
-    //MARK: - handleSelection Method
-    
     private func handleSelection(for symbol: String, searchResult: SearchResult) {
         showLoadingAnimation()
         apiService.fetchTimeSeriesData(with: symbol).sink { [weak self] (completion) in
@@ -155,7 +160,7 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
         } receiveValue: { [weak self] (timeSeries) in
             self?.dismissLoadingAnimation()
             let asset = Asset(searchResult: searchResult , timeSeries: timeSeries)
-//            self?.performSegue(withIdentifier: "\(SegueIdentifiers.showCalculator)", sender: asset)
+            //            self?.performSegue(withIdentifier: "\(SegueIdentifiers.showCalculator)", sender: asset)
             guard let viewController = self?.storyboard?.instantiateViewController(identifier: "CalculatorTableViewController", creator: { coder in
                 CalculatorTableViewController(asset: asset, coder: coder)
             }) else {
@@ -166,20 +171,18 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
         }.store(in: &subscribers)
     }
     
-    // MARK: - Segue -> CalculatorTableView
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "\(SegueIdentifiers.showCalculator)",
-//           var destination = segue.destination as? CalculatorTableViewController,
-//           let asset = sender as? Asset {
-////            destination.asset = asset
-////            destination.setAsset(with: asset)
-//            destination = CalculatorTableViewController(asset: asset)
-//        }
-//    }
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        if segue.identifier == "\(SegueIdentifiers.showCalculator)",
+    //           var destination = segue.destination as? CalculatorTableViewController,
+    //           let asset = sender as? Asset {
+    ////            destination.asset = asset
+    ////            destination.setAsset(with: asset)
+    //            destination = CalculatorTableViewController(asset: asset)
+    //        }
+    //    }
 }
 
-//MARK: - Extensions
+//MARK: - 프로토콜 Conformance
 
 extension SearchTableViewController: UISearchResultsUpdating, UISearchControllerDelegate {
     func updateSearchResults(for searchController: UISearchController) {
