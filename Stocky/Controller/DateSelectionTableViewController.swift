@@ -8,7 +8,6 @@
 import UIKit
 
 final class DateSelectionTableViewController: UITableViewController {
-    
     //MARK: -  Properties
     
     var timeSeries: TimeSeries?
@@ -16,29 +15,28 @@ final class DateSelectionTableViewController: UITableViewController {
     private var monthDatas: [MonthData] = []
     var didSelectDate: ((Int) -> Void)?
     
-    //MARK: - viewDidLoad
+    //MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         setupNavigationBar()
     }
-    
-    //MARK: - Setup navigation bar
-    
+}
+
+//MARK: - UI Methods
+
+extension DateSelectionTableViewController {
     private func setupNavigationBar() {
         title = "Select Date"
     }
-    
-    //MARK: - Setup table view
     
     private func setupTableView() {
         monthDatas = timeSeries?.getMonthData(isReversed: true) ?? []
     }
 }
 
-//MARK: - Extensions
-
+//MARK: - TableView Methods
 extension DateSelectionTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return monthDatas.count
@@ -60,7 +58,7 @@ extension DateSelectionTableViewController {
     }
 }
 
-//MARK: - Custom TableView Cell
+//MARK: - Custom TableViewCell Class
 class DateSelectionTableViewCell: UITableViewCell {
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var monthsAgoLabel: UILabel!
