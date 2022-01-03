@@ -11,7 +11,6 @@ import Combine
 protocol APIRequestable {
     func fetchPreviewData(with key: String) -> AnyPublisher<SearchResults, Error>
     func fetchTimeSeriesData(with key: String) -> AnyPublisher<TimeSeries, Error>
-    
 }
 
 //MARK: 메인 클래스
