@@ -16,7 +16,7 @@ protocol APIRequestable {
 
 //MARK: - 메인 클래스
 
-class APIService {
+final class APIService {
     private let session: URLSession
     
     init(session: URLSession = .shared) {
