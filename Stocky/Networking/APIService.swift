@@ -7,13 +7,15 @@
 import Foundation
 import Combine
 
-//MARK: API 요청 프로토콜
+//MARK: - API 요청 프로토콜
+
 protocol APIRequestable {
     func fetchPreviewData(with key: String) -> AnyPublisher<SearchResults, Error>
     func fetchTimeSeriesData(with key: String) -> AnyPublisher<TimeSeries, Error>
 }
 
-//MARK: 메인 클래스
+//MARK: - 메인 클래스
+
 class APIService {
     private let session: URLSession
     
@@ -22,7 +24,8 @@ class APIService {
     }
 }
 
-//MARK: 프로토콜 채택
+//MARK: - 프로토콜 채택
+
 extension APIService: APIRequestable {
     // TODO: keyParseResult 메서드로 묶어서 분리
     // TODO: urlstring 다른 방법으로 관리
@@ -43,7 +46,7 @@ extension APIService: APIRequestable {
         switch urlParseResult {
         case .success(let url):
             return URLSession.shared.dataTaskPublisher(for: url)
-                .map({$0.data})
+                .map {$0.data}
                 .decode(type: SearchResults.self, decoder: JSONDecoder())
                 .receive(on: RunLoop.main)
                 .eraseToAnyPublisher()
@@ -71,7 +74,7 @@ extension APIService: APIRequestable {
         switch urlResult {
         case .success(let url):
             return URLSession.shared.dataTaskPublisher(for: url)
-                .map({$0.data})
+                .map {$0.data}
                 .decode(type: TimeSeries.self, decoder: JSONDecoder())
                 .receive(on: RunLoop.main)
                 .eraseToAnyPublisher()
@@ -81,7 +84,8 @@ extension APIService: APIRequestable {
     }
 }
 
-//MARK: 중첩 타입
+//MARK: - 중첩 타입
+
 private extension APIService {
     private enum APIServiceError: Error {
         case encoding
