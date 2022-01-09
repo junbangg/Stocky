@@ -40,13 +40,13 @@ extension APIService: APIRequestable {
             return Fail(error: error).eraseToAnyPublisher()
         }
         
-        let urlString = APIServiceOperation.symbolSearch(keywords).urlString
-        let urlParseResult = parse(urlString: urlString)
+        let urlString = APIOperation.symbolSearch(keywords).urlString
+        let parsedURL = parse(urlString: urlString)
         
-        switch urlParseResult {
+        switch parsedURL {
         case .success(let url):
-            return URLSession.shared.dataTaskPublisher(for: url)
-                .map {$0.data}
+            return session.dataTaskPublisher(for: url)
+                .map { $0.data }
                 .decode(type: SearchResults.self, decoder: JSONDecoder())
                 .receive(on: RunLoop.main)
                 .eraseToAnyPublisher()
@@ -68,13 +68,13 @@ extension APIService: APIRequestable {
             return Fail(error: error).eraseToAnyPublisher()
         }
         
-        let urlString = APIServiceOperation.timeSeriesMonthlyAdjusted(symbol).urlString
-        let urlResult = parse(urlString: urlString)
+        let urlString = APIOperation.timeSeriesMonthlyAdjusted(symbol).urlString
+        let parsedURL = parse(urlString: urlString)
         
-        switch urlResult {
+        switch parsedURL {
         case .success(let url):
-            return URLSession.shared.dataTaskPublisher(for: url)
-                .map {$0.data}
+            return session.dataTaskPublisher(for: url)
+                .map { $0.data }
                 .decode(type: TimeSeries.self, decoder: JSONDecoder())
                 .receive(on: RunLoop.main)
                 .eraseToAnyPublisher()
@@ -92,15 +92,24 @@ private extension APIService {
         case badRequest
     }
     
-    private enum APIServiceOperation {
-        private enum APIServiceURL {
-            static let baseString = "https://www.alphavantage.co/query?function="
+    private enum APIOperation {
+        private enum APIString {
+            static let baseURL = "https://www.alphavantage.co/"
+            static let path = "query?function="
             static let symbolSearchString = "SYMBOL_SEARCH&keywords="
             static let timeSeriesMonthlyAdjustedString = "TIME_SERIES_MONTHLY_ADJUSTED&symbol="
-            static let apiKeyString = "&apikey="
+            
+        }
+
+        private enum APIKey {
+            static let baseQuery = "&apikey="
             static let apiKeys = ["VWG848WN4TOAHX1P", "R4QEF20WS1UNXOP2", "3YVKJCWZ41BU608T", "Y9PIZ80TZ0XV3HVA"]
-            static var API_KEY: String {
+            static var randomKey: String {
                 return apiKeys.randomElement() ?? ""
+            }
+            
+            static var keyString: String {
+                return baseQuery + randomKey
             }
         }
         
@@ -110,9 +119,9 @@ private extension APIService {
         var urlString: String {
             switch self {
             case .symbolSearch(let keywords):
-                return APIServiceURL.baseString + APIServiceURL.symbolSearchString + keywords + APIServiceURL.apiKeyString + APIServiceURL.API_KEY
+                return APIString.baseURL + APIString.path + APIString.symbolSearchString + keywords + APIKey.keyString
             case .timeSeriesMonthlyAdjusted(let symbol):
-                return APIServiceURL.baseString + APIServiceURL.timeSeriesMonthlyAdjustedString + symbol + APIServiceURL.apiKeyString + APIServiceURL.API_KEY
+                return APIString.baseURL + APIString.path + APIString.timeSeriesMonthlyAdjustedString + symbol + APIKey.keyString
             }
         }
     }
