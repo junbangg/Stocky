@@ -50,7 +50,6 @@ final class CalculatorTableViewController: UITableViewController {
         super.init(coder: coder)
     }
     
-    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("Class does not support nscoder")
     }
