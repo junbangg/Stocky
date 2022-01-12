@@ -15,29 +15,14 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
         case search
     }
     
-    private enum UIStrings: String, CustomStringConvertible {
-        case searchBarPlaceholder
-        case search
-        
-        var description: String {
-            switch self {
-            case .searchBarPlaceholder:
-                return "e.g. Apple, AAPL"
-            case .search:
-                return "검색"
-            }
-        }
+    private enum UIString {
+        static let searchBarPlaceholder = "e.g. Apple, AAPL"
+        static let search = "검색"
     }
     
-    private enum SegueIdentifiers: String, CustomStringConvertible {
-        case showCalculator
-        
-        var description: String {
-            switch self {
-            case .showCalculator:
-                return "showCalculator"
-            }
-        }
+    private enum Identifier {
+        static let searchTableViewCell = "cellID"
+        static let calculatorTableViewController = "CalculatorTableViewController"
     }
     
     // MARK: - Properties
@@ -47,7 +32,7 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
         searchController.searchResultsUpdater = self
         searchController.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "\(UIStrings.searchBarPlaceholder)"
+        searchController.searchBar.placeholder = UIString.searchBarPlaceholder
         searchController.searchBar.autocapitalizationType = .allCharacters
         
         return searchController
@@ -74,7 +59,7 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
 extension SearchTableViewController {
     private func setupNavigationBar() {
         navigationItem.searchController = searchController
-        navigationItem.title = "\(UIStrings.search)"
+        navigationItem.title = UIString.search
     }
 }
 
@@ -91,7 +76,7 @@ extension SearchTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as! SearchTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.searchTableViewCell, for: indexPath) as! SearchTableViewCell
         if let searchResults = self.searchResults {
             let searchResult = searchResults.items[indexPath.row]
             cell.configure(with: searchResult)
@@ -160,26 +145,17 @@ extension SearchTableViewController {
         } receiveValue: { [weak self] (timeSeries) in
             self?.dismissLoadingAnimation()
             let asset = Asset(searchResult: searchResult , timeSeries: timeSeries)
-            //            self?.performSegue(withIdentifier: "\(SegueIdentifiers.showCalculator)", sender: asset)
-            guard let viewController = self?.storyboard?.instantiateViewController(identifier: "CalculatorTableViewController", creator: { coder in
-                CalculatorTableViewController(asset: asset, coder: coder)
-            }) else {
+            guard let viewController = self?.storyboard?.instantiateViewController(
+                    identifier: Identifier.calculatorTableViewController,
+                    creator: { coder in
+                        CalculatorTableViewController(asset: asset, coder: coder)
+                    }) else {
                 fatalError("Failed to create CalculatorTableViewVC")
             }
             self?.navigationController?.pushViewController(viewController, animated: true)
             self?.searchController.searchBar.text = nil
         }.store(in: &subscribers)
     }
-    
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        if segue.identifier == "\(SegueIdentifiers.showCalculator)",
-    //           var destination = segue.destination as? CalculatorTableViewController,
-    //           let asset = sender as? Asset {
-    ////            destination.asset = asset
-    ////            destination.setAsset(with: asset)
-    //            destination = CalculatorTableViewController(asset: asset)
-    //        }
-    //    }
 }
 
 //MARK: - Protocol Conformance
