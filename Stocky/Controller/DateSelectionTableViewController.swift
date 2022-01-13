@@ -59,7 +59,7 @@ extension DateSelectionTableViewController {
 }
 
 //MARK: - Custom TableViewCell Class
-class DateSelectionTableViewCell: UITableViewCell {
+final class DateSelectionTableViewCell: UITableViewCell {
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var monthsAgoLabel: UILabel!
     
