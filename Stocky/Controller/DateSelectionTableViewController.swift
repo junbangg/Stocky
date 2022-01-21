@@ -37,13 +37,14 @@ extension DateSelectionTableViewController {
 }
 
 //MARK: - TableView Methods
+
 extension DateSelectionTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return monthDatas.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as! DateSelectionTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: DateSelectionTableViewCell.identifier, for: indexPath) as! DateSelectionTableViewCell
         let monthData = monthDatas[indexPath.item]
         let index = indexPath.item
         let isSelected = index == selectedIndex
@@ -59,6 +60,7 @@ extension DateSelectionTableViewController {
 }
 
 //MARK: - Custom TableViewCell Class
+
 final class DateSelectionTableViewCell: UITableViewCell {
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var monthsAgoLabel: UILabel!
@@ -85,3 +87,7 @@ final class DateSelectionTableViewCell: UITableViewCell {
         }
     }
 }
+
+// MARK: - IdentifiableView
+
+extension DateSelectionTableViewCell: IdentifiableView {}

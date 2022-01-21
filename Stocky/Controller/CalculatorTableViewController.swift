@@ -205,6 +205,7 @@ extension CalculatorTableViewController {
 }
 
 //MARK: - Protocol Conformance
+
 extension CalculatorTableViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == initialDateOfInvestmentTextField {
@@ -214,3 +215,5 @@ extension CalculatorTableViewController: UITextFieldDelegate {
         return true
     }
 }
+
+extension CalculatorTableViewController: IdentifiableView {}

@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellID" rowHeight="88" id="0qZ-Z8-w92" customClass="SearchTableViewCell" customModule="Stocky" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SearchTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTableViewCell" rowHeight="88" id="0qZ-Z8-w92" customClass="SearchTableViewCell" customModule="Stocky" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="24.5" width="414" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0qZ-Z8-w92" id="y49-dK-4ne">
@@ -447,6 +447,7 @@
                         <outletCollection property="currencyLabels" destination="WbE-ip-9J4" collectionClass="NSMutableArray" id="zSF-bg-iIx"/>
                         <outletCollection property="currencyLabels" destination="AbS-Ik-OML" collectionClass="NSMutableArray" id="KBz-fg-Jp6"/>
                         <outletCollection property="currencyLabels" destination="q00-ov-oQU" collectionClass="NSMutableArray" id="DBw-JU-Llw"/>
+                        <segue destination="m62-T4-vZN" kind="show" identifier="showDateSelection" id="0rQ-IC-ffr"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U1a-4H-Xcl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -456,13 +457,13 @@
         <!--Date Selection Table View Controller-->
         <scene sceneID="AEp-WO-ENb">
             <objects>
-                <tableViewController storyboardIdentifier="DateSelectionTableViewController" id="m62-T4-vZN" customClass="DateSelectionTableViewController" customModule="Stocky" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DateSelectionTableViewController" modalPresentationStyle="fullScreen" id="m62-T4-vZN" customClass="DateSelectionTableViewController" customModule="Stocky" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Bzw-8U-4Bo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="cellID" rowHeight="64" id="KbH-VV-oTd" customClass="DateSelectionTableViewCell" customModule="Stocky" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="DateSelectionTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="DateSelectionTableViewCell" rowHeight="64" id="KbH-VV-oTd" customClass="DateSelectionTableViewCell" customModule="Stocky" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="24.5" width="414" height="64"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KbH-VV-oTd" id="mRS-NZ-A3Y">

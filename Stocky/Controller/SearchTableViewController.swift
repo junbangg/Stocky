@@ -10,6 +10,7 @@ import Combine
 
 final class SearchTableViewController: UITableViewController, UIAnimatable {
     //MARK: - Nested Types
+    
     private enum Stage {
         case greeting
         case search
@@ -18,11 +19,6 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
     private enum UIString {
         static let searchBarPlaceholder = "e.g. Apple, AAPL"
         static let search = "검색"
-    }
-    
-    private enum Identifier {
-        static let searchTableViewCell = "cellID"
-        static let calculatorTableViewController = "CalculatorTableViewController"
     }
     
     // MARK: - Properties
@@ -76,7 +72,7 @@ extension SearchTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.searchTableViewCell, for: indexPath) as! SearchTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as! SearchTableViewCell
         if let searchResults = self.searchResults {
             let searchResult = searchResults.items[indexPath.row]
             cell.configure(with: searchResult)
@@ -146,7 +142,7 @@ extension SearchTableViewController {
             self?.dismissLoadingAnimation()
             let asset = Asset(searchResult: searchResult , timeSeries: timeSeries)
             guard let viewController = self?.storyboard?.instantiateViewController(
-                    identifier: Identifier.calculatorTableViewController,
+                    identifier: CalculatorTableViewController.identifier,
                     creator: { coder in
                         CalculatorTableViewController(asset: asset, coder: coder)
                     }) else {

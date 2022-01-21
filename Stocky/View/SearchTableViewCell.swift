@@ -19,3 +19,5 @@ final class SearchTableViewCell: UITableViewCell {
             .appending(searchResult.currency)
     }
 }
+
+extension SearchTableViewCell: IdentifiableView {}
