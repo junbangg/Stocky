@@ -7,7 +7,20 @@
 
 import Foundation
 
-struct DCAService {
+protocol DCAServicable {
+    func calculateDCA(_ asset: Asset,
+                   _ initialInvestmentAmount: Double,
+                   _ monthlyDollarCostAveragingAmount: Double,
+                   _ initialDateOfInvestmentIndex: Int
+    ) -> DCAResult
+    
+    func getInvestmentAmount(_ initialInvestmentAmount: Double,
+                             _ monthlyDollarCostAveragingAmount: Double,
+                             _ initialDateOfInvestmentIndex: Int
+    ) -> Double
+}
+
+extension DCAServicable {
     func calculateDCA(_ asset: Asset,
                    _ initialInvestmentAmount: Double,
                    _ monthlyDollarCostAveragingAmount: Double,

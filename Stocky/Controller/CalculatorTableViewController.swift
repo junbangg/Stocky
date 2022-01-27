@@ -39,7 +39,7 @@ final class CalculatorTableViewController: UITableViewController {
     @Published var initialDateOfInvestmentIndex: Int?
     @Published var initialInvestmentAmount: Int?
     @Published var monthlyDollarCostAveragingAmount: Int?
-    private var dcaService = DCAService()
+//    private var dcaService = DCAService()
     private var subscribers = Set<AnyCancellable>()
     private let calculatorPresenter: UIPresentable = CalculatorUIPresenter()
     var currentFocusIndex = 0
@@ -156,20 +156,20 @@ extension CalculatorTableViewController {
                     return
                 }
                 
-                guard let this = self else {
+                guard let self = self else {
                     return
                 }
-                let dcaResult = this.dcaService.calculateDCA(asset, initialInvestmentAmount.doubleValue, monthlyDollarCostAveragingAmount.doubleValue, initialDateOfInvestmentIndex)
+                let dcaResult = self.calculateDCA(asset, initialInvestmentAmount.doubleValue, monthlyDollarCostAveragingAmount.doubleValue, initialDateOfInvestmentIndex)
                 
-                let presentation = this.calculatorPresenter.getPresentation(result: dcaResult)
-                this.currentValueLabel.backgroundColor = presentation.currentValueLabelBackgroundColor
-                this.currentValueLabel.text = presentation.currentValue
-                this.investmentAmountLabel.text = presentation.investmentAmount
-                this.gainLabel.text = presentation.gain
-                this.yieldLabel.text = presentation.yield
-                this.yieldLabel.textColor = presentation.yieldLabelTextColor
-                this.annualReturnLabel.text = presentation.annualReturn
-                this.annualReturnLabel.textColor = presentation.annualReturnLabelTextColor
+                let presentation = self.calculatorPresenter.getPresentation(result: dcaResult)
+                self.currentValueLabel.backgroundColor = presentation.currentValueLabelBackgroundColor
+                self.currentValueLabel.text = presentation.currentValue
+                self.investmentAmountLabel.text = presentation.investmentAmount
+                self.gainLabel.text = presentation.gain
+                self.yieldLabel.text = presentation.yield
+                self.yieldLabel.textColor = presentation.yieldLabelTextColor
+                self.annualReturnLabel.text = presentation.annualReturn
+                self.annualReturnLabel.textColor = presentation.annualReturnLabelTextColor
             }
             .store(in: &subscribers)
     }
@@ -209,7 +209,7 @@ extension CalculatorTableViewController {
     }
 }
 
-//MARK: - Protocol Conformance
+//MARK: - UITextFieldDelegate
 
 extension CalculatorTableViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -220,5 +220,11 @@ extension CalculatorTableViewController: UITextFieldDelegate {
         return true
     }
 }
+
+// MARK: - DCAServicable
+
+extension CalculatorTableViewController: DCAServicable {}
+
+// MARK: - IdentifiableView
 
 extension CalculatorTableViewController: IdentifiableView {}

@@ -11,11 +11,11 @@ import XCTest
 @testable import Stocky
 
 final class DCAServiceTests: XCTestCase {
-    private var sut: DCAService!
+    private var sut: DCAServicable!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        sut = DCAService()
+        sut = MockDCAService()
     }
     
     override func tearDownWithError() throws {
