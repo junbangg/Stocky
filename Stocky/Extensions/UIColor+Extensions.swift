@@ -4,7 +4,7 @@
 //
 //  Created by Jun suk Bang on 2021/02/21.
 //
-import UIKit
+import UIKit.UIColor
 
 extension UIColor {
     static let themeRedShade = UIColor("fae2e1")

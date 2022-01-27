@@ -34,6 +34,7 @@
 		ED90A04F25ED361600C2BE4E /* CalculatorPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED90A04E25ED361600C2BE4E /* CalculatorPresenterTests.swift */; };
 		EDB4175925FB5EBC0009A850 /* DataChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB4175825FB5EBC0009A850 /* DataChartViewController.swift */; };
 		EDD54E90279B009400CD7B36 /* IdentifiableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD54E8F279B009400CD7B36 /* IdentifiableView.swift */; };
+		EDD88A1A27A2E9A60086BD1B /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD88A1927A2E9A60086BD1B /* UIViewController+Extensions.swift */; };
 		EDF6E54D2755E42900E22728 /* UIPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF6E54C2755E42900E22728 /* UIPresentable.swift */; };
 		EDF8805625EBD16500B2947F /* DCAServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF8805525EBD16500B2947F /* DCAServiceTests.swift */; };
 /* End PBXBuildFile section */
@@ -80,6 +81,7 @@
 		ED90A04E25ED361600C2BE4E /* CalculatorPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorPresenterTests.swift; sourceTree = "<group>"; };
 		EDB4175825FB5EBC0009A850 /* DataChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataChartViewController.swift; sourceTree = "<group>"; };
 		EDD54E8F279B009400CD7B36 /* IdentifiableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableView.swift; sourceTree = "<group>"; };
+		EDD88A1927A2E9A60086BD1B /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		EDF6E54C2755E42900E22728 /* UIPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPresentable.swift; sourceTree = "<group>"; };
 		EDF8805325EBD16500B2947F /* StockyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDF8805525EBD16500B2947F /* DCAServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCAServiceTests.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				36018D1825DEA37E00E6B80C /* Int+Extensions.swift */,
 				36EF810325E0020300F01821 /* Double+Extensions.swift */,
 				36E1A77125E281A7004328BC /* UIColor+Extensions.swift */,
+				EDD88A1927A2E9A60086BD1B /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				EDB4175925FB5EBC0009A850 /* DataChartViewController.swift in Sources */,
 				36197F1F25CBC7DB00ECE2CA /* UITextField+Extensions.swift in Sources */,
 				36110D0525AF170F004B9AAD /* SearchTableViewController.swift in Sources */,
+				EDD88A1A27A2E9A60086BD1B /* UIViewController+Extensions.swift in Sources */,
 				36BDC34225B5D1EA006C42F4 /* UIAnimatable.swift in Sources */,
 				EDF6E54D2755E42900E22728 /* UIPresentable.swift in Sources */,
 				361A995225B07BAD00FCED62 /* APIService.swift in Sources */,

@@ -6,7 +6,7 @@
 //
 import Foundation
 import MBProgressHUD
-/// Protocol
+
 protocol UIAnimatable where Self: UIViewController {
     func showLoadingAnimation()
     func dismissLoadingAnimation()

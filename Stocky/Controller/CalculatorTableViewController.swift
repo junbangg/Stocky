@@ -41,7 +41,8 @@ final class CalculatorTableViewController: UITableViewController {
     @Published var monthlyDollarCostAveragingAmount: Int?
     private var dcaService = DCAService()
     private var subscribers = Set<AnyCancellable>()
-    private let calculatorPresenter: UIPresentable! = CalculatorUIPresenter()
+    private let calculatorPresenter: UIPresentable = CalculatorUIPresenter()
+    var currentFocusIndex = 0
     
     //MARK: - Initializer
     
@@ -63,11 +64,15 @@ final class CalculatorTableViewController: UITableViewController {
         observeInputs()
         setupDateSlider()
         resetLabels()
+        hideKeyboardOnTap()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        initialInvestmentAmountTextField.becomeFirstResponder()
+        if initialInvestmentAmountTextField.text == "" {
+            initialInvestmentAmountTextField.becomeFirstResponder()
+        }
+        
     }
 }
 
