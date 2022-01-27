@@ -39,9 +39,7 @@ final class CalculatorTableViewController: UITableViewController {
     @Published var initialDateOfInvestmentIndex: Int?
     @Published var initialInvestmentAmount: Int?
     @Published var monthlyDollarCostAveragingAmount: Int?
-//    private var dcaService = DCAService()
     private var subscribers = Set<AnyCancellable>()
-    private let calculatorPresenter: UIPresentable = CalculatorUIPresenter()
     var currentFocusIndex = 0
     
     //MARK: - Initializer
@@ -125,13 +123,16 @@ extension CalculatorTableViewController {
 extension CalculatorTableViewController {
     private func observeInputs() {
         $initialDateOfInvestmentIndex.sink { [weak self] (index) in
-            guard let index = index else {
+            guard let self = self,
+                  let index = index else {
                 return
             }
-            self?.dateSlider.value = index.floatValue
-            if let dateString = self?.asset?.timeSeries.getMonthData(isReversed: true)[index].date.MMYYFormat {
-                self?.initialDateOfInvestmentTextField.text = dateString
+            self.dateSlider.value = index.floatValue
+            guard let monthData = self.asset?.timeSeries.getMonthData(isReversed: true) else {
+                return
             }
+            let dateString = monthData[index].date.MMYYFormat
+            self.initialDateOfInvestmentTextField.text = dateString
         }.store(in: &subscribers)
         
         NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification, object: initialInvestmentAmountTextField)
@@ -148,20 +149,22 @@ extension CalculatorTableViewController {
         
         Publishers.CombineLatest3($initialInvestmentAmount, $monthlyDollarCostAveragingAmount, $initialDateOfInvestmentIndex)
             .sink { [weak self] (initialInvestmentAmount, monthlyDollarCostAveragingAmount, initialDateOfInvestmentIndex) in
-                
-                guard let initialInvestmentAmount = initialInvestmentAmount,
-                      let monthlyDollarCostAveragingAmount = monthlyDollarCostAveragingAmount,
-                      let initialDateOfInvestmentIndex = initialDateOfInvestmentIndex,
-                      let asset = self?.asset else {
-                    return
-                }
-                
                 guard let self = self else {
                     return
                 }
-                let dcaResult = self.calculateDCA(asset, initialInvestmentAmount.doubleValue, monthlyDollarCostAveragingAmount.doubleValue, initialDateOfInvestmentIndex)
-                
-                let presentation = self.calculatorPresenter.getPresentation(result: dcaResult)
+                guard let initialInvestmentAmount = initialInvestmentAmount,
+                      let monthlyDollarCostAveragingAmount = monthlyDollarCostAveragingAmount,
+                      let initialDateOfInvestmentIndex = initialDateOfInvestmentIndex,
+                      let asset = self.asset else {
+                    return
+                }
+                let dcaResult = self.calculateDCA(
+                    asset,
+                    initialInvestmentAmount.doubleValue,
+                    monthlyDollarCostAveragingAmount.doubleValue,
+                    initialDateOfInvestmentIndex
+                )
+                let presentation = self.getPresentation(result: dcaResult)
                 self.currentValueLabel.backgroundColor = presentation.currentValueLabelBackgroundColor
                 self.currentValueLabel.text = presentation.currentValue
                 self.investmentAmountLabel.text = presentation.investmentAmount
@@ -179,12 +182,13 @@ extension CalculatorTableViewController {
             return
         }
         navigationController?.popViewController(animated: true)
-        if let monthDatas = asset?.timeSeries.getMonthData(isReversed: true) {
-            initialDateOfInvestmentIndex = index
-            let monthData = monthDatas[index]
-            let dateString = monthData.date.MMYYFormat
-            initialDateOfInvestmentTextField.text = dateString
+        guard let monthDatas = asset?.timeSeries.getMonthData(isReversed: true) else {
+            return
         }
+        initialDateOfInvestmentIndex = index
+        let monthData = monthDatas[index]
+        let dateString = monthData.date.MMYYFormat
+        initialDateOfInvestmentTextField.text = dateString
     }
 }
 
@@ -220,6 +224,11 @@ extension CalculatorTableViewController: UITextFieldDelegate {
         return true
     }
 }
+
+// MARK: - CalculatorUIPresentable
+
+extension CalculatorTableViewController: CalculatorUIPresentable {}
+
 
 // MARK: - DCAServicable
 

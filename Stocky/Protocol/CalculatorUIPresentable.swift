@@ -18,7 +18,11 @@ struct CalculatorUIPresentation {
     let annualReturnLabelTextColor: UIColor
 }
 
-struct CalculatorUIPresenter: UIPresentable {
+protocol CalculatorUIPresentable {
+    func getPresentation(result: DCAResult) -> CalculatorUIPresentation
+}
+
+extension CalculatorUIPresentable {
     func getPresentation(result: DCAResult) -> CalculatorUIPresentation {
         let isProfitable = result.isProtiable == true
         let gainSymbol = isProfitable ? "+" : ""

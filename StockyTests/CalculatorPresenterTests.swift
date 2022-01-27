@@ -8,10 +8,10 @@ import XCTest
 @testable import Stocky
 
 final class CalculatorPresenterTests: XCTestCase {
-    var sut: UIPresentable!
+    var sut: CalculatorUIPresentable!
 
     override func setUpWithError() throws {
-        sut = CalculatorUIPresenter()
+        sut = MockCalculatorUIPresenter()
         try super.setUpWithError()
     }
     
