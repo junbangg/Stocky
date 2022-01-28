@@ -12,7 +12,6 @@
 ## 라이브러리
 - **MBProgressHUD** - https://github.com/jdg/MBProgressHUD
 - **Charts**  -  https://github.com/danielgindi/Charts
-- **TinyConstraints Library** - https://github.com/roberthein/TinyConstraints
 
 ## API
 #### Alpha Vantage - https://www.alphavantage.com
