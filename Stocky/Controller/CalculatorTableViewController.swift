@@ -87,6 +87,7 @@ final class CalculatorTableViewController: UITableViewController {
         setupDateSlider()
         resetLabels()
         hideKeyboardOnTap()
+        setupDefaultChartUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -108,7 +109,11 @@ extension CalculatorTableViewController {
 //MARK: - UI Methods
 
 extension CalculatorTableViewController {
-    private func setupChartUI() {
+    private func setupDefaultChartUI() {
+        dataChartView.backgroundColor = .themeGreenShade
+    }
+    
+    private func loadChartUI() {
         dataChartView.addSubview(lineChartView)
         lineChartView.translatesAutoresizingMaskIntoConstraints = false
         lineChartView.topAnchor.constraint(equalTo: dataChartView.topAnchor).isActive = true
@@ -222,11 +227,11 @@ extension CalculatorTableViewController {
         let dateString = monthData.date.MMYYFormat
         initialDateOfInvestmentTextField.text = dateString
         
-        setupChartUI()
-        setupChartData(with: asset.timeSeries)
+        loadChartUI()
+        loadChartData(with: asset.timeSeries)
     }
     
-    private func setupChartData(with timeSeries: TimeSeries) {
+    private func loadChartData(with timeSeries: TimeSeries) {
         let priceData = LineChartDataSet(entries: getData(of: timeSeries), label: "수정종가")
         priceData.mode = .cubicBezier
         priceData.circleRadius = 3
@@ -279,9 +284,9 @@ extension CalculatorTableViewController {
 // MARK: - DateSelectionDelegate
 
 extension CalculatorTableViewController: DateSelectionDelegate {
-    func loadChart() {
-        setupChartUI()
-        setupChartData(with: asset.timeSeries)
+    func reloadChart() {
+        loadChartUI()
+        loadChartData(with: asset.timeSeries)
     }
 }
 

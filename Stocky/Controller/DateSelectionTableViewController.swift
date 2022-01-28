@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DateSelectionDelegate: AnyObject {
-    func loadChart()
+    func reloadChart()
 }
 
 final class DateSelectionTableViewController: UITableViewController {
@@ -30,7 +30,7 @@ final class DateSelectionTableViewController: UITableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        delegate?.loadChart()
+        delegate?.reloadChart()
     }
 }
 
