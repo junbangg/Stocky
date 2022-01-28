@@ -2,29 +2,21 @@ PODS:
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
-  - Loaf (0.7.0)
   - MBProgressHUD (1.2.0)
-  - TinyConstraints (4.0.1)
 
 DEPENDENCIES:
   - Charts
-  - Loaf
   - MBProgressHUD
-  - TinyConstraints
 
 SPEC REPOS:
   trunk:
     - Charts
-    - Loaf
     - MBProgressHUD
-    - TinyConstraints
 
 SPEC CHECKSUMS:
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
-  Loaf: d69937cd00649f3fa260beb8b7aef0a1feb861ef
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
-  TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
 
-PODFILE CHECKSUM: ad3e2547e611cf6285e811f0c36fa1a59b44823c
+PODFILE CHECKSUM: ba92677977d917e28768b989abe6a5bd3cdeb4f4
 
 COCOAPODS: 1.10.1
