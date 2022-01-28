@@ -7,9 +7,14 @@
 
 import UIKit
 
+protocol DateSelectionDelegate: AnyObject {
+    func loadChart()
+}
+
 final class DateSelectionTableViewController: UITableViewController {
     //MARK: -  Properties
     
+    weak var delegate: DateSelectionDelegate?
     var timeSeries: TimeSeries?
     var selectedIndex: Int?
     private var monthDatas: [MonthData] = []
@@ -21,6 +26,11 @@ final class DateSelectionTableViewController: UITableViewController {
         super.viewDidLoad()
         setupTableView()
         setupNavigationBar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        delegate?.loadChart()
     }
 }
 

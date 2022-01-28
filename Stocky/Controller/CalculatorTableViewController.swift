@@ -87,7 +87,6 @@ final class CalculatorTableViewController: UITableViewController {
         setupDateSlider()
         resetLabels()
         hideKeyboardOnTap()
-        setupChart()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -109,7 +108,7 @@ extension CalculatorTableViewController {
 //MARK: - UI Methods
 
 extension CalculatorTableViewController {
-    private func setupChart() {
+    private func setupChartUI() {
         dataChartView.addSubview(lineChartView)
         lineChartView.translatesAutoresizingMaskIntoConstraints = false
         lineChartView.topAnchor.constraint(equalTo: dataChartView.topAnchor).isActive = true
@@ -223,10 +222,11 @@ extension CalculatorTableViewController {
         let dateString = monthData.date.MMYYFormat
         initialDateOfInvestmentTextField.text = dateString
         
-        setChartData(with: asset.timeSeries)
+        setupChartUI()
+        setupChartData(with: asset.timeSeries)
     }
     
-    private func setChartData(with timeSeries: TimeSeries) {
+    private func setupChartData(with timeSeries: TimeSeries) {
         let priceData = LineChartDataSet(entries: getData(of: timeSeries), label: "수정종가")
         priceData.mode = .cubicBezier
         priceData.circleRadius = 3
@@ -267,11 +267,21 @@ extension CalculatorTableViewController {
            let dateSelectionTableViewController = segue.destination as? DateSelectionTableViewController,
            let timeSeries = sender as? TimeSeries {
             dateSelectionTableViewController.timeSeries = timeSeries
+            dateSelectionTableViewController.delegate = self
             dateSelectionTableViewController.selectedIndex = initialDateOfInvestmentIndex
             dateSelectionTableViewController.didSelectDate = { [weak self] index in
                 self?.handleDateSelection(index: index)
             }
         }
+    }
+}
+
+// MARK: - DateSelectionDelegate
+
+extension CalculatorTableViewController: DateSelectionDelegate {
+    func loadChart() {
+        setupChartUI()
+        setupChartData(with: asset.timeSeries)
     }
 }
 
