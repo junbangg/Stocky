@@ -32,7 +32,6 @@
 		C1EFFFA6F897F7A455968397 /* Pods_Stocky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45EB70C165F2AAC122965CC5 /* Pods_Stocky.framework */; };
 		ED90A04525ED30F300C2BE4E /* CalculatorUIPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED90A04425ED30F300C2BE4E /* CalculatorUIPresentable.swift */; };
 		ED90A04F25ED361600C2BE4E /* CalculatorPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED90A04E25ED361600C2BE4E /* CalculatorPresenterTests.swift */; };
-		EDB4175925FB5EBC0009A850 /* DataChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB4175825FB5EBC0009A850 /* DataChartViewController.swift */; };
 		EDD54E90279B009400CD7B36 /* IdentifiableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD54E8F279B009400CD7B36 /* IdentifiableView.swift */; };
 		EDD88A1A27A2E9A60086BD1B /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD88A1927A2E9A60086BD1B /* UIViewController+Extensions.swift */; };
 		EDD88A1C27A2F4DA0086BD1B /* MockDCAService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD88A1B27A2F4DA0086BD1B /* MockDCAService.swift */; };
@@ -80,7 +79,6 @@
 		E67080792EF2DC1C1069B8C1 /* Pods-Stocky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stocky.debug.xcconfig"; path = "Target Support Files/Pods-Stocky/Pods-Stocky.debug.xcconfig"; sourceTree = "<group>"; };
 		ED90A04425ED30F300C2BE4E /* CalculatorUIPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorUIPresentable.swift; sourceTree = "<group>"; };
 		ED90A04E25ED361600C2BE4E /* CalculatorPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorPresenterTests.swift; sourceTree = "<group>"; };
-		EDB4175825FB5EBC0009A850 /* DataChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataChartViewController.swift; sourceTree = "<group>"; };
 		EDD54E8F279B009400CD7B36 /* IdentifiableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableView.swift; sourceTree = "<group>"; };
 		EDD88A1927A2E9A60086BD1B /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		EDD88A1B27A2F4DA0086BD1B /* MockDCAService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDCAService.swift; sourceTree = "<group>"; };
@@ -198,7 +196,6 @@
 				36110D0425AF170F004B9AAD /* SearchTableViewController.swift */,
 				364CD4DB25CA84EC00BE426C /* CalculatorTableViewController.swift */,
 				365CDCE625CC216B0099CF24 /* DateSelectionTableViewController.swift */,
-				EDB4175825FB5EBC0009A850 /* DataChartViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -385,7 +382,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				365CDCE725CC216B0099CF24 /* DateSelectionTableViewController.swift in Sources */,
-				EDB4175925FB5EBC0009A850 /* DataChartViewController.swift in Sources */,
 				36197F1F25CBC7DB00ECE2CA /* UITextField+Extensions.swift in Sources */,
 				36110D0525AF170F004B9AAD /* SearchTableViewController.swift in Sources */,
 				EDD88A1A27A2E9A60086BD1B /* UIViewController+Extensions.swift in Sources */,

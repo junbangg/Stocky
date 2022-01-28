@@ -25,6 +25,7 @@ final class CalculatorTableViewController: UITableViewController {
     @IBOutlet weak var yieldLabel: UILabel!
     @IBOutlet weak var annualReturnLabel: UILabel!
     @IBOutlet weak var latestSharePrice: UILabel!
+    @IBOutlet weak var dataChartView: UIView!
     @IBOutlet weak var initialInvestmentAmountTextField: UITextField!
     @IBOutlet weak var monthlyDollarCostAveragingTextField: UITextField!
     @IBOutlet weak var initialDateOfInvestmentTextField: UITextField!
@@ -34,13 +35,36 @@ final class CalculatorTableViewController: UITableViewController {
     @IBOutlet weak var dateSlider: UISlider!
     
     //MARK: - Properties
+    lazy var lineChartView: LineChartView = {
+        let chartView = LineChartView()
+        chartView.noDataText = ""
+        chartView.backgroundColor = .themeGreenShade
+        chartView.rightAxis.enabled = false
+        
+        let yAxis = chartView.leftAxis
+        yAxis.labelFont = .boldSystemFont(ofSize: 15)
+        yAxis.setLabelCount(4, force: false)
+        yAxis.labelTextColor = .white
+        yAxis.labelPosition = .outsideChart
+        yAxis.axisLineColor = .white
+        
+        chartView.xAxis.labelFont = .boldSystemFont(ofSize: 13)
+        chartView.xAxis.valueFormatter = DateAxisValueFormatter()
+        chartView.xAxis.granularity = 1.0
+        chartView.xAxis.setLabelCount(6, force: false)
+        chartView.xAxis.labelTextColor = .white
+        chartView.xAxis.labelPosition = .bottom
+        chartView.xAxis.axisLineColor = .white
+        chartView.animate(xAxisDuration: 2.5)
+        
+        return chartView
+    }()
     
     var asset: Asset!
     @Published var initialDateOfInvestmentIndex: Int?
     @Published var initialInvestmentAmount: Int?
     @Published var monthlyDollarCostAveragingAmount: Int?
     private var subscribers = Set<AnyCancellable>()
-    var currentFocusIndex = 0
     
     //MARK: - Initializer
     
@@ -63,6 +87,7 @@ final class CalculatorTableViewController: UITableViewController {
         setupDateSlider()
         resetLabels()
         hideKeyboardOnTap()
+        setupChart()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -70,7 +95,6 @@ final class CalculatorTableViewController: UITableViewController {
         if initialInvestmentAmountTextField.text == "" {
             initialInvestmentAmountTextField.becomeFirstResponder()
         }
-        
     }
 }
 
@@ -85,6 +109,15 @@ extension CalculatorTableViewController {
 //MARK: - UI Methods
 
 extension CalculatorTableViewController {
+    private func setupChart() {
+        dataChartView.addSubview(lineChartView)
+        lineChartView.translatesAutoresizingMaskIntoConstraints = false
+        lineChartView.topAnchor.constraint(equalTo: dataChartView.topAnchor).isActive = true
+        lineChartView.trailingAnchor.constraint(equalTo: dataChartView.trailingAnchor).isActive = true
+        lineChartView.leadingAnchor.constraint(equalTo: dataChartView.leadingAnchor).isActive = true
+        lineChartView.bottomAnchor.constraint(equalTo: dataChartView.bottomAnchor).isActive = true
+    }
+    
     private func setupLabels() {
         navigationItem.title = asset?.searchResult.name
         assetLabel.text = asset?.searchResult.symbol
@@ -189,6 +222,40 @@ extension CalculatorTableViewController {
         let monthData = monthDatas[index]
         let dateString = monthData.date.MMYYFormat
         initialDateOfInvestmentTextField.text = dateString
+        
+        setChartData(with: asset.timeSeries)
+    }
+    
+    private func setChartData(with timeSeries: TimeSeries) {
+        let priceData = LineChartDataSet(entries: getData(of: timeSeries), label: "수정종가")
+        priceData.mode = .cubicBezier
+        priceData.circleRadius = 3
+        priceData.lineWidth = 3
+        priceData.setColor(.white)
+        priceData.fill = Fill(color: .white)
+        priceData.fillAlpha = 0.8
+        priceData.drawFilledEnabled = true
+        
+        let data = LineChartData(dataSet: priceData)
+        lineChartView.data = data
+    }
+    
+    /// Fetches data from timeSeries and configures to [ChartDataEntry]
+    private func getData(of timeSeries: TimeSeries) -> [ChartDataEntry]{
+        let monthData: [MonthData] = timeSeries.getMonthData(isReversed: false)
+        var chartValues: [ChartDataEntry] = []
+        var x = 0
+        
+        ///Working original code
+        for data in monthData {
+            let yData = data.adjustedClose
+            let data = data.date
+            let chartData = ChartDataEntry(x: x.doubleValue, y: yData, data: data)
+            chartValues.append(chartData)
+            x += 1
+        }
+        
+        return chartValues
     }
 }
 
@@ -204,11 +271,6 @@ extension CalculatorTableViewController {
             dateSelectionTableViewController.didSelectDate = { [weak self] index in
                 self?.handleDateSelection(index: index)
             }
-        }
-        if segue.identifier == Segue.sendChartData,
-           let dataChartViewController = segue.destination as? DataChartViewController {
-            dataChartViewController.timeSeries = asset?.timeSeries
-            dataChartViewController.selectedIndex = initialDateOfInvestmentIndex
         }
     }
 }
@@ -229,7 +291,6 @@ extension CalculatorTableViewController: UITextFieldDelegate {
 
 extension CalculatorTableViewController: CalculatorUIPresentable {}
 
-
 // MARK: - DCAServicable
 
 extension CalculatorTableViewController: DCAServicable {}
@@ -237,3 +298,23 @@ extension CalculatorTableViewController: DCAServicable {}
 // MARK: - IdentifiableView
 
 extension CalculatorTableViewController: IdentifiableView {}
+
+//MARK: - Axis Formatter Class
+
+//https://stackoverflow.com/questions/54915102/trying-to-enter-date-string-in-chartdataentry
+
+fileprivate final class DateAxisValueFormatter: NSObject, IAxisValueFormatter {
+    let dateFormatter = DateFormatter()
+    
+    override init() {
+        super.init()
+        dateFormatter.dateFormat = "dd MMM"
+    }
+    
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        let secondsPerDay = 24.0 * 3600.0
+        let date = Date(timeIntervalSince1970: value * secondsPerDay)
+        
+        return dateFormatter.string(from: date)
+    }
+}

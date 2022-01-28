@@ -296,9 +296,6 @@
                                             <subviews>
                                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dOn-SR-MQo">
                                                     <rect key="frame" x="20" y="11" width="374" height="375"/>
-                                                    <connections>
-                                                        <segue destination="xQp-os-Vlp" kind="embed" identifier="sendChartData" id="WFA-4Y-WAH"/>
-                                                    </connections>
                                                 </containerView>
                                             </subviews>
                                             <constraints>
@@ -435,6 +432,7 @@
                         <outlet property="annualReturnLabel" destination="Sfy-gT-2bi" id="HZi-HS-ikh"/>
                         <outlet property="assetLabel" destination="osr-DH-l0K" id="HHI-li-C1J"/>
                         <outlet property="currentValueLabel" destination="b9A-Bf-LfX" id="3Zt-LF-pRb"/>
+                        <outlet property="dataChartView" destination="dOn-SR-MQo" id="Idh-Bf-AW5"/>
                         <outlet property="dateSlider" destination="qWM-AS-tRY" id="y48-lI-ESI"/>
                         <outlet property="gainLabel" destination="I09-0Z-PrS" id="jBm-9i-sYN"/>
                         <outlet property="initialDateOfInvestmentTextField" destination="vRh-9b-BTU" id="vg1-Cy-2US"/>
@@ -530,27 +528,12 @@
             </objects>
             <point key="canvasLocation" x="72" y="121"/>
         </scene>
-        <!--Data Chart View-->
-        <scene sceneID="RD5-2x-5Bn">
-            <objects>
-                <viewController id="v54-Mt-2T0" customClass="DataChartView" customModule="Stocky" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3Kw-U8-pOu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="66z-tp-gFY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vGS-ae-Ffm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="39" y="817"/>
-        </scene>
         <!--Data Chart View Controller-->
         <scene sceneID="UqA-DJ-II9">
             <objects>
-                <viewController id="xQp-os-Vlp" customClass="DataChartViewController" customModule="Stocky" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DataChartViewController" id="xQp-os-Vlp" customClass="DataChartViewController" customModule="Stocky" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IOo-3q-jj3">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="3y9-bY-EBQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -558,7 +541,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HRe-Bs-GPC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1512" y="712"/>
+            <point key="canvasLocation" x="1514" y="779"/>
         </scene>
     </scenes>
     <resources>
