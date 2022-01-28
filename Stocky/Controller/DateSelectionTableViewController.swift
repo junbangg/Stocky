@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - DateSelectionDelegate
+
 protocol DateSelectionDelegate: AnyObject {
     func reloadChart()
 }
@@ -34,7 +36,7 @@ final class DateSelectionTableViewController: UITableViewController {
     }
 }
 
-//MARK: - UI Methods
+//MARK: - Private Methods
 
 extension DateSelectionTableViewController {
     private func setupNavigationBar() {
