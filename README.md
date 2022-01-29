@@ -54,6 +54,7 @@
   }
   ```
   - identifier가 필요한 타입에 `IdentifiableView` 프로토콜을 채택시켜서 Namespace 없이 문자열 생성해서 사용 가능
+ 
 3️⃣ 한화로 표시하는 기능
 
 4️⃣ Generic APIService 모델 리팩토링
