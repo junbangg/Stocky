@@ -30,7 +30,8 @@
 
 
 ## 🔥 Troubleshooting 및 고민한 점
-
+1️⃣ Date Selector Slider 움직이면 현재가치가 반응적으로 업데이트 되는 기능
+  - `Publishers.CombineLatest3` 
 1️⃣ 모든 데이터가 입력되기 전에 그래프가 로딩되는 문제 ✅
   - **조금 더 반응성이 좋은 UX를 위해서 그래프가 로딩되는 시점을 사용자 입력이 완료된 후로 지연하고 싶었다.**
   - 기존의 `DataChartViewController` 로 구현했던 그래프를 `UIView` 로 변경
