@@ -55,15 +55,15 @@
   ```
   - identifier가 필요한 타입에 `IdentifiableView` 프로토콜을 채택시켜서 Namespace 없이 문자열 생성해서 사용 가능
  
-3️⃣ 한화로 표시하는 기능
+4️⃣ 한화로 표시하는 기능
 
-4️⃣ Generic APIService 모델 리팩토링
+5️⃣ Generic APIService 모델 리팩토링
 
-5️⃣ KOSPI 검색 기능 추가
+6️⃣ KOSPI 검색 기능 추가
 
-6️⃣ ViewController 의존성 주입 방식으로 적용
+7️⃣ ViewController 의존성 주입 방식으로 적용
 
-7️⃣ Pagination 적용
+8️⃣ Pagination 적용
 
 ## 배운 점
 
