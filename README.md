@@ -1,7 +1,6 @@
 # 💲tocky
 매입원가 평균법으로 나스닥(NASDAQ) 투자종목의 수익성을 계산 할 수 있는 앱
 
-
 ## 🧑‍💻 활용 / 배운 기술
 - **UIKit / Storyboard**
 - **Combine**
@@ -30,7 +29,7 @@
 ![calculator](https://user-images.githubusercontent.com/33091784/144052656-d1f13703-d06e-485e-84c5-1c576dc49499.gif)
 
 
-## 🔥 Troubleshooting
+## 🔥 Troubleshooting 및 고민한 점
 
 1️⃣ 모든 데이터가 입력되기 전에 그래프가 로딩되는 문제 ✅
   - **조금 더 반응성이 좋은 UX를 위해서 그래프가 로딩되는 시점을 사용자 입력이 완료된 후로 지연하고 싶었다.**
@@ -38,6 +37,17 @@
   - Delegate Pattern 을 활용해서 모든 데이터가 입력된 후에 로딩되도록 리팩토링
   - 마지막 입력 데이터로 사용되는 날짜 정보가 입력됐을때, `viewWillDisappear` 에서 Delegate 메서드가 호출되면서 차트 view가 로딩되도록 구현
   - 아예 그래프를 주식종목의 기본 정보로 제공하고, 계산 기능은 따로 분리하는것도 좋겠다는 아이디어도 생겼다. 🤔
+
+2️⃣ 한화로 표시하는 기능
+
+3️⃣ Generic APIService 모델 리팩토링
+
+4️⃣ KOSPI 검색 기능 추가
+
+5️⃣ ViewController 의존성 주입 방식으로 적용
+
+6️⃣ Pagination 적용
+
 ## 배운 점
 
 
