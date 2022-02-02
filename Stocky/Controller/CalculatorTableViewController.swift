@@ -268,18 +268,20 @@ extension CalculatorTableViewController {
 
 extension CalculatorTableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Segue.showDataSelection,
+        guard segue.identifier == Segue.showDataSelection,
            let dateSelectionTableViewController = segue.destination as? DateSelectionTableViewController,
-           let timeSeries = sender as? TimeSeries {
-            dateSelectionTableViewController.setTimeSeries(to: timeSeries)
-            dateSelectionTableViewController.setDelegate(to: self)
-            dateSelectionTableViewController.setSelectedIndex(to: initialInvestmentAmount)
-            dateSelectionTableViewController.setDidSelectDate { [weak self] index in
-                guard let self = self else {
-                    return
-                }
-                self.handleDateSelection(index: index)
+              let timeSeries = sender as? TimeSeries,
+              let initialInvesmentAmount = initialInvestmentAmount else {
+                  return
+              }
+        dateSelectionTableViewController.setTimeSeries(to: timeSeries)
+        dateSelectionTableViewController.setDelegate(to: self)
+        dateSelectionTableViewController.setSelectedIndex(to: initialInvesmentAmount)
+        dateSelectionTableViewController.setDidSelectDate { [weak self] index in
+            guard let self = self else {
+                return
             }
+            self.handleDateSelection(index: index)
         }
     }
 }
