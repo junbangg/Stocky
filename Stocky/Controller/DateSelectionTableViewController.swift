@@ -34,6 +34,24 @@ final class DateSelectionTableViewController: UITableViewController {
         super.viewWillDisappear(true)
         delegate?.reloadChart()
     }
+    
+    // MARK: - Internal Methods
+    
+    func setTimeSeries(to timeSeries: TimeSeries) {
+        self.timeSeries = timeSeries
+    }
+    
+    func setDelegate(to viewController: DateSelectionDelegate) {
+        self.delegate = viewController
+    }
+    
+    func setSelectedIndex(to index: Int) {
+        self.selectedIndex = index
+    }
+    
+    func setDidSelectDate(to handler: @escaping (Int) -> Void) {
+        self.didSelectDate = handler
+    }
 }
 
 //MARK: - Private Methods

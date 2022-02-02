@@ -271,11 +271,14 @@ extension CalculatorTableViewController {
         if segue.identifier == Segue.showDataSelection,
            let dateSelectionTableViewController = segue.destination as? DateSelectionTableViewController,
            let timeSeries = sender as? TimeSeries {
-            dateSelectionTableViewController.timeSeries = timeSeries
-            dateSelectionTableViewController.delegate = self
-            dateSelectionTableViewController.selectedIndex = initialDateOfInvestmentIndex
-            dateSelectionTableViewController.didSelectDate = { [weak self] index in
-                self?.handleDateSelection(index: index)
+            dateSelectionTableViewController.setTimeSeries(to: timeSeries)
+            dateSelectionTableViewController.setDelegate(to: self)
+            dateSelectionTableViewController.setSelectedIndex(to: initialInvestmentAmount)
+            dateSelectionTableViewController.setDidSelectDate { [weak self] index in
+                guard let self = self else {
+                    return
+                }
+                self.handleDateSelection(index: index)
             }
         }
     }
