@@ -39,6 +39,7 @@ final class CalculatorTableViewController: UITableViewController {
         let chartView = LineChartView()
         chartView.noDataText = ""
         chartView.backgroundColor = .themeGreenShade
+        
         chartView.rightAxis.enabled = false
         
         let yAxis = chartView.leftAxis
@@ -228,7 +229,19 @@ extension CalculatorTableViewController {
         initialDateOfInvestmentTextField.text = dateString
         
         loadChartUI()
-        loadChartData(with: asset.timeSeries)
+        loadEmptyChart(with: asset.timeSeries)
+//        loadChartData(with: asset.timeSeries)
+    }
+    
+    private func loadEmptyChart(with timeSeries: TimeSeries) {
+        let priceData = LineChartDataSet(entries: getData(of: timeSeries), label: "수정종가")
+        priceData.mode = .cubicBezier
+        priceData.circleRadius = 3
+        priceData.lineWidth = 3
+        priceData.setColor(.white)
+        priceData.fill = Fill(color: .white)
+        priceData.fillAlpha = 0.8
+        priceData.drawFilledEnabled = true
     }
     
     private func loadChartData(with timeSeries: TimeSeries) {
