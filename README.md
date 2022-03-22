@@ -28,10 +28,6 @@
 ## API
 #### Alpha Vantage - https://www.alphavantage.com
 
-## UML
-
-## 브랜치 전략
-
 
 ## 🔥 Troubleshooting 및 고민한 점
 
@@ -69,6 +65,5 @@
 
 8️⃣ Pagination 적용
 
-## 배운 점
 
 
