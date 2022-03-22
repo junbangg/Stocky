@@ -19,7 +19,6 @@
 - **UIKit / Storyboard**
 - **Combine**
 - **MVC 디자인 패턴**
-- **Rest API 통신**
 - **Unit Testing**
 
 ## 🛠 라이브러리
