@@ -3,10 +3,7 @@
 
 # 사용 예
 ## 검색 기능
-![search](https://user-images.githubusercontent.com/33091784/144051586-9b69e49f-5289-41a9-9c4f-ac275d08b847.gif)
-
-## 검색 결과
-![searchResult](https://user-images.githubusercontent.com/33091784/144051574-af8e73e7-36b0-44bd-af66-c71ea7266d20.gif)
+![search](https://user-images.githubusercontent.com/33091784/144051586-9b69e49f-5289-41a9-9c4f-ac275d08b847.gif)![searchResult](https://user-images.githubusercontent.com/33091784/144051574-af8e73e7-36b0-44bd-af66-c71ea7266d20.gif)
 
 ## 계산 기능
 ![calculator](https://user-images.githubusercontent.com/33091784/144052656-d1f13703-d06e-485e-84c5-1c576dc49499.gif)
