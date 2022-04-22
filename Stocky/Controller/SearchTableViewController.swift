@@ -25,6 +25,7 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
     
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
+        
         searchController.searchResultsUpdater = self
         searchController.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -67,12 +68,22 @@ extension SearchTableViewController {
         tableView.tableFooterView = UIView()
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
         return searchResults?.items.count ?? 0
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as! SearchTableViewCell
+    override func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: SearchTableViewCell.identifier,
+            for: indexPath
+        ) as! SearchTableViewCell
+        
         if let searchResults = self.searchResults {
             let searchResult = searchResults.items[indexPath.row]
             cell.configure(with: searchResult)
@@ -81,10 +92,14 @@ extension SearchTableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
         if let searchResults = self.searchResults {
             let searchResult = searchResults.items[indexPath.item]
             let symbol = searchResult.symbol
+            
             handleSelection(for: symbol, searchResult: searchResult)
         }
         tableView.deselectRow(at: indexPath, animated: true)
@@ -97,20 +112,21 @@ extension SearchTableViewController {
     private func observeInputs() {
         $searchQuery
             .debounce(for: .milliseconds(750), scheduler: RunLoop.main)
-            .sink { [unowned self] (searchQuery) in
+            .sink { [unowned self] searchQuery in
                 guard !searchQuery.isEmpty else {
                     return
                 }
                 showLoadingAnimation()
-                self.apiService.fetchPreviewData(with: searchQuery).sink { (completion) in
+                self.apiService.fetchPreviewData(with: searchQuery).sink { completion in
                     dismissLoadingAnimation()
+                    
                     switch completion {
                     case .failure(let error):
                         print(error.localizedDescription)
                     case .finished:
                         break
                     }
-                } receiveValue: { [weak self] (searchResults) in
+                } receiveValue: { [weak self] searchResults in
                     self?.searchResults = searchResults
                     self?.tableView.reloadData()
                     self?.tableView.isScrollEnabled = true
@@ -118,7 +134,7 @@ extension SearchTableViewController {
                 
             }.store(in: &subscribers)
         
-        $stage.sink { [unowned self] (mode) in
+        $stage.sink { [unowned self] mode in
             switch mode {
             case .greeting:
                 self.tableView.backgroundView = WelcomeView()
@@ -130,7 +146,7 @@ extension SearchTableViewController {
     
     private func handleSelection(for symbol: String, searchResult: SearchResult) {
         showLoadingAnimation()
-        apiService.fetchTimeSeriesData(with: symbol).sink { [weak self] (completion) in
+        apiService.fetchTimeSeriesData(with: symbol).sink { [weak self] completion in
             self?.dismissLoadingAnimation()
             switch completion{
             case .failure(let error):
@@ -148,7 +164,10 @@ extension SearchTableViewController {
                     }) else {
                 fatalError("Failed to create CalculatorTableViewVC")
             }
-            self?.navigationController?.pushViewController(viewController, animated: true)
+            self?.navigationController?.pushViewController(
+                viewController,
+                animated: true
+            )
             self?.searchController.searchBar.text = nil
         }.store(in: &subscribers)
     }

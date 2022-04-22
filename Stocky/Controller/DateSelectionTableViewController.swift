@@ -7,11 +7,13 @@
 
 import UIKit
 
-// MARK: - DateSelectionDelegate
+// MARK: - [Protocol] DateSelectionDelegate
 
 protocol DateSelectionDelegate: AnyObject {
     func reloadChart()
 }
+
+// MARK: - [Class] DateSelectionTableViewController
 
 final class DateSelectionTableViewController: UITableViewController {
     //MARK: -  Properties
@@ -88,36 +90,3 @@ extension DateSelectionTableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
-
-//MARK: - Custom TableViewCell Class
-
-final class DateSelectionTableViewCell: UITableViewCell {
-    @IBOutlet weak var monthLabel: UILabel!
-    @IBOutlet weak var monthsAgoLabel: UILabel!
-    
-    private enum MonthsAgoString: String, CustomStringConvertible {
-        case oneMonth = "1 개월 전"
-        case nMonths = "개월 전"
-        case recent = "방금 투자"
-        
-        var description: String {
-            return rawValue
-        }
-    }
-    
-    func configure(with monthData: MonthData, with index: Int, isSelected: Bool) {
-        monthLabel.text = monthData.date.MMYYFormat
-        accessoryType = isSelected ? .checkmark : .none
-        if index == 1 {
-            monthsAgoLabel.text = "\(MonthsAgoString.oneMonth)"
-        } else if index > 1{
-            monthsAgoLabel.text = "\(index) \(MonthsAgoString.nMonths)"
-        } else {
-            monthsAgoLabel.text = "\(MonthsAgoString.recent)"
-        }
-    }
-}
-
-// MARK: - IdentifiableView
-
-extension DateSelectionTableViewCell: IdentifiableView {}

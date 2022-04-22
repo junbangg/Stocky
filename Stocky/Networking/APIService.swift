@@ -7,14 +7,14 @@
 import Foundation
 import Combine
 
-//MARK: - API 요청 프로토콜
+//MARK: - [Protocol] APIRequestable
 
 protocol APIRequestable {
     func fetchPreviewData(with key: String) -> AnyPublisher<SearchResults, Error>
     func fetchTimeSeriesData(with key: String) -> AnyPublisher<TimeSeries, Error>
 }
 
-//MARK: - 메인 클래스
+//MARK: - [Class] APIService
 
 final class APIService {
     private let session: URLSession
@@ -24,7 +24,7 @@ final class APIService {
     }
 }
 
-//MARK: - 프로토콜 채택
+//MARK: - [Extension] APIRequestable
 
 extension APIService: APIRequestable {
     // TODO: keyParseResult 메서드로 묶어서 분리
@@ -84,7 +84,7 @@ extension APIService: APIRequestable {
     }
 }
 
-//MARK: - 중첩 타입
+//MARK: - [Nested Type] APIOperation
 
 private extension APIService {
     private enum APIServiceError: Error {
@@ -127,7 +127,7 @@ private extension APIService {
     }
 }
 
-//MARK: - Helper 메서드
+//MARK: - [Extension] Private Methods
 private extension APIService {
     private func parse(query: String) -> Result<String, Error> {
         if let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {

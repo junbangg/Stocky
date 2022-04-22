@@ -8,7 +8,6 @@ import UIKit
 import Combine
 import Charts
 
-/// TODO : After user finished entering values, immediately change focus to the next input for better UX
 final class CalculatorTableViewController: UITableViewController {
     //MARK: - Nested Types
     
@@ -35,6 +34,7 @@ final class CalculatorTableViewController: UITableViewController {
     @IBOutlet weak var dateSlider: UISlider!
     
     //MARK: - Properties
+    
     lazy var lineChartView: LineChartView = {
         let chartView = LineChartView()
         chartView.noDataText = ""
@@ -230,7 +230,6 @@ extension CalculatorTableViewController {
         
         loadChartUI()
         loadEmptyChart(with: asset.timeSeries)
-//        loadChartData(with: asset.timeSeries)
     }
     
     private func loadEmptyChart(with timeSeries: TimeSeries) {
