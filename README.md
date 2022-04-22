@@ -61,6 +61,7 @@
 
 3️⃣ `UILabel` 이 짤리는 문제 해결 ✅
 <br>
+<br>
 <img width="278" alt="Screen Shot 2022-04-22 at 2 37 38 PM" src="https://user-images.githubusercontent.com/33091784/164610205-4799d9bd-c2ba-4d29-a19a-495a8bd8cb64.png">
 <br>
 `USD` 레이블이 짤리는 문제 
