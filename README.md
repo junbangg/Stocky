@@ -70,7 +70,5 @@
 
 4️⃣ ViewController 의존성 주입 방식으로 적용
 
-5️⃣ Pagination 적용
-
 
 
