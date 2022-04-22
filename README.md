@@ -29,7 +29,7 @@
 #### Alpha Vantage - https://www.alphavantage.com
 
 
-## 🔥 Troubleshooting 및 고민한 점
+## 🛠 Troubleshooting 및 고민한 점
 
 1️⃣ Date Selector Slider 움직이면 현재가치가 반응적으로 업데이트 되는 기능 ✅
   - `Publishers.CombineLatest3` 를 이용해서 3개의 `Publisher` 의 값을 활용하여 현재가치를 즉각적으로 계산해서 표시
@@ -54,16 +54,20 @@
   }
   ```
   - identifier가 필요한 타입에 `IdentifiableView` 프로토콜을 채택시켜서 Namespace 없이 문자열 생성해서 사용 가능
+
+4️⃣ 더 좋은 UX를 위해서 그래프 뷰를 숨겼다가, 정보가 전부 입력되면 표시되게 수정.
+
+## 🔥 TODO
  
-4️⃣ 한화로 표시하는 기능
+1️⃣ 한화로 표시하는 기능
 
-5️⃣ Generic APIService 모델 리팩토링
+2️⃣ Generic APIService 모델 리팩토링
 
-6️⃣ KOSPI 검색 기능 추가
+3️⃣ KOSPI 검색 기능 추가
 
-7️⃣ ViewController 의존성 주입 방식으로 적용
+4️⃣ ViewController 의존성 주입 방식으로 적용
 
-8️⃣ Pagination 적용
+5️⃣ Pagination 적용
 
 
 
