@@ -56,8 +56,14 @@
 2️⃣ Date Selector Slider 움직이면 현재가치가 반응적으로 업데이트 되는 기능 ✅
   - `Publishers.CombineLatest3` 를 이용해서 3개의 `Publisher` 의 값을 활용하여 현재가치를 즉각적으로 계산해서 표시
 
-3️⃣ 더 좋은 UX를 위해서 그래프 뷰를 숨겼다가, 정보가 전부 입력되면 표시되게 수정.
 
+
+3️⃣ UILabel 이 짤리는 문제 해결 ✅
+
+- Storyboard layout 수정해서 해결 
+- 안녕하세요 TextField 의 넓이를 Proportional to ContentView 로 수정 
+
+4️⃣ 더 좋은 UX를 위해서 그래프 뷰를 숨겼다가, 사용자 정보가 전부 입력되면 표시되는 UI 수정.
 
 ## 🔥 TODO
 
