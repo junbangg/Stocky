@@ -2,9 +2,6 @@
 매입원가 평균법으로 나스닥(NASDAQ) 투자종목의 수익성을 계산 할 수 있는 앱
 
 # 사용 예
-## 홈 화면
-![alt text](https://github.com/junbangg/Stocky/blob/main/img/1.png?raw=true)
-
 ## 검색 기능
 ![search](https://user-images.githubusercontent.com/33091784/144051586-9b69e49f-5289-41a9-9c4f-ac275d08b847.gif)
 
