@@ -65,10 +65,6 @@
 1️⃣ 한화로 표시하는 기능
 
 2️⃣ Generic APIService 모델 리팩토링
+- 추가적인 API에 대해 확장성을 갖춘 `Networking Layer` 
 
 3️⃣ KOSPI 검색 기능 추가
-
-4️⃣ ViewController 의존성 주입 방식으로 적용
-
-
-
