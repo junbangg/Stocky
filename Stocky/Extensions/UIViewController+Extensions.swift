@@ -9,7 +9,10 @@ import UIKit.UIViewController
 
 extension UIViewController {
     func hideKeyboardOnTap() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        let tap = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dismissKeyboard)
+        )
         view.addGestureRecognizer(tap)
     }
     
