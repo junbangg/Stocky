@@ -28,7 +28,7 @@
 ## API
 #### Alpha Vantage - https://www.alphavantage.com
 
-
+<br>
 
 ## 🛠 Troubleshooting
  
