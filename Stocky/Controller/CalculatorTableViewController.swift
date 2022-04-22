@@ -226,14 +226,15 @@ extension CalculatorTableViewController {
         initialDateOfInvestmentIndex = index
         let monthData = monthDatas[index]
         let dateString = monthData.date.MMYYFormat
-        initialDateOfInvestmentTextField.text = dateString
         
+        initialDateOfInvestmentTextField.text = dateString
         loadChartUI()
         loadEmptyChart(with: asset.timeSeries)
     }
     
     private func loadEmptyChart(with timeSeries: TimeSeries) {
         let priceData = LineChartDataSet(entries: getData(of: timeSeries), label: "수정종가")
+        
         priceData.mode = .cubicBezier
         priceData.circleRadius = 3
         priceData.lineWidth = 3
@@ -245,6 +246,7 @@ extension CalculatorTableViewController {
     
     private func loadChartData(with timeSeries: TimeSeries) {
         let priceData = LineChartDataSet(entries: getData(of: timeSeries), label: "수정종가")
+        
         priceData.mode = .cubicBezier
         priceData.circleRadius = 3
         priceData.lineWidth = 3

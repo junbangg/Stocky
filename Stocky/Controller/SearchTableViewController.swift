@@ -127,9 +127,12 @@ extension SearchTableViewController {
                         break
                     }
                 } receiveValue: { [weak self] searchResults in
-                    self?.searchResults = searchResults
-                    self?.tableView.reloadData()
-                    self?.tableView.isScrollEnabled = true
+                    guard let self = self else {
+                        return
+                    }
+                    self.searchResults = searchResults
+                    self.tableView.reloadData()
+                    self.tableView.isScrollEnabled = true
                 }.store(in: &self.subscribers)
                 
             }.store(in: &subscribers)
@@ -147,7 +150,10 @@ extension SearchTableViewController {
     private func handleSelection(for symbol: String, searchResult: SearchResult) {
         showLoadingAnimation()
         apiService.fetchTimeSeriesData(with: symbol).sink { [weak self] completion in
-            self?.dismissLoadingAnimation()
+            guard let self = self else {
+                return
+            }
+            self.dismissLoadingAnimation()
             switch completion{
             case .failure(let error):
                 print(error)
@@ -155,20 +161,23 @@ extension SearchTableViewController {
                 break
             }
         } receiveValue: { [weak self] (timeSeries) in
-            self?.dismissLoadingAnimation()
+            guard let self = self else {
+                return
+            }
+            self.dismissLoadingAnimation()
             let asset = Asset(searchResult: searchResult , timeSeries: timeSeries)
-            guard let viewController = self?.storyboard?.instantiateViewController(
+            guard let viewController = self.storyboard?.instantiateViewController(
                     identifier: CalculatorTableViewController.identifier,
                     creator: { coder in
                         CalculatorTableViewController(asset: asset, coder: coder)
                     }) else {
                 fatalError("Failed to create CalculatorTableViewVC")
             }
-            self?.navigationController?.pushViewController(
+            self.navigationController?.pushViewController(
                 viewController,
                 animated: true
             )
-            self?.searchController.searchBar.text = nil
+            self.searchController.searchBar.text = nil
         }.store(in: &subscribers)
     }
 }
