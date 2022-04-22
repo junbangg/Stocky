@@ -41,6 +41,7 @@
 
 ## 🤔 고민한 점
 
+
 1️⃣ 각종 identifier를 Namespace 타입/변수로 관리하면는 번거로움에 대한 고민. ✅
 **IdentifiableView` 프로토콜을 이용하여 해결**
   ```swift
@@ -64,6 +65,7 @@
 
 
 ## 🔥 TODO
+
  
 1️⃣ 한화로 표시하는 기능
 
