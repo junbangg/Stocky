@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-final class SearchTableViewController: UITableViewController, UIAnimatable {
+final class SearchTableViewController: UITableViewController, LoadingAnimatable {
     //MARK: - Nested Types
     
     private enum Stage {
@@ -33,6 +33,18 @@ final class SearchTableViewController: UITableViewController, UIAnimatable {
         searchController.searchBar.autocapitalizationType = .allCharacters
         
         return searchController
+    }()
+    
+    private lazy var loadingIndicator: UIActivityIndicatorView = {
+        let loadingIndicator = UIActivityIndicatorView(style: .large)
+        loadingIndicator.isHidden = false
+
+        self.view.addSubview(loadingIndicator)
+        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
+        loadingIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        loadingIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+
+        return loadingIndicator
     }()
     
     private let apiService = APIService()
@@ -116,9 +128,9 @@ extension SearchTableViewController {
                 guard !searchQuery.isEmpty else {
                     return
                 }
-                showLoadingAnimation()
+                showLoadingAnimation(with: self.loadingIndicator)
                 self.apiService.fetchPreviewData(with: searchQuery).sink { completion in
-                    dismissLoadingAnimation()
+                    dismissLoadingAnimation(of: self.loadingIndicator)
                     
                     switch completion {
                     case .failure(let error):
@@ -148,12 +160,12 @@ extension SearchTableViewController {
     }
     
     private func handleSelection(for symbol: String, searchResult: SearchResult) {
-        showLoadingAnimation()
+        showLoadingAnimation(with: self.loadingIndicator)
         apiService.fetchTimeSeriesData(with: symbol).sink { [weak self] completion in
             guard let self = self else {
                 return
             }
-            self.dismissLoadingAnimation()
+            self.dismissLoadingAnimation(of: self.loadingIndicator)
             switch completion{
             case .failure(let error):
                 print(error)
@@ -164,7 +176,7 @@ extension SearchTableViewController {
             guard let self = self else {
                 return
             }
-            self.dismissLoadingAnimation()
+            self.dismissLoadingAnimation(of: self.loadingIndicator)
             let asset = Asset(searchResult: searchResult , timeSeries: timeSeries)
             guard let viewController = self.storyboard?.instantiateViewController(
                     identifier: CalculatorTableViewController.identifier,

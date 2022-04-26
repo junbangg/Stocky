@@ -6,6 +6,5 @@ target 'Stocky' do
   use_frameworks!
 
   # Pods for Stocky
-	pod 'MBProgressHUD'
 	pod 'Charts'
 end
