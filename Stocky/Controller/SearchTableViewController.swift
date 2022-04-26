@@ -21,7 +21,7 @@ final class SearchTableViewController: UITableViewController, LoadingAnimatable 
         static let search = "검색"
     }
     
-    // MARK: - Properties
+    // MARK: - UI Components
     
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
@@ -37,15 +37,20 @@ final class SearchTableViewController: UITableViewController, LoadingAnimatable 
     
     private lazy var loadingIndicator: UIActivityIndicatorView = {
         let loadingIndicator = UIActivityIndicatorView(style: .large)
+        
         loadingIndicator.isHidden = false
-
         self.view.addSubview(loadingIndicator)
+        
         loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
-        loadingIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        loadingIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            loadingIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            loadingIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -100)
+        ])
 
         return loadingIndicator
     }()
+    
+    // MARK: - Properties
     
     private let apiService = APIService()
     private var subscribers = Set<AnyCancellable>()
