@@ -16,7 +16,6 @@
 - **Unit Testing**
 
 ## 🛠 라이브러리
-- **MBProgressHUD** - https://github.com/jdg/MBProgressHUD
 - **Charts**  -  https://github.com/danielgindi/Charts
 
 ## API
