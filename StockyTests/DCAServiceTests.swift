@@ -193,8 +193,8 @@ final class DCAServiceTests: XCTestCase {
         let monthlyDollarCostAveragingAmount: Double  = 0
         let initialDateOfInvestmentIndex: Int = 4 // 5 months ago
         let investmentAmount = sut.getInvestmentAmount(initialInvestmentAmount,
-                                                       monthlyDollarCostAveragingAmount,
-                                                       initialDateOfInvestmentIndex)
+                                    monthlyDollarCostAveragingAmount,
+                                    initialDateOfInvestmentIndex)
         
         XCTAssertEqual(investmentAmount, 500)
         // Initial Amount : $ 500
@@ -233,7 +233,12 @@ final class DCAServiceTests: XCTestCase {
     }
     
     private func createSearchResult() -> SearchResult {
-        return SearchResult(symbol: "XYZ", name: "XYZCompany", type: "ETF", currency: "USD")
+        return SearchResult(
+            symbol: "XYZ",
+            name: "XYZCompany",
+            type: "ETF",
+            currency: "USD"
+        )
     }
     
     private func createMeta() -> Meta {
