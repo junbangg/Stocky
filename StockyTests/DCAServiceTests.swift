@@ -179,8 +179,8 @@ final class DCAServiceTests: XCTestCase {
         let monthlyDollarCostAveragingAmount: Double  = 300
         let initialDateOfInvestmentIndex: Int = 4 // 5 months ago
         let investmentAmount = sut.getInvestmentAmount(initialInvestmentAmount,
-                                                       monthlyDollarCostAveragingAmount,
-                                                       initialDateOfInvestmentIndex)
+                                    monthlyDollarCostAveragingAmount,
+                                    initialDateOfInvestmentIndex)
         // expected
         XCTAssertEqual(investmentAmount, 1700)
         // Initial Amount : $ 500

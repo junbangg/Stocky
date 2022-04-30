@@ -35,7 +35,7 @@ final class SearchTableViewController: UITableViewController, LoadingAnimatable 
         return searchController
     }()
     
-    private lazy var loadingIndicator: UIActivityIndicatorView = {
+    lazy var loadingIndicator: UIActivityIndicatorView = {
         let loadingIndicator = UIActivityIndicatorView(style: .large)
         
         loadingIndicator.isHidden = false

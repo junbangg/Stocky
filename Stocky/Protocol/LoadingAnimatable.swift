@@ -7,6 +7,7 @@
 import UIKit
 
 protocol LoadingAnimatable where Self: UIViewController {
+    var loadingIndicator: UIActivityIndicatorView { set get }
     func showLoadingAnimation(with loadingIndicator: UIActivityIndicatorView)
     func dismissLoadingAnimation(of loadingIndicator: UIActivityIndicatorView)
 }
