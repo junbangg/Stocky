@@ -196,7 +196,7 @@ extension CalculatorTableViewController {
                       let asset = self.asset else {
                     return
                 }
-                let dcaResult = self.calculateDCA(
+                let dcaResult = self.calculateDCAResult(
                     asset,
                     initialInvestmentAmount.doubleValue,
                     monthlyDollarCostAveragingAmount.doubleValue,

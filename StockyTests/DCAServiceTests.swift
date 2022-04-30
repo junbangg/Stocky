@@ -48,7 +48,7 @@ final class DCAServiceTests: XCTestCase {
         let monthlyDollarCostAveragingAmount: Double = 1500
         let initialDateOfInvestmentIndex: Int = 5
         let asset = createProfitableAsset()
-        let result = sut.calculateDCA(asset,
+        let result = sut.calculateDCAResult(asset,
                                       initialInvestmentAmount,
                                       monthlyDollarCostAveragingAmount,
                                       initialDateOfInvestmentIndex)
@@ -78,7 +78,7 @@ final class DCAServiceTests: XCTestCase {
         let monthlyDollarCostAveragingAmount: Double = 0
         let initialDateOfInvestmentIndex: Int = 3
         let asset = createProfitableAsset()
-        let result = sut.calculateDCA(asset,
+        let result = sut.calculateDCAResult(asset,
                                       initialInvestmentAmount,
                                       monthlyDollarCostAveragingAmount,
                                       initialDateOfInvestmentIndex)
@@ -112,7 +112,7 @@ final class DCAServiceTests: XCTestCase {
         let monthlyDollarCostAveragingAmount: Double = 1500
         let initialDateOfInvestmentIndex: Int = 5
         let asset = createNonProfitableAsset()
-        let result = sut.calculateDCA(asset,
+        let result = sut.calculateDCAResult(asset,
                                       initialInvestmentAmount,
                                       monthlyDollarCostAveragingAmount,
                                       initialDateOfInvestmentIndex)
@@ -145,7 +145,7 @@ final class DCAServiceTests: XCTestCase {
         let monthlyDollarCostAveragingAmount: Double = 0
         let initialDateOfInvestmentIndex: Int = 3
         let asset = createNonProfitableAsset()
-        let result = sut.calculateDCA(asset,
+        let result = sut.calculateDCAResult(asset,
                                       initialInvestmentAmount,
                                       monthlyDollarCostAveragingAmount,
                                       initialDateOfInvestmentIndex)

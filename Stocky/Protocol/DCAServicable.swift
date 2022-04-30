@@ -7,8 +7,21 @@
 
 import Foundation
 
+// MARK: - DCAResult
+
+struct DCAResult {
+    let currentValue: Double
+    let investmentAmount: Double
+    let gain: Double
+    let yield: Double
+    let annualReturn: Double
+    let isProtiable: Bool
+}
+
+// MARK: - DCAServicable
+
 protocol DCAServicable {
-    func calculateDCA(
+    func calculateDCAResult(
         _ asset: Asset,
         _ initialInvestmentAmount: Double,
         _ monthlyDollarCostAveragingAmount: Double,
@@ -22,8 +35,10 @@ protocol DCAServicable {
     ) -> Double
 }
 
+// MARK: - DCAServicable Methods
+
 extension DCAServicable {
-    func calculateDCA(
+    func calculateDCAResult(
         _ asset: Asset,
         _ initialInvestmentAmount: Double,
         _ monthlyDollarCostAveragingAmount: Double,
@@ -115,11 +130,3 @@ extension DCAServicable {
     }
 }
 
-struct DCAResult {
-    let currentValue: Double
-    let investmentAmount: Double
-    let gain: Double
-    let yield: Double
-    let annualReturn: Double
-    let isProtiable: Bool
-}
