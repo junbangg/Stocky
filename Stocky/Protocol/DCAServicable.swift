@@ -44,9 +44,18 @@ extension DCAServicable {
         _ monthlyDollarCostAveragingAmount: Double,
         _ initialDateOfInvestmentIndex: Int
     ) -> DCAResult {
-        let investmentAmount = getInvestmentAmount(initialInvestmentAmount, monthlyDollarCostAveragingAmount, initialDateOfInvestmentIndex)
+        let investmentAmount = getInvestmentAmount(
+            initialInvestmentAmount,
+            monthlyDollarCostAveragingAmount,
+            initialDateOfInvestmentIndex
+        )
         let latestSharePrice = getLatestSharedPrice(of: asset)
-        let numberOfShares = getNumberOfShares(asset, initialInvestmentAmount, monthlyDollarCostAveragingAmount, initialDateOfInvestmentIndex)
+        let numberOfShares = getNumberOfShares(
+            asset,
+            initialInvestmentAmount,
+            monthlyDollarCostAveragingAmount,
+            initialDateOfInvestmentIndex
+        )
         let currentInvestmentValue = getCurrentInvestmentValue(numberOfShares, latestSharePrice)
         let isProfitable = currentInvestmentValue > investmentAmount
         let gain = currentInvestmentValue - investmentAmount
@@ -72,9 +81,10 @@ extension DCAServicable {
         _ monthlyDollarCostAveragingAmount: Double,
         _ initialDateOfInvestmentIndex: Int
     ) -> Double {
-        var totalAmount = Double()
-        totalAmount += initialInvestmentAmount
         let dollarCostAveragingAmount = initialDateOfInvestmentIndex.doubleValue * monthlyDollarCostAveragingAmount
+        var totalAmount = Double()
+        
+        totalAmount += initialInvestmentAmount
         totalAmount += dollarCostAveragingAmount
         
         return totalAmount
@@ -117,6 +127,7 @@ extension DCAServicable {
             .getMonthData(isReversed: true)[initialDateOfInvestmentIndex]
             .adjustedOpen
         let initialInvestmentShares = initialInvestmentAmount / initialInvestmentOpenPrice
+        
         totalShares += initialInvestmentShares
         asset.timeSeries
             .getMonthData(isReversed: true)
