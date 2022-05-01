@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - CalculatorUIPresentation
+
 struct CalculatorUIPresentation {
     let currentValueLabelBackgroundColor: UIColor
     let currentValue: String
@@ -18,9 +20,13 @@ struct CalculatorUIPresentation {
     let annualReturnLabelTextColor: UIColor
 }
 
+// MARK: - CalculatorUIPresentable
+
 protocol CalculatorUIPresentable {
     func getPresentation(result: DCAResult) -> CalculatorUIPresentation
 }
+
+// MARK: - CalculatorUIPresentable Methods
 
 extension CalculatorUIPresentable {
     func getPresentation(result: DCAResult) -> CalculatorUIPresentation {
