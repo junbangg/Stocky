@@ -58,7 +58,7 @@ final class DCAServiceTests: XCTestCase {
         // total : $5000 + $7500 = $125000
         //
         XCTAssertEqual(result.investmentAmount, 12500)
-        XCTAssertTrue(result.isProtiable)
+        XCTAssertTrue(result.isProfitable)
         // Jan: $5000 / 100 = 50 shares
         // Feb: $1500 / 110 = 13.6363 shares
         // Mar: $1500 / 120 = 12.5 shares
@@ -87,7 +87,7 @@ final class DCAServiceTests: XCTestCase {
         // total : $5000 + $0 = $5000
         //
         XCTAssertEqual(result.investmentAmount, 5000)
-        XCTAssertTrue(result.isProtiable)
+        XCTAssertTrue(result.isProfitable)
         
         /// Current Value Formula
         // Mar: $5000 / 120 = 41.6666 shares
@@ -121,7 +121,7 @@ final class DCAServiceTests: XCTestCase {
         // total : $5000 + $7500 = $125000
         //
         XCTAssertEqual(result.investmentAmount, 12500)
-        XCTAssertFalse(result.isProtiable)
+        XCTAssertFalse(result.isProfitable)
         /// Current Value Formula
         // Jan: $5000 / 170 = 29.4117 shares
         // Feb: $1500 / 160 = 9.375 shares
@@ -155,7 +155,7 @@ final class DCAServiceTests: XCTestCase {
         // total : $5000 + $0 = $5000
         //
         XCTAssertEqual(result.investmentAmount, 5000)
-        XCTAssertFalse(result.isProtiable)
+        XCTAssertFalse(result.isProfitable)
         /// Current Value Formula
         // Mar: $5000 / 150 = 33.3333 shares
         // April: $0 / 140 = 0 shares

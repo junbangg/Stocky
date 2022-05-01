@@ -24,7 +24,7 @@ protocol CalculatorUIPresentable {
 
 extension CalculatorUIPresentable {
     func getPresentation(result: DCAResult) -> CalculatorUIPresentation {
-        let isProfitable = result.isProtiable == true
+        let isProfitable = result.isProfitable == true
         let gainSymbol = isProfitable ? "+" : ""
         
         return .init(

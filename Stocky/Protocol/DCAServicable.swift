@@ -15,7 +15,7 @@ struct DCAResult {
     let gain: Double
     let yield: Double
     let annualReturn: Double
-    let isProtiable: Bool
+    let isProfitable: Bool
 }
 
 // MARK: - DCAServicable
@@ -63,7 +63,7 @@ extension DCAServicable {
             gain: gain,
             yield: yield,
             annualReturn: annualReturn,
-            isProtiable: isProfitable
+            isProfitable: isProfitable
         )
     }
     
