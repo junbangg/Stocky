@@ -28,7 +28,7 @@ final class CalculatorPresenterTests: XCTestCase {
                                     gain: 0,
                                     yield: 0,
                                     annualReturn: 0,
-                                    isProtiable: true)
+                                    isProfitable: true)
         let presentation = sut.getPresentation(result: result)
         XCTAssertEqual(presentation.annualReturnLabelTextColor, .systemGreen)
     }
@@ -39,7 +39,7 @@ final class CalculatorPresenterTests: XCTestCase {
                                     gain: 0,
                                     yield: 0,
                                     annualReturn: 0,
-                                    isProtiable: false)
+                                    isProfitable: false)
         let presentation = sut.getPresentation(result: result)
         XCTAssertEqual(presentation.annualReturnLabelTextColor, .systemRed)
     }
@@ -52,7 +52,7 @@ final class CalculatorPresenterTests: XCTestCase {
                                     gain: 0,
                                     yield: 0,
                                     annualReturn: 0,
-                                    isProtiable: true)
+                                    isProfitable: true)
         let presentation = sut.getPresentation(result: result)
         XCTAssertEqual(presentation.yieldLabelTextColor, .systemGreen)
     }
@@ -63,7 +63,7 @@ final class CalculatorPresenterTests: XCTestCase {
                                     gain: 0,
                                     yield: 0,
                                     annualReturn: 0,
-                                    isProtiable: false)
+                                    isProfitable: false)
         let presentation = sut.getPresentation(result: result)
         XCTAssertEqual(presentation.yieldLabelTextColor, .systemRed)
     }
@@ -78,7 +78,7 @@ final class CalculatorPresenterTests: XCTestCase {
                                     gain: 0,
                                     yield: 0.25,
                                     annualReturn: 0,
-                                    isProtiable: false)
+                                    isProfitable: false)
         let presentation = sut.getPresentation(result: result)
         XCTAssertEqual(presentation.yield.first, first)
         XCTAssertEqual(presentation.yield.last, last)
