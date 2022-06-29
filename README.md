@@ -55,8 +55,7 @@
 
 2️⃣ Date Selector Slider 움직이면 현재가치가 반응적으로 업데이트 되는 기능 ✅
   - `Publishers.CombineLatest3` 를 이용해서 3개의 `Publisher` 의 값을 활용하여 현재가치를 즉각적으로 계산해서 표시
-
-
+  
 
 3️⃣ `UILabel` 이 짤리는 문제 해결 ✅
 <br>
@@ -71,7 +70,6 @@
 
 ## 🔥 TODO
 
- 
 1️⃣ 한화로 표시하는 기능
 
 2️⃣ Generic APIService 모델 리팩토링
