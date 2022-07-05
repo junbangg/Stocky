@@ -79,4 +79,4 @@
 
 4️⃣ 클린으로 리팩토링
 
-5️⃣ 차트 SwiftUI Charts로 
+5️⃣ 차트 SwiftUI Charts로 변경 
