@@ -76,3 +76,7 @@
 - 추가적인 API에 대해 확장성을 갖춘 `Networking Layer` 
 
 3️⃣ KOSPI 검색 기능 추가
+
+4️⃣ 클린으로 리팩토링
+
+5️⃣ 차트 SwiftUI Charts로 
