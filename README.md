@@ -70,13 +70,9 @@
 
 ## 🔥 TODO
 
-1️⃣ 한화로 표시하는 기능
-
-2️⃣ Generic APIService 모델 리팩토링
+1️⃣ Clean Architecture + MVVM-C 로 리팩토링
+2️⃣ 한화로 표시하는 기능
+3️⃣ Generic APIService 모델 리팩토링
 - 추가적인 API에 대해 확장성을 갖춘 `Networking Layer` 
-
-3️⃣ KOSPI 검색 기능 추가
-
-4️⃣ 클린으로 리팩토링
-
+4️⃣  KOSPI 검색 기능 추가
 5️⃣ 차트 SwiftUI Charts로 변경 
