@@ -36,28 +36,11 @@
 
 ## 🤔 고민한 점
 
-
-1️⃣ 각종 identifier를 Namespace 타입/변수로 관리하면는 번거로움에 대한 고민. ✅
-**IdentifiableView` 프로토콜을 이용하여 해결**
-  ```swift
-  protocol IdentifiableView {
-    static var identifier: String { get }
-  }
-
-  extension IdentifiableView {
-    static var identifier: String {
-      return String(describing: self)
-    }
-  }
-  ```
-  - identifier가 필요한 타입에 `IdentifiableView` 프로토콜을 채택시켜서 Namespace 없이 문자열 생성해서 사용 가능
-
-
-2️⃣ Date Selector Slider 움직이면 현재가치가 반응적으로 업데이트 되는 기능 ✅
+1️⃣ Date Selector Slider 움직이면 현재가치가 반응적으로 업데이트 되는 기능 ✅
   - `Publishers.CombineLatest3` 를 이용해서 3개의 `Publisher` 의 값을 활용하여 현재가치를 즉각적으로 계산해서 표시
   
 
-3️⃣ `UILabel` 이 짤리는 문제 해결 ✅
+2️⃣ `UILabel` 이 짤리는 문제 해결 ✅
 <br>
 <br>
 <img width="278" alt="Screen Shot 2022-04-22 at 2 37 38 PM" src="https://user-images.githubusercontent.com/33091784/164610205-4799d9bd-c2ba-4d29-a19a-495a8bd8cb64.png">
@@ -66,7 +49,7 @@
 - Storyboard layout 수정해서 해결 
 - 안녕하세요 TextField 의 넓이를 Proportional to ContentView 로 수정 
 
-4️⃣ 더 좋은 UX를 위해서 그래프 뷰를 숨겼다가, 사용자 정보가 전부 입력되면 표시되는 UI 수정.
+3️⃣ 더 좋은 UX를 위해서 그래프 뷰를 숨겼다가, 사용자 정보가 전부 입력되면 표시되는 UI 수정.
 
 ## 🔥 TODO
 
